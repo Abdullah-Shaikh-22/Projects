@@ -1,0 +1,1393 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Abdullah Shaikh · Portfolio</title>
+  <!-- Google Fonts + Font Awesome -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:opsz,wght@14..32,300..700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+  <style>
+    /* ─── RESET & BASE ─── */
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    body {
+      font-family: 'Inter', sans-serif;
+      background-color: #f9fafc;
+      color: #1e1e2f;
+      line-height: 1.6;
+      scroll-behavior: smooth;
+      overflow-x: hidden;
+    }
+
+    a {
+      text-decoration: none;
+      color: inherit;
+    }
+
+    .container {
+      max-width: 1200px;
+      margin: 0 auto;
+      padding: 0 2rem;
+    }
+
+    /* ─── ANIMATIONS (KEYFRAMES) ─── */
+    @keyframes fadeUp {
+      0% { opacity: 0; transform: translateY(40px); }
+      100% { opacity: 1; transform: translateY(0); }
+    }
+
+    @keyframes fadeIn {
+      0% { opacity: 0; }
+      100% { opacity: 1; }
+    }
+
+    @keyframes float {
+      0% { transform: translateY(0px); }
+      50% { transform: translateY(-12px); }
+      100% { transform: translateY(0px); }
+    }
+
+    @keyframes pulseGlow {
+      0% { box-shadow: 0 0 0 0 rgba(108, 92, 231, 0.4); }
+      70% { box-shadow: 0 0 0 20px rgba(108, 92, 231, 0); }
+      100% { box-shadow: 0 0 0 0 rgba(108, 92, 231, 0); }
+    }
+
+    @keyframes gradientShift {
+      0% { background-position: 0% 50%; }
+      50% { background-position: 100% 50%; }
+      100% { background-position: 0% 50%; }
+    }
+
+    /* ─── SCROLL REVEAL (JS adds .visible) ─── */
+    .reveal {
+      opacity: 0;
+      transform: translateY(40px);
+      transition: opacity 0.8s cubic-bezier(0.2, 0.9, 0.3, 1), transform 0.8s cubic-bezier(0.2, 0.9, 0.3, 1);
+    }
+
+    .reveal.visible {
+      opacity: 1;
+      transform: translateY(0);
+    }
+
+    /* Delay utilities */
+    .reveal-delay-1 { transition-delay: 0.1s; }
+    .reveal-delay-2 { transition-delay: 0.2s; }
+    .reveal-delay-3 { transition-delay: 0.3s; }
+    .reveal-delay-4 { transition-delay: 0.4s; }
+
+    /* ─── HEADER / NAV ─── */
+    header {
+      position: sticky;
+      top: 0;
+      background-color: rgba(255, 255, 255, 0.85);
+      backdrop-filter: blur(12px);
+      box-shadow: 0 4px 20px rgba(0, 0, 0, 0.02);
+      z-index: 100;
+      border-bottom: 1px solid rgba(0, 0, 0, 0.02);
+      animation: fadeIn 0.6s ease forwards;
+    }
+
+    nav {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 1.2rem 2rem;
+      max-width: 1200px;
+      margin: 0 auto;
+    }
+
+    .logo {
+      font-weight: 700;
+      font-size: 1.6rem;
+      letter-spacing: -0.02em;
+      background: linear-gradient(135deg, #2a2a72, #3b3b98, #6c5ce7);
+      background-size: 200% 200%;
+      -webkit-background-clip: text;
+      background-clip: text;
+      color: transparent;
+      animation: gradientShift 4s ease infinite;
+      transition: opacity 0.2s;
+    }
+
+    .nav-links {
+      display: flex;
+      gap: 2.5rem;
+      font-weight: 500;
+      font-size: 1rem;
+    }
+
+    .nav-links a {
+      position: relative;
+      padding: 0.3rem 0;
+      transition: color 0.2s;
+    }
+
+    .nav-links a::after {
+      content: '';
+      position: absolute;
+      bottom: 0;
+      left: 0;
+      width: 0;
+      height: 2px;
+      background: linear-gradient(90deg, #3b3b98, #6c5ce7);
+      transition: width 0.3s ease;
+      border-radius: 2px;
+    }
+
+    .nav-links a:hover {
+      color: #3b3b98;
+    }
+
+    .nav-links a:hover::after {
+      width: 100%;
+    }
+
+    /* ─── BUTTONS ─── */
+    .btn {
+      display: inline-block;
+      padding: 0.8rem 2rem;
+      border-radius: 40px;
+      font-weight: 600;
+      font-size: 0.95rem;
+      transition: all 0.3s cubic-bezier(0.2, 0.9, 0.3, 1);
+      cursor: pointer;
+      border: 1.5px solid transparent;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .btn-primary {
+      background: #1e1e2f;
+      color: white;
+      box-shadow: 0 8px 18px rgba(30, 30, 47, 0.12);
+    }
+
+    .btn-primary::after {
+      content: '';
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      width: 0;
+      height: 0;
+      border-radius: 50%;
+      background: rgba(255, 255, 255, 0.12);
+      transition: width 0.5s, height 0.5s, top 0.5s, left 0.5s;
+      transform: translate(-50%, -50%);
+    }
+
+    .btn-primary:hover::after {
+      width: 300px;
+      height: 300px;
+    }
+
+    .btn-primary:hover {
+      background: #2a2a44;
+      transform: translateY(-3px);
+      box-shadow: 0 15px 30px rgba(30, 30, 47, 0.22);
+    }
+
+    .btn-outline {
+      border: 1.5px solid #1e1e2f;
+      background: transparent;
+      color: #1e1e2f;
+    }
+
+    .btn-outline:hover {
+      background: #1e1e2f;
+      color: white;
+      transform: translateY(-3px);
+      box-shadow: 0 12px 24px rgba(30, 30, 47, 0.15);
+    }
+
+    /* ─── HERO ─── */
+    .hero {
+      padding: 4rem 0 5rem;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 4rem;
+      flex-wrap: wrap;
+    }
+
+    .hero-content {
+      flex: 1 1 350px;
+      animation: fadeUp 0.9s cubic-bezier(0.2, 0.9, 0.3, 1) forwards;
+    }
+
+    .hero-badge {
+      display: inline-block;
+      background: #eaeefb;
+      color: #3b3b98;
+      font-weight: 600;
+      font-size: 0.85rem;
+      padding: 0.35rem 1rem;
+      border-radius: 30px;
+      letter-spacing: 0.3px;
+      margin-bottom: 1.5rem;
+      animation: pulseGlow 3s infinite;
+    }
+
+    .hero h1 {
+      font-size: 3.5rem;
+      font-weight: 700;
+      line-height: 1.2;
+      letter-spacing: -0.03em;
+      margin-bottom: 1.5rem;
+    }
+
+    .hero h1 span {
+      background: linear-gradient(135deg, #3b3b98, #6c5ce7, #a29bfe);
+      background-size: 200% 200%;
+      -webkit-background-clip: text;
+      background-clip: text;
+      color: transparent;
+      animation: gradientShift 5s ease infinite;
+    }
+
+    .hero p {
+      font-size: 1.15rem;
+      color: #4a4a6a;
+      max-width: 550px;
+      margin-bottom: 2.5rem;
+    }
+
+    .hero-actions {
+      display: flex;
+      gap: 1rem;
+      flex-wrap: wrap;
+    }
+
+    .hero-stats {
+      display: flex;
+      gap: 2.2rem;
+      margin-top: 2.6rem;
+      padding-top: 1.8rem;
+      border-top: 1px solid rgba(30, 30, 47, 0.08);
+    }
+
+    .hero-stats div {
+      display: flex;
+      flex-direction: column;
+    }
+
+    .hero-stats strong {
+      font-size: 1.6rem;
+      font-weight: 700;
+      letter-spacing: -0.02em;
+      color: #1e1e2f;
+    }
+
+    .hero-stats span {
+      font-size: 0.82rem;
+      color: #8a8ab0;
+      margin-top: 0.15rem;
+    }
+
+    .hero-visual {
+      flex: 1 1 300px;
+      display: flex;
+      justify-content: center;
+      animation: fadeUp 1s cubic-bezier(0.2, 0.9, 0.3, 1) 0.15s forwards;
+      opacity: 0;
+      animation-fill-mode: forwards;
+    }
+
+    /* ─── PHOTO FRAME (ADD YOUR IMAGE HERE) ─── */
+    .avatar-frame {
+      background: linear-gradient(145deg, #ffffff, #f0f3fc);
+      width: 320px;
+      height: 320px;
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      box-shadow: 0 30px 40px -20px rgba(42, 42, 114, 0.35);
+      border: 6px solid white;
+      overflow: hidden;
+      transition: transform 0.4s cubic-bezier(0.2, 0.9, 0.3, 1), box-shadow 0.4s ease;
+      animation: float 5s ease-in-out infinite;
+    }
+
+    .avatar-frame:hover {
+      transform: scale(1.03) translateY(-5px);
+      box-shadow: 0 40px 60px -20px rgba(42, 42, 114, 0.45);
+    }
+
+    .avatar-frame img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      display: block;
+      border-radius: 50%;
+      transition: transform 0.5s ease;
+    }
+
+    .avatar-frame:hover img {
+      transform: scale(1.06);
+    }
+
+    /* ─── SECTION STYLING ─── */
+    section {
+      padding: 5rem 0;
+    }
+
+    .section-title {
+      font-size: 2.2rem;
+      font-weight: 700;
+      letter-spacing: -0.02em;
+      margin-bottom: 0.75rem;
+      position: relative;
+      display: inline-block;
+    }
+
+    .section-title::after {
+      content: '';
+      position: absolute;
+      bottom: -6px;
+      left: 0;
+      width: 60px;
+      height: 4px;
+      background: linear-gradient(90deg, #3b3b98, #6c5ce7);
+      border-radius: 4px;
+    }
+
+    .section-sub {
+      color: #5b5b7a;
+      font-size: 1.1rem;
+      margin-bottom: 3rem;
+      max-width: 600px;
+    }
+
+    /* ─── PROJECTS GRID ─── */
+    .project-group {
+      margin-bottom: 3rem;
+    }
+
+    .project-group:last-child {
+      margin-bottom: 0;
+    }
+
+    .group-heading {
+      display: flex;
+      align-items: center;
+      gap: 0.7rem;
+      margin-bottom: 1.3rem;
+    }
+
+    .group-heading .group-dot {
+      width: 10px;
+      height: 10px;
+      border-radius: 50%;
+      flex-shrink: 0;
+    }
+
+    .group-heading h3 {
+      font-size: 1.15rem;
+      font-weight: 700;
+      letter-spacing: -0.01em;
+      color: #1e1e2f;
+    }
+
+    .group-heading .group-count {
+      color: #9a9ab8;
+      font-size: 0.85rem;
+      font-weight: 500;
+    }
+
+    .projects-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+      gap: 1.75rem;
+    }
+
+    .project-card {
+      background: #ffffff;
+      border-radius: 28px;
+      padding: 2.2rem 2rem;
+      border: 1px solid rgba(0, 0, 0, 0.03);
+      box-shadow: 0 10px 30px -14px rgba(30, 30, 47, 0.1);
+      transition: transform 0.4s cubic-bezier(0.2, 0.9, 0.3, 1), box-shadow 0.4s ease, border-color 0.4s ease;
+      display: flex;
+      flex-direction: column;
+      gap: 1rem;
+    }
+
+    .project-card:hover {
+      transform: translateY(-6px);
+      box-shadow: 0 30px 50px -18px rgba(59, 59, 152, 0.22);
+      border-color: rgba(108, 92, 231, 0.15);
+    }
+
+    .project-icon {
+      width: 52px;
+      height: 52px;
+      border-radius: 16px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 1.3rem;
+      color: white;
+      background: linear-gradient(135deg, #3b3b98, #6c5ce7);
+      box-shadow: 0 10px 18px -8px rgba(59, 59, 152, 0.45);
+    }
+
+    .project-icon.tone-python {
+      background: linear-gradient(135deg, #2f5f8a, #4b8bbe);
+      box-shadow: 0 10px 18px -8px rgba(47, 95, 138, 0.5);
+    }
+
+    .project-icon.tone-excel {
+      background: linear-gradient(135deg, #14703f, #2f9e58);
+      box-shadow: 0 10px 18px -8px rgba(20, 112, 63, 0.45);
+    }
+
+    .project-icon.tone-powerbi {
+      background: linear-gradient(135deg, #d9a300, #f2c811);
+      box-shadow: 0 10px 18px -8px rgba(217, 163, 0, 0.45);
+    }
+
+    .project-icon.tone-tableau {
+      background: linear-gradient(135deg, #12719e, #1f88c0);
+      box-shadow: 0 10px 18px -8px rgba(18, 113, 158, 0.45);
+    }
+
+    .dot-python { background: linear-gradient(135deg, #2f5f8a, #4b8bbe); }
+    .dot-excel { background: linear-gradient(135deg, #14703f, #2f9e58); }
+    .dot-powerbi { background: linear-gradient(135deg, #d9a300, #f2c811); }
+    .dot-tableau { background: linear-gradient(135deg, #12719e, #1f88c0); }
+
+    .project-card h3 {
+      font-size: 1.25rem;
+      font-weight: 700;
+      letter-spacing: -0.01em;
+    }
+
+    .project-card .project-desc {
+      color: #5b5b7a;
+      font-size: 0.97rem;
+      flex-grow: 1;
+    }
+
+    .project-card .project-desc code {
+      font-family: 'Consolas', 'Monaco', monospace;
+      background: #f6f8ff;
+      border: 1px solid #e9edff;
+      color: #3b3b98;
+      padding: 0.1rem 0.35rem;
+      border-radius: 6px;
+      font-size: 0.88em;
+    }
+
+    .project-stats {
+      display: flex;
+      gap: 1.5rem;
+      padding: 0.9rem 0;
+      border-top: 1px solid #eef0fa;
+      border-bottom: 1px solid #eef0fa;
+    }
+
+    .project-stats div {
+      display: flex;
+      flex-direction: column;
+    }
+
+    .project-stats strong {
+      font-size: 1.05rem;
+      font-weight: 700;
+      color: #1e1e2f;
+    }
+
+    .project-stats span {
+      font-size: 0.75rem;
+      color: #9a9ab8;
+      text-transform: uppercase;
+      letter-spacing: 0.4px;
+    }
+
+    .project-tags {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.5rem;
+    }
+
+    .project-tags span {
+      background: #f6f8ff;
+      border: 1px solid #e9edff;
+      color: #3b3b98;
+      font-size: 0.78rem;
+      font-weight: 600;
+      padding: 0.3rem 0.8rem;
+      border-radius: 30px;
+    }
+
+    /* ─── CERTIFICATIONS SECTION ─── */
+    .cert-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+      gap: 1.5rem;
+    }
+
+    .cert-card {
+      background: #ffffff;
+      border-radius: 24px;
+      padding: 1.8rem 1.8rem;
+      border: 1px solid rgba(0, 0, 0, 0.03);
+      box-shadow: 0 10px 26px -14px rgba(30, 30, 47, 0.1);
+      transition: transform 0.4s cubic-bezier(0.2, 0.9, 0.3, 1), box-shadow 0.4s ease;
+      display: flex;
+      gap: 1.1rem;
+    }
+
+    .cert-card:hover {
+      transform: translateY(-5px);
+      box-shadow: 0 26px 44px -18px rgba(59, 59, 152, 0.2);
+    }
+
+    .cert-badge {
+      width: 46px;
+      height: 46px;
+      border-radius: 14px;
+      flex-shrink: 0;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 1.1rem;
+      color: white;
+      background: linear-gradient(135deg, #3b3b98, #6c5ce7);
+    }
+
+    .cert-badge.deloitte { background: linear-gradient(135deg, #7a9a2e, #86bc25); }
+    .cert-badge.simplilearn { background: linear-gradient(135deg, #e08a00, #ff9900); }
+    .cert-badge.tcs { background: linear-gradient(135deg, #3451a8, #4b6cd1); }
+
+    .cert-info h4 {
+      font-size: 1.02rem;
+      font-weight: 700;
+      letter-spacing: -0.01em;
+      margin-bottom: 0.25rem;
+    }
+
+    .cert-info .cert-issuer {
+      font-size: 0.85rem;
+      color: #6c5ce7;
+      font-weight: 600;
+      margin-bottom: 0.4rem;
+    }
+
+    .cert-info .cert-date {
+      font-size: 0.8rem;
+      color: #9a9ab8;
+    }
+
+    .cert-info .cert-code {
+      font-size: 0.74rem;
+      color: #b0b0c8;
+      margin-top: 0.3rem;
+      font-family: 'Consolas', 'Monaco', monospace;
+    }
+
+    /* ─── VIDEO EDITING SECTION ─── */
+    .reel-subhead {
+      display: flex;
+      align-items: center;
+      gap: 0.6rem;
+      margin: 0 0 1.2rem;
+    }
+
+    .reel-subhead h3 {
+      font-size: 1.1rem;
+      font-weight: 700;
+    }
+
+    .reel-subhead .pill {
+      font-size: 0.75rem;
+      font-weight: 700;
+      letter-spacing: 0.3px;
+      padding: 0.25rem 0.8rem;
+      border-radius: 30px;
+    }
+
+    .pill-viral {
+      background: linear-gradient(135deg, #ff6b6b, #ff9f43);
+      color: white;
+    }
+
+    .pill-edit {
+      background: #eaeefb;
+      color: #3b3b98;
+    }
+
+    .reel-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+      gap: 1.5rem;
+      margin-bottom: 3rem;
+    }
+
+    .reel-grid:last-child { margin-bottom: 0; }
+
+    .reel-card {
+      background: #ffffff;
+      border-radius: 20px;
+      overflow: hidden;
+      border: 1px solid rgba(0, 0, 0, 0.04);
+      box-shadow: 0 10px 24px -14px rgba(30, 30, 47, 0.12);
+    }
+
+    .reel-card blockquote.instagram-media {
+      margin: 0 !important;
+      width: 100% !important;
+      min-width: 0 !important;
+    }
+
+    /* ─── SKILLS SECTION ─── */
+    .skills-section {
+      background: #ffffff;
+      border-radius: 40px;
+      padding: 3.5rem 3rem;
+      margin: 2rem 0;
+      box-shadow: 0 10px 30px -10px rgba(0, 0, 0, 0.03);
+      border: 1px solid rgba(0, 0, 0, 0.02);
+      transition: box-shadow 0.4s ease;
+    }
+
+    .skills-section:hover {
+      box-shadow: 0 25px 50px -15px rgba(59, 59, 152, 0.1);
+    }
+
+    .skills-grid {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 1.5rem 2.5rem;
+      justify-content: space-between;
+    }
+
+    .skill-category h4 {
+      font-size: 0.85rem;
+      font-weight: 600;
+      text-transform: uppercase;
+      letter-spacing: 0.5px;
+      color: #3b3b98;
+      margin-bottom: 1rem;
+    }
+
+    .skill-list {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.8rem;
+    }
+
+    .skill-item {
+      background: #f6f8ff;
+      padding: 0.5rem 1.2rem;
+      border-radius: 40px;
+      font-size: 0.9rem;
+      font-weight: 500;
+      color: #1e1e2f;
+      border: 1px solid #e9edff;
+      transition: all 0.3s cubic-bezier(0.2, 0.9, 0.3, 1);
+      cursor: default;
+    }
+
+    .skill-item:hover {
+      background: linear-gradient(135deg, #e9edff, #dfe6ff);
+      transform: translateY(-4px) scale(1.03);
+      box-shadow: 0 8px 16px -6px rgba(59, 59, 152, 0.2);
+      border-color: #c5cef0;
+    }
+
+    /* ─── CONTACT SECTION ─── */
+    .contact-section {
+      text-align: center;
+      background: linear-gradient(135deg, #1e1e2f, #2a2a50, #1e1e2f);
+      background-size: 200% 200%;
+      animation: gradientShift 8s ease infinite;
+      color: white;
+      border-radius: 40px;
+      padding: 5rem 2rem;
+      margin: 2rem 0 3rem;
+      box-shadow: 0 30px 40px -20px rgba(30, 30, 47, 0.5);
+      position: relative;
+      overflow: hidden;
+    }
+
+    .contact-section::before {
+      content: '';
+      position: absolute;
+      top: -50%;
+      left: -50%;
+      width: 200%;
+      height: 200%;
+      background: radial-gradient(circle, rgba(108, 92, 231, 0.08) 0%, transparent 60%);
+      animation: float 12s ease-in-out infinite;
+      pointer-events: none;
+    }
+
+    .contact-section h2 {
+      font-size: 2.5rem;
+      font-weight: 700;
+      letter-spacing: -0.02em;
+      margin-bottom: 1rem;
+      position: relative;
+    }
+
+    .contact-section p {
+      color: #b9b9e0;
+      font-size: 1.15rem;
+      max-width: 550px;
+      margin: 0 auto 2.5rem;
+      position: relative;
+    }
+
+    .contact-section .btn-primary {
+      background: white;
+      color: #1e1e2f;
+      box-shadow: 0 15px 30px -10px rgba(0, 0, 0, 0.3);
+      padding: 1rem 2.5rem;
+      font-size: 1.05rem;
+      position: relative;
+      z-index: 2;
+    }
+
+    .contact-section .btn-primary:hover {
+      background: #f0f3ff;
+      transform: translateY(-4px) scale(1.02);
+      box-shadow: 0 25px 40px -12px rgba(0, 0, 0, 0.4);
+    }
+
+    /* ─── SOCIAL LINKS ─── */
+    .social-links {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+      gap: 1.8rem;
+      margin-top: 2.5rem;
+      font-size: 1.8rem;
+      position: relative;
+      z-index: 2;
+    }
+
+    .social-links a {
+      color: #b9b9e0;
+      transition: all 0.35s cubic-bezier(0.2, 0.9, 0.3, 1);
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      width: 56px;
+      height: 56px;
+      border-radius: 50%;
+      background: rgba(255, 255, 255, 0.06);
+      backdrop-filter: blur(4px);
+    }
+
+    .social-links a:hover {
+      color: white;
+      background: rgba(255, 255, 255, 0.15);
+      transform: translateY(-6px) scale(1.1);
+      box-shadow: 0 15px 25px -10px rgba(0, 0, 0, 0.4);
+    }
+
+    /* Brand color hints on hover */
+    .social-links a:hover .fa-instagram { color: #e4405f; }
+    .social-links a:hover .fa-facebook-f { color: #1877f2; }
+    .social-links a:hover .fa-reddit-alien { color: #ff4500; }
+    .social-links a:hover .fa-linkedin-in { color: #0a66c2; }
+    .social-links a:hover .fa-pinterest-p { color: #e60023; }
+    .social-links a:hover .fa-github { color: #ffffff; }
+
+    /* ─── FOOTER ─── */
+    footer {
+      text-align: center;
+      padding: 2rem 0 2.5rem;
+      color: #7b7b99;
+      font-size: 0.9rem;
+      border-top: 1px solid rgba(0, 0, 0, 0.03);
+    }
+
+    footer .fa-heart {
+      animation: float 2s ease-in-out infinite;
+      display: inline-block;
+    }
+
+    /* ─── RESPONSIVE ─── */
+    @media (max-width: 768px) {
+      nav {
+        flex-direction: column;
+        gap: 1rem;
+      }
+
+      .nav-links {
+        gap: 1.8rem;
+        font-size: 0.95rem;
+      }
+
+      .hero {
+        padding: 2rem 0 3rem;
+        flex-direction: column-reverse;
+        text-align: center;
+      }
+
+      .hero p {
+        margin-left: auto;
+        margin-right: auto;
+      }
+
+      .hero-actions {
+        justify-content: center;
+      }
+
+      .hero-stats {
+        justify-content: center;
+      }
+
+      .hero h1 {
+        font-size: 2.5rem;
+      }
+
+      .avatar-frame {
+        width: 260px;
+        height: 260px;
+      }
+
+      .skills-section {
+        padding: 2rem 1.8rem;
+      }
+
+      .skills-grid {
+        flex-direction: column;
+        gap: 2rem;
+      }
+
+      .contact-section h2 {
+        font-size: 2rem;
+      }
+
+      .section-title {
+        font-size: 1.9rem;
+      }
+
+      .social-links {
+        gap: 1.2rem;
+      }
+
+      .social-links a {
+        width: 48px;
+        height: 48px;
+        font-size: 1.5rem;
+      }
+    }
+
+    @media (max-width: 480px) {
+      .container {
+        padding: 0 1.5rem;
+      }
+
+      .nav-links {
+        gap: 1.2rem;
+        font-size: 0.9rem;
+      }
+
+      .hero h1 {
+        font-size: 2.2rem;
+      }
+
+      .btn {
+        padding: 0.7rem 1.6rem;
+      }
+
+      .project-card {
+        padding: 1.8rem 1.5rem;
+      }
+
+      .social-links a {
+        width: 42px;
+        height: 42px;
+        font-size: 1.3rem;
+      }
+    }
+  </style>
+</head>
+<body>
+  <header>
+    <nav>
+      <div class="logo">abdullah.dev</div>
+      <div class="nav-links">
+        <a href="#work">Work</a>
+        <a href="#certifications">Certifications</a>
+        <a href="#editing">Editing</a>
+        <a href="#skills">Skills</a>
+        <a href="#contact">Contact</a>
+      </div>
+    </nav>
+  </header>
+
+  <main>
+    <!-- ─── HERO SECTION ─── -->
+    <div class="container">
+      <section class="hero">
+        <div class="hero-content">
+          <div class="hero-badge">
+            <i class="fas fa-code" style="margin-right: 6px;"></i> Available for opportunities
+          </div>
+          <h1>
+            Hi, I'm <span>Abdullah Shaikh</span><br>
+            Developer & problem solver
+          </h1>
+          <p>
+            I code in Python, C, C++, Java, and SQL. I build with HTML, CSS, and shell scripting.
+            I also work with Excel, Power BI, and Tableau — plus I have a creative side for video editing.
+          </p>
+          <div class="hero-actions">
+            <a href="#work" class="btn btn-primary">See my work</a>
+            <a href="#contact" class="btn btn-outline">Let's talk</a>
+          </div>
+          <div class="hero-stats">
+            <div><strong>6</strong><span>Projects</span></div>
+            <div><strong>4</strong><span>Certifications</span></div>
+            <div><strong>3</strong><span>Viral reels</span></div>
+          </div>
+        </div>
+        <div class="hero-visual">
+          <!-- ═══════════════════════════════════════════════════════════ -->
+          <!-- ⚠️ CHANGE YOUR IMAGE HERE ⚠️                              -->
+          <!-- Replace the src URL below with the path to your photo.    -->
+          <!-- Example: src="my-photo.jpg" or src="images/abdullah.png"  -->
+          <!-- ═══════════════════════════════════════════════════════════ -->
+          <div class="avatar-frame">
+            <img
+              src="file_00000000f2a08207bb136bcd727dd9c4_11zon.png"
+              alt="Abdullah Shaikh — Developer & Problem Solver"
+            >
+          </div>
+        </div>
+      </section>
+    </div>
+
+    <!-- ─── PROJECTS SECTION ─── -->
+    <div class="container" id="work">
+      <section class="reveal">
+        <h2 class="section-title">Projects</h2>
+        <p class="section-sub">Work across Python, Excel, Power BI, and Tableau — from object-oriented systems to data dashboards.</p>
+
+        <!-- PYTHON -->
+        <div class="project-group">
+          <div class="group-heading">
+            <span class="group-dot dot-python"></span>
+            <h3>Python</h3>
+            <span class="group-count">2 projects</span>
+          </div>
+          <div class="projects-grid">
+
+            <div class="project-card reveal reveal-delay-1">
+              <div class="project-icon tone-python"><i class="fas fa-building-columns"></i></div>
+              <h3>Banking Management System</h3>
+              <p class="project-desc">
+                An OOP-based banking system — a <code>Bank</code> class inheriting from <code>User</code>, with
+                encapsulated balances, auto-generated account numbers, and deposit, withdraw, and transfer
+                operations, each with its own validation rules.
+              </p>
+              <div class="project-stats">
+                <div><strong>2</strong><span>Classes</span></div>
+                <div><strong>4</strong><span>Operations</span></div>
+                <div><strong>1</strong><span>Inheritance</span></div>
+              </div>
+              <div class="project-tags">
+                <span>Python</span>
+                <span>OOP</span>
+                <span>Encapsulation</span>
+              </div>
+            </div>
+
+            <div class="project-card reveal reveal-delay-2">
+              <div class="project-icon tone-python"><i class="fas fa-users-gear"></i></div>
+              <h3>Employee Management System</h3>
+              <p class="project-desc">
+                A base <code>Employee</code> class specialized into <code>Developer</code> and <code>Manager</code>
+                subclasses — managers maintain a team roster, and every employee gets an auto-generated company
+                email and an annual salary increment.
+              </p>
+              <div class="project-stats">
+                <div><strong>3</strong><span>Classes</span></div>
+                <div><strong>2</strong><span>Subclasses</span></div>
+                <div><strong>10%</strong><span>Increment</span></div>
+              </div>
+              <div class="project-tags">
+                <span>Python</span>
+                <span>Inheritance</span>
+                <span>OOP</span>
+              </div>
+            </div>
+
+          </div>
+        </div>
+
+        <!-- EXCEL -->
+        <div class="project-group">
+          <div class="group-heading">
+            <span class="group-dot dot-excel"></span>
+            <h3>Excel</h3>
+            <span class="group-count">2 projects</span>
+          </div>
+          <div class="projects-grid">
+
+            <div class="project-card reveal reveal-delay-1">
+              <div class="project-icon tone-excel"><i class="fas fa-chart-pie"></i></div>
+              <h3>Coffee Sales Dashboard</h3>
+              <p class="project-desc">
+                A multi-sheet interactive Excel dashboard built on a 4,200+ row coffee sales dataset — tracking
+                sales, profit, budget, and total expenses across product lines, states, and territories using
+                PivotTables and linked charts.
+              </p>
+              <div class="project-stats">
+                <div><strong>4,249</strong><span>Records</span></div>
+                <div><strong>4</strong><span>Dashboards</span></div>
+                <div><strong>15</strong><span>Fields</span></div>
+              </div>
+              <div class="project-tags">
+                <span>Excel</span>
+                <span>PivotTables</span>
+                <span>Dashboards</span>
+              </div>
+            </div>
+
+            <div class="project-card reveal reveal-delay-2">
+              <div class="project-icon tone-excel"><i class="fas fa-magnifying-glass"></i></div>
+              <h3>Dynamic Sales Search Box</h3>
+              <p class="project-desc">
+                An interactive search tool over a 34-record salesman sales dataset, built with a dynamic array
+                formula so results filter live as criteria change — no macros, no VBA, just native Excel formulas.
+              </p>
+              <div class="project-stats">
+                <div><strong>34</strong><span>Records</span></div>
+                <div><strong>8</strong><span>Fields</span></div>
+                <div><strong>0</strong><span>VBA Used</span></div>
+              </div>
+              <div class="project-tags">
+                <span>Excel</span>
+                <span>Array Formulas</span>
+                <span>Dynamic Search</span>
+              </div>
+            </div>
+
+          </div>
+        </div>
+
+        <!-- POWER BI -->
+        <div class="project-group">
+          <div class="group-heading">
+            <span class="group-dot dot-powerbi"></span>
+            <h3>Power BI</h3>
+            <span class="group-count">1 project</span>
+          </div>
+          <div class="projects-grid">
+
+            <div class="project-card reveal reveal-delay-1">
+              <div class="project-icon tone-powerbi"><i class="fas fa-chart-column"></i></div>
+              <h3>Academic Stress Dashboard</h3>
+              <p class="project-desc">
+                A one-page interactive dashboard analyzing a 122-response student survey on peer pressure,
+                academic pressure, study environment, and stress index — combining pie, bar, column, and area
+                charts with a slicer and pivot table for drill-down by academic stage.
+              </p>
+              <div class="project-stats">
+                <div><strong>122</strong><span>Responses</span></div>
+                <div><strong>9</strong><span>Visuals</span></div>
+                <div><strong>1</strong><span>Dashboard</span></div>
+              </div>
+              <div class="project-tags">
+                <span>Power BI</span>
+                <span>Dashboard</span>
+                <span>Survey Analysis</span>
+              </div>
+            </div>
+
+          </div>
+        </div>
+
+        <!-- TABLEAU -->
+        <div class="project-group">
+          <div class="group-heading">
+            <span class="group-dot dot-tableau"></span>
+            <h3>Tableau</h3>
+            <span class="group-count">1 project</span>
+          </div>
+          <div class="projects-grid">
+
+            <div class="project-card reveal reveal-delay-1">
+              <div class="project-icon tone-tableau"><i class="fas fa-diagram-project"></i></div>
+              <h3>Academic Stress Analysis</h3>
+              <p class="project-desc">
+                The same student-survey dataset explored through four Tableau views — a pie chart, side-by-side
+                bars, text tables, and a tree map — comparing stress indicators across academic stages.
+              </p>
+              <div class="project-stats">
+                <div><strong>4</strong><span>Views</span></div>
+                <div><strong>122</strong><span>Responses</span></div>
+                <div><strong>1</strong><span>Dataset</span></div>
+              </div>
+              <div class="project-tags">
+                <span>Tableau</span>
+                <span>Data Viz</span>
+                <span>Survey Analysis</span>
+              </div>
+            </div>
+
+          </div>
+        </div>
+
+      </section>
+    </div>
+
+    <!-- ─── CERTIFICATIONS SECTION ─── -->
+    <div class="container" id="certifications">
+      <section class="reveal">
+        <h2 class="section-title">Certifications</h2>
+        <p class="section-sub">Job simulations and courses I've completed to back up what I build.</p>
+
+        <div class="cert-grid">
+
+          <div class="cert-card reveal reveal-delay-1">
+            <div class="cert-badge deloitte"><i class="fas fa-magnifying-glass-chart"></i></div>
+            <div class="cert-info">
+              <h4>Data Analytics Job Simulation</h4>
+              <div class="cert-issuer">Deloitte · via Forage</div>
+              <div class="cert-date">Completed February 18, 2026</div>
+              <div class="cert-code">Verification: KXkXb2PbfnNzKXWAF</div>
+            </div>
+          </div>
+
+          <div class="cert-card reveal reveal-delay-2">
+            <div class="cert-badge deloitte"><i class="fas fa-robot"></i></div>
+            <div class="cert-info">
+              <h4>GenAI Powered Data Analytics Job Simulation</h4>
+              <div class="cert-issuer">Deloitte · via Forage</div>
+              <div class="cert-date">Completed May 10, 2026</div>
+              <div class="cert-code">Verification: n9FkGH85J7xwh3ERQ</div>
+            </div>
+          </div>
+
+          <div class="cert-card reveal reveal-delay-3">
+            <div class="cert-badge simplilearn"><i class="fas fa-file-excel"></i></div>
+            <div class="cert-info">
+              <h4>Excel Macros & VBA for Beginners</h4>
+              <div class="cert-issuer">SkillUp by Simplilearn · Microsoft</div>
+              <div class="cert-date">Completed January 27, 2026</div>
+              <div class="cert-code">Certificate code: 9769269</div>
+            </div>
+          </div>
+
+          <div class="cert-card reveal reveal-delay-4">
+            <div class="cert-badge tcs"><i class="fas fa-person-chalkboard"></i></div>
+            <div class="cert-info">
+              <h4>Presentation Skills</h4>
+              <div class="cert-issuer">TCS iON</div>
+              <div class="cert-date">Completed May 3, 2026</div>
+              <div class="cert-code">Cert ID: 66756-32181968-1016</div>
+            </div>
+          </div>
+
+        </div>
+      </section>
+    </div>
+
+    <!-- ─── VIDEO EDITING SECTION ─── -->
+    <div class="container" id="editing">
+      <section class="reveal">
+        <h2 class="section-title">Video editing</h2>
+        <p class="section-sub">A creative side alongside the data work — short-form edits, some of which took off.</p>
+
+        <div class="reel-subhead">
+          <h3>Went viral</h3>
+          <span class="pill pill-viral">🔥 Viral on Instagram</span>
+        </div>
+        <div class="reel-grid">
+          <div class="reel-card">
+            <blockquote class="instagram-media" data-instgrm-permalink="https://www.instagram.com/reel/De1xulStw0R/" data-instgrm-version="14"></blockquote>
+          </div>
+          <div class="reel-card">
+            <blockquote class="instagram-media" data-instgrm-permalink="https://www.instagram.com/reel/DdtsEcxt6pI/" data-instgrm-version="14"></blockquote>
+          </div>
+          <div class="reel-card">
+            <blockquote class="instagram-media" data-instgrm-permalink="https://www.instagram.com/reel/DeAGy8URHWz/" data-instgrm-version="14"></blockquote>
+          </div>
+        </div>
+
+        <div class="reel-subhead">
+          <h3>Favorite edits</h3>
+          <span class="pill pill-edit">Well-edited picks</span>
+        </div>
+        <div class="reel-grid">
+          <div class="reel-card">
+            <blockquote class="instagram-media" data-instgrm-permalink="https://www.instagram.com/reel/DewLX9dN4gW/" data-instgrm-version="14"></blockquote>
+          </div>
+          <div class="reel-card">
+            <blockquote class="instagram-media" data-instgrm-permalink="https://www.instagram.com/reel/DfGq_mDtqjr/" data-instgrm-version="14"></blockquote>
+          </div>
+          <div class="reel-card">
+            <blockquote class="instagram-media" data-instgrm-permalink="https://www.instagram.com/reel/De9F0EuNeWV/" data-instgrm-version="14"></blockquote>
+          </div>
+        </div>
+      </section>
+    </div>
+
+    <!-- ─── SKILLS SECTION ─── -->
+    <div class="container" id="skills">
+      <div class="skills-section reveal">
+        <h2 class="section-title" style="margin-bottom: 0.5rem;">Skills & tools</h2>
+        <p class="section-sub" style="margin-bottom: 2rem;">Technologies and tools I work with.</p>
+        <div class="skills-grid">
+          <div class="skill-category reveal reveal-delay-1">
+            <h4>Programming</h4>
+            <div class="skill-list">
+              <span class="skill-item">Python</span>
+              <span class="skill-item">C</span>
+              <span class="skill-item">C++</span>
+              <span class="skill-item">Java</span>
+              <span class="skill-item">SQL</span>
+              <span class="skill-item">Shell</span>
+            </div>
+          </div>
+          <div class="skill-category reveal reveal-delay-2">
+            <h4>Web & Data</h4>
+            <div class="skill-list">
+              <span class="skill-item">HTML</span>
+              <span class="skill-item">CSS</span>
+              <span class="skill-item">Excel</span>
+              <span class="skill-item">Power BI</span>
+              <span class="skill-item">Tableau</span>
+              <span class="skill-item">MS Word</span>
+            </div>
+          </div>
+          <div class="skill-category reveal reveal-delay-3">
+            <h4>Creative</h4>
+            <div class="skill-list">
+              <span class="skill-item">Video Editing</span>
+              <span class="skill-item">Problem Solving</span>
+              <span class="skill-item">Analytical Thinking</span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- ─── CONTACT SECTION WITH ALL YOUR LINKS ─── -->
+    <div class="container" id="contact">
+      <div class="contact-section reveal">
+        <h2>Let's connect</h2>
+        <p>I'm always open to collaboration, opportunities, or a quick chat. Reach out through any platform below.</p>
+
+        <!-- Email button (optional: replace with your real email) -->
+        <a href="mailto:abdullahshaikh150704@gmail.com" class="btn btn-primary" style="margin-bottom: 0.5rem;">
+          <i class="fas fa-envelope" style="margin-right: 8px;"></i> abdullahshaikh150704@gmail.com
+        </a>
+
+        <!-- ALL YOUR SOCIAL LINKS ADDED BELOW -->
+        <div class="social-links">
+          <!-- GitHub -->
+          <a href="https://github.com/Abdullah-Shaikh-22" target="_blank" aria-label="GitHub">
+            <i class="fab fa-github"></i>
+          </a>
+          <!-- Instagram -->
+          <a href="https://www.instagram.com/shaikhabdullah650/?hl=en" target="_blank" aria-label="Instagram">
+            <i class="fab fa-instagram"></i>
+          </a>
+<!-- Pinterest -->
+          <a href="https://in.pinterest.com/abdullahshaikh150704/" target="_blank" aria-label="Pinterest">
+            <i class="fab fa-pinterest-p"></i>
+          </a>
+          <!-- LinkedIn -->
+          <a href="https://www.linkedin.com/in/abdullah-shaikh-315280435/" target="_blank" aria-label="LinkedIn">
+            <i class="fab fa-linkedin-in"></i>
+          </a>
+          <!-- Facebook -->
+          <a href="https://www.facebook.com/people/Abdullah-Shaikh/pfbid0iCq6QkDWsd33ZxKAQofXfA8ps3cNibtEJrfzcSnJWxAuo6PAEYiaUBoeFvMEoKD6l/" target="_blank" aria-label="Facebook">
+            <i class="fab fa-facebook-f"></i>
+          </a>
+          <!-- Reddit -->
+          <a href="https://www.reddit.com/user/Abdullah_Shaikh_15/submitted/?sort=hot" target="_blank" aria-label="Reddit">
+            <i class="fab fa-reddit-alien"></i>
+          </a>
+        </div>
+
+        <p style="font-size: 0.8rem; color: #8a8ab0; margin-top: 1.8rem; opacity: 0.7; position: relative;">
+          <i class="fas fa-info-circle"></i> All links are live and ready to use.
+        </p>
+      </div>
+    </div>
+  </main>
+
+  <footer>
+    <div class="container">
+      <p>© 2025 Abdullah Shaikh — built with <i class="fas fa-heart" style="color: #6c5ce7;"></i></p>
+    </div>
+  </footer>
+
+  <!-- ─── SCROLL REVEAL + SMOOTH SCROLL SCRIPT ─── -->
+  <script>
+    (function() {
+      // 1. Smooth scroll for anchor links
+      document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+        anchor.addEventListener('click', function(e) {
+          const href = this.getAttribute('href');
+          if (href === "#" || href === "") return;
+          const target = document.querySelector(href);
+          if (target) {
+            e.preventDefault();
+            target.scrollIntoView({ behavior: 'smooth', block: 'start' });
+          }
+        });
+      });
+
+      // 2. Intersection Observer for scroll reveal animations
+      const revealElements = document.querySelectorAll('.reveal');
+
+      if (revealElements.length > 0) {
+        const observer = new IntersectionObserver((entries) => {
+          entries.forEach(entry => {
+            if (entry.isIntersecting) {
+              entry.target.classList.add('visible');
+              observer.unobserve(entry.target);
+            }
+          });
+        }, {
+          threshold: 0.15,
+          rootMargin: '0px 0px -40px 0px'
+        });
+
+        revealElements.forEach(el => observer.observe(el));
+      }
+
+      // 3. Fallback if IntersectionObserver not supported
+      if (!window.IntersectionObserver) {
+        revealElements.forEach(el => el.classList.add('visible'));
+      }
+
+      // 4. Subtle tilt effect on avatar frame
+      const avatarFrame = document.querySelector('.avatar-frame');
+      if (avatarFrame && window.matchMedia('(hover: hover)').matches) {
+        avatarFrame.addEventListener('mousemove', (e) => {
+          const rect = avatarFrame.getBoundingClientRect();
+          const x = (e.clientX - rect.left) / rect.width - 0.5;
+          const y = (e.clientY - rect.top) / rect.height - 0.5;
+          avatarFrame.style.transform = `perspective(800px) rotateY(${x * 6}deg) rotateX(${y * -6}deg) translateY(-5px)`;
+        });
+        avatarFrame.addEventListener('mouseleave', () => {
+          avatarFrame.style.transform = 'translateY(0px)';
+        });
+      }
+    })();
+  </script>
+
+  <!-- ─── INSTAGRAM EMBEDS (Video Editing section) ─── -->
+  <script async src="//www.instagram.com/embed.js"></script>
+</body>
+</html>
