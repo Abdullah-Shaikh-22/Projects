@@ -3,7 +3,9 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <script>try{var t=localStorage.getItem('theme');if(!t){t=window.matchMedia('(prefers-color-scheme: dark)').matches?'dark':'light'}document.documentElement.setAttribute('data-theme',t)}catch(e){}</script>
   <title>Abdullah Shaikh · Portfolio</title>
+  <meta name="description" content="Abdullah Shaikh — data analytics projects in Python, Excel, Power BI and Tableau, certifications, and video editing.">
   <!-- Google Fonts + Font Awesome -->
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -914,6 +916,382 @@
         font-size: 1.3rem;
       }
     }
+    /* ─── NEW: NAV TOGGLE, HERO EXTRAS, PROJECT LINKS ─── */
+    [hidden] { display: none !important; }
+
+    .nav-links { align-items: center; }
+
+    .theme-toggle {
+      width: 38px;
+      height: 38px;
+      border-radius: 50%;
+      border: 1px solid rgba(30, 30, 47, 0.12);
+      background: transparent;
+      color: inherit;
+      cursor: pointer;
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 0.95rem;
+      transition: background 0.25s, transform 0.25s, border-color 0.25s;
+    }
+
+    .theme-toggle:hover { background: rgba(108, 92, 231, 0.12); transform: rotate(18deg); }
+
+    .btn:focus-visible, .theme-toggle:focus-visible, .project-link:focus-visible,
+    .footer-update:focus-visible, .nav-links a:focus-visible, .ed-panel button:focus-visible,
+    .ed-panel input:focus-visible, .ed-panel textarea:focus-visible, .ed-panel select:focus-visible {
+      outline: 3px solid #a29bfe;
+      outline-offset: 2px;
+    }
+
+    .btn i { margin-right: 8px; }
+
+    .project-link {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.5rem;
+      align-self: flex-start;
+      font-size: 0.88rem;
+      font-weight: 600;
+      color: #3b3b98;
+      padding: 0.5rem 1rem;
+      border-radius: 30px;
+      border: 1.5px solid #dfe4fb;
+      transition: background 0.25s, color 0.25s, border-color 0.25s, transform 0.25s;
+    }
+
+    .project-link:hover { background: #3b3b98; color: #fff; border-color: #3b3b98; transform: translateY(-2px); }
+
+    .cert-info .cert-link {
+      display: inline-block;
+      margin-top: 0.5rem;
+      font-size: 0.8rem;
+      font-weight: 600;
+      color: #6c5ce7;
+    }
+
+    .group-dot.dot-other { background: linear-gradient(135deg, #3b3b98, #6c5ce7); }
+    .project-icon.tone-other { background: linear-gradient(135deg, #3b3b98, #6c5ce7); }
+    .cert-badge.other { background: linear-gradient(135deg, #3b3b98, #6c5ce7); }
+
+    /* promo video */
+    .video-frame {
+      position: relative;
+      aspect-ratio: 16 / 9;
+      max-width: 860px;
+      border-radius: 24px;
+      overflow: hidden;
+      background: #0f1020;
+      box-shadow: 0 30px 50px -24px rgba(30, 30, 47, 0.45);
+    }
+
+    .video-frame iframe, .video-frame video {
+      position: absolute;
+      inset: 0;
+      width: 100%;
+      height: 100%;
+      border: 0;
+    }
+
+    .promo-reel { max-width: 420px; }
+    .promo-note { margin-top: 1rem; color: #5b5b7a; max-width: 640px; }
+
+    /* footer update button */
+    .footer-update {
+      margin-top: 0.9rem;
+      background: transparent;
+      border: 1px solid rgba(30, 30, 47, 0.14);
+      color: inherit;
+      border-radius: 30px;
+      padding: 0.4rem 1rem;
+      font-size: 0.82rem;
+      cursor: pointer;
+      font-family: inherit;
+      transition: background 0.25s, border-color 0.25s;
+    }
+
+    .footer-update:hover { background: rgba(108, 92, 231, 0.1); border-color: #6c5ce7; }
+    .footer-update i { margin-right: 6px; }
+
+    /* ─── UPDATE PANEL (EDITOR) ─── */
+    .ed-overlay {
+      position: fixed;
+      inset: 0;
+      background: rgba(15, 16, 32, 0.55);
+      backdrop-filter: blur(2px);
+      z-index: 900;
+      opacity: 0;
+      visibility: hidden;
+      transition: opacity 0.3s, visibility 0s 0.3s;
+    }
+
+    .ed-overlay.open { opacity: 1; visibility: visible; transition: opacity 0.3s; }
+
+    .ed-panel {
+      position: fixed;
+      top: 0;
+      right: 0;
+      bottom: 0;
+      width: min(560px, 100vw);
+      background: #ffffff;
+      color: #1e1e2f;
+      z-index: 901;
+      display: flex;
+      flex-direction: column;
+      box-shadow: -30px 0 60px -20px rgba(0, 0, 0, 0.35);
+      transform: translateX(100%);
+      visibility: hidden;
+      transition: transform 0.35s cubic-bezier(0.2, 0.9, 0.3, 1), visibility 0s 0.35s;
+    }
+
+    .ed-panel.open { transform: none; visibility: visible; transition: transform 0.35s cubic-bezier(0.2, 0.9, 0.3, 1); }
+
+    .ed-head {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 1.1rem 1.4rem;
+      border-bottom: 1px solid #eef0fa;
+    }
+
+    .ed-head h2 { font-size: 1.15rem; font-weight: 700; }
+
+    .ed-icon-btn {
+      width: 36px;
+      height: 36px;
+      border-radius: 50%;
+      border: 1px solid #dfe4fb;
+      background: transparent;
+      color: inherit;
+      cursor: pointer;
+      font-size: 1rem;
+    }
+
+    .ed-note {
+      margin: 0;
+      padding: 0.8rem 1.4rem;
+      font-size: 0.82rem;
+      line-height: 1.5;
+      color: #5b5b7a;
+      background: #f6f8ff;
+      border-bottom: 1px solid #eef0fa;
+    }
+
+    .ed-tabs {
+      display: flex;
+      gap: 0.4rem;
+      padding: 0.8rem 1.4rem 0;
+      overflow-x: auto;
+      border-bottom: 1px solid #eef0fa;
+    }
+
+    .ed-tab {
+      background: transparent;
+      border: none;
+      border-bottom: 3px solid transparent;
+      padding: 0.5rem 0.8rem 0.7rem;
+      font-family: inherit;
+      font-size: 0.9rem;
+      font-weight: 600;
+      color: #7b7b99;
+      cursor: pointer;
+      white-space: nowrap;
+    }
+
+    .ed-tab[aria-selected="true"] { color: #3b3b98; border-bottom-color: #6c5ce7; }
+
+    .ed-body { flex: 1; overflow-y: auto; padding: 1.2rem 1.4rem 2rem; }
+
+    .ed-item {
+      border: 1px solid #e9edff;
+      border-radius: 18px;
+      padding: 1rem 1.1rem 1.1rem;
+      margin-bottom: 1rem;
+      background: #fbfcff;
+    }
+
+    .ed-item-head {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 0.5rem;
+      margin-bottom: 0.7rem;
+    }
+
+    .ed-item-title { font-weight: 700; font-size: 0.95rem; overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
+    .ed-item-actions { display: flex; gap: 0.3rem; flex-shrink: 0; }
+
+    .ed-mini {
+      min-width: 32px;
+      height: 32px;
+      border-radius: 10px;
+      border: 1px solid #dfe4fb;
+      background: #fff;
+      color: #3b3b98;
+      cursor: pointer;
+      font-size: 0.8rem;
+    }
+
+    .ed-mini.danger { color: #c0392b; border-color: #f2cfcb; }
+
+    .ed-field { display: block; margin-bottom: 0.75rem; }
+    .ed-field span { display: block; font-size: 0.78rem; font-weight: 600; color: #6b6b8a; margin-bottom: 0.25rem; }
+
+    .ed-field input, .ed-field textarea, .ed-field select {
+      width: 100%;
+      font-family: inherit;
+      font-size: 0.92rem;
+      padding: 0.55rem 0.7rem;
+      border-radius: 10px;
+      border: 1px solid #dfe4fb;
+      background: #fff;
+      color: #1e1e2f;
+    }
+
+    .ed-field textarea { min-height: 84px; resize: vertical; line-height: 1.5; }
+
+    .ed-add {
+      width: 100%;
+      padding: 0.8rem;
+      border-radius: 14px;
+      border: 2px dashed #c5cef0;
+      background: transparent;
+      color: #3b3b98;
+      font-family: inherit;
+      font-weight: 600;
+      cursor: pointer;
+    }
+
+    .ed-add:hover { background: #f6f8ff; border-color: #6c5ce7; }
+
+    .ed-hint { font-size: 0.8rem; color: #8a8ab0; margin: 0 0 1rem; line-height: 1.5; }
+
+    .ed-foot {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.6rem;
+      padding: 1rem 1.4rem;
+      border-top: 1px solid #eef0fa;
+      background: #fff;
+    }
+
+    .ed-foot .btn { padding: 0.65rem 1.3rem; font-size: 0.88rem; }
+    .ed-foot .btn-outline { border-color: #c5cef0; color: #3b3b98; }
+    .ed-status { flex-basis: 100%; font-size: 0.8rem; color: #2f9e58; min-height: 1.1em; margin: 0; }
+
+    /* ─── DARK THEME ─── */
+    html[data-theme="dark"] { color-scheme: dark; }
+    html[data-theme="dark"] body { background-color: #0d0e1c; color: #e8e8f5; }
+    html[data-theme="dark"] header { background-color: rgba(13, 14, 28, 0.85); border-bottom-color: rgba(255, 255, 255, 0.06); }
+    html[data-theme="dark"] .theme-toggle { border-color: rgba(255, 255, 255, 0.18); }
+    html[data-theme="dark"] .nav-links a:hover { color: #a29bfe; }
+    html[data-theme="dark"] .hero-badge { background: #1b1c3a; color: #b8b2ff; }
+    html[data-theme="dark"] .hero p { color: #b4b4d0; }
+    html[data-theme="dark"] .hero-stats { border-top-color: rgba(255, 255, 255, 0.1); }
+    html[data-theme="dark"] .hero-stats strong { color: #f1f1fb; }
+    html[data-theme="dark"] .hero-stats span { color: #9a9ac0; }
+    html[data-theme="dark"] .avatar-frame { background: linear-gradient(145deg, #1b1c3a, #14152c); border-color: #1b1c3a; box-shadow: 0 30px 50px -20px rgba(0, 0, 0, 0.7); }
+    html[data-theme="dark"] .btn-primary { background: #6c5ce7; color: #fff; box-shadow: 0 8px 22px rgba(108, 92, 231, 0.35); }
+    html[data-theme="dark"] .btn-primary:hover { background: #7d6ff0; }
+    html[data-theme="dark"] .btn-outline { border-color: #e8e8f5; color: #e8e8f5; }
+    html[data-theme="dark"] .btn-outline:hover { background: #e8e8f5; color: #14152c; }
+    html[data-theme="dark"] .section-sub { color: #a0a0c4; }
+    html[data-theme="dark"] .group-heading h3, html[data-theme="dark"] .reel-subhead h3 { color: #f1f1fb; }
+    html[data-theme="dark"] .project-card, html[data-theme="dark"] .cert-card, html[data-theme="dark"] .reel-card,
+    html[data-theme="dark"] .skills-section {
+      background: #15162c;
+      border-color: rgba(255, 255, 255, 0.07);
+      box-shadow: 0 14px 30px -16px rgba(0, 0, 0, 0.7);
+    }
+    html[data-theme="dark"] .project-card:hover, html[data-theme="dark"] .cert-card:hover {
+      box-shadow: 0 30px 50px -20px rgba(108, 92, 231, 0.35);
+      border-color: rgba(162, 155, 254, 0.3);
+    }
+    html[data-theme="dark"] .project-card .project-desc { color: #a9a9c9; }
+    html[data-theme="dark"] .project-card .project-desc code { background: #1f2040; border-color: #2c2e57; color: #b8b2ff; }
+    html[data-theme="dark"] .project-stats { border-top-color: rgba(255, 255, 255, 0.08); border-bottom-color: rgba(255, 255, 255, 0.08); }
+    html[data-theme="dark"] .project-stats strong { color: #f1f1fb; }
+    html[data-theme="dark"] .project-stats span { color: #8a8ab0; }
+    html[data-theme="dark"] .project-tags span { background: #1f2040; border-color: #2c2e57; color: #b8b2ff; }
+    html[data-theme="dark"] .project-link { color: #b8b2ff; border-color: #34366a; }
+    html[data-theme="dark"] .project-link:hover { background: #6c5ce7; border-color: #6c5ce7; color: #fff; }
+    html[data-theme="dark"] .cert-info h4 { color: #f1f1fb; }
+    html[data-theme="dark"] .cert-info .cert-issuer, html[data-theme="dark"] .cert-info .cert-link { color: #b8b2ff; }
+    html[data-theme="dark"] .cert-info .cert-date { color: #8a8ab0; }
+    html[data-theme="dark"] .cert-info .cert-code { color: #6f6f96; }
+    html[data-theme="dark"] .pill-edit { background: #1f2040; color: #b8b2ff; }
+    html[data-theme="dark"] .skill-category h4 { color: #b8b2ff; }
+    html[data-theme="dark"] .skill-item { background: #1f2040; border-color: #2c2e57; color: #e8e8f5; }
+    html[data-theme="dark"] .skill-item:hover { background: linear-gradient(135deg, #272a55, #2f3266); border-color: #44478a; }
+    html[data-theme="dark"] .promo-note { color: #a0a0c4; }
+    html[data-theme="dark"] footer { color: #8a8ab0; border-top-color: rgba(255, 255, 255, 0.07); }
+    html[data-theme="dark"] .footer-update { border-color: rgba(255, 255, 255, 0.18); }
+
+    html[data-theme="dark"] .ed-panel { background: #14152c; color: #e8e8f5; box-shadow: -30px 0 60px -20px rgba(0, 0, 0, 0.8); }
+    html[data-theme="dark"] .ed-head, html[data-theme="dark"] .ed-tabs, html[data-theme="dark"] .ed-foot { border-color: rgba(255, 255, 255, 0.08); background: #14152c; }
+    html[data-theme="dark"] .ed-note { background: #1b1c3a; color: #a9a9c9; border-color: rgba(255, 255, 255, 0.08); }
+    html[data-theme="dark"] .ed-tab { color: #8a8ab0; }
+    html[data-theme="dark"] .ed-tab[aria-selected="true"] { color: #b8b2ff; }
+    html[data-theme="dark"] .ed-item { background: #191a35; border-color: #2a2c52; }
+    html[data-theme="dark"] .ed-field span { color: #a0a0c4; }
+    html[data-theme="dark"] .ed-field input, html[data-theme="dark"] .ed-field textarea, html[data-theme="dark"] .ed-field select { background: #101128; border-color: #2c2e57; color: #e8e8f5; }
+    html[data-theme="dark"] .ed-mini { background: #1f2040; border-color: #2c2e57; color: #b8b2ff; }
+    html[data-theme="dark"] .ed-mini.danger { color: #ff8f84; border-color: #5a2f33; }
+    html[data-theme="dark"] .ed-icon-btn { border-color: #2c2e57; }
+    html[data-theme="dark"] .ed-add { border-color: #34366a; color: #b8b2ff; }
+    html[data-theme="dark"] .ed-add:hover { background: #1b1c3a; }
+    html[data-theme="dark"] .ed-foot .btn-outline { border-color: #44478a; color: #b8b2ff; }
+    html[data-theme="dark"] .ed-status { color: #6fdc9b; }
+
+    .ed-gate {
+      position: fixed;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+      width: min(380px, calc(100vw - 2rem));
+      background: #ffffff;
+      color: #1e1e2f;
+      border-radius: 24px;
+      padding: 1.8rem 1.6rem 1.5rem;
+      z-index: 950;
+      box-shadow: 0 40px 80px -20px rgba(0, 0, 0, 0.5);
+    }
+    .ed-gate h2 { font-size: 1.2rem; font-weight: 700; margin-bottom: 0.3rem; }
+    .ed-gate p { font-size: 0.88rem; color: #5b5b7a; margin-bottom: 1rem; }
+    .ed-gate input {
+      width: 100%;
+      font-family: inherit;
+      font-size: 1rem;
+      padding: 0.7rem 0.9rem;
+      border-radius: 12px;
+      border: 1px solid #dfe4fb;
+      background: #fff;
+      color: #1e1e2f;
+    }
+    .ed-gate .ed-gate-err { color: #c0392b; min-height: 1.3em; margin: 0.5rem 0 0.8rem; font-size: 0.84rem; }
+    .ed-gate-actions { display: flex; gap: 0.6rem; }
+    .ed-gate-actions .btn { padding: 0.65rem 1.3rem; font-size: 0.9rem; }
+    .ed-gate-actions .btn-outline { border-color: #c5cef0; color: #3b3b98; }
+    html[data-theme="dark"] .ed-gate { background: #14152c; color: #e8e8f5; }
+    html[data-theme="dark"] .ed-gate p { color: #a9a9c9; }
+    html[data-theme="dark"] .ed-gate input { background: #101128; border-color: #2c2e57; color: #e8e8f5; }
+    html[data-theme="dark"] .ed-gate .ed-gate-err { color: #ff8f84; }
+    html[data-theme="dark"] .ed-gate-actions .btn-outline { border-color: #44478a; color: #b8b2ff; }
+    .ed-gate input:focus-visible { outline: 3px solid #a29bfe; outline-offset: 2px; }
+
+    html[data-theme="dark"] .logo { background-image: linear-gradient(135deg, #b8b2ff, #8e84ff, #6c5ce7); }
+
+    @media (max-width: 768px) {
+      nav { position: relative; padding: 0.8rem 1rem; gap: 0.5rem; }
+      .nav-links { flex-wrap: wrap; justify-content: center; gap: 0.4rem 1rem; font-size: 0.85rem; }
+      .theme-toggle { position: absolute; top: 0.6rem; right: 1rem; width: 34px; height: 34px; }
+    }
+
+    @media (prefers-reduced-motion: reduce) {
+      *, *::before, *::after { animation: none !important; transition-duration: 0.01ms !important; scroll-behavior: auto !important; }
+    }
+
   </style>
 </head>
 <body>
@@ -926,6 +1304,7 @@
         <a href="#editing">Editing</a>
         <a href="#skills">Skills</a>
         <a href="#contact">Contact</a>
+        <button class="theme-toggle" id="themeToggle" type="button" aria-label="Switch to dark mode"><i class="fas fa-moon"></i></button>
       </div>
     </nav>
   </header>
@@ -948,12 +1327,13 @@
           </p>
           <div class="hero-actions">
             <a href="#work" class="btn btn-primary">See my work</a>
+            <a href="resume.pdf" id="resumeBtn" class="btn btn-outline" download><i class="fas fa-file-arrow-down"></i>Download Resume</a>
             <a href="#contact" class="btn btn-outline">Let's talk</a>
           </div>
           <div class="hero-stats">
-            <div><strong>6</strong><span>Projects</span></div>
-            <div><strong>4</strong><span>Certifications</span></div>
-            <div><strong>3</strong><span>Viral reels</span></div>
+            <div><strong id="stat-projects">6</strong><span>Projects</span></div>
+            <div><strong id="stat-certs">4</strong><span>Certifications</span></div>
+            <div><strong id="stat-viral">3</strong><span id="stat-viral-label">Viral reels</span></div>
           </div>
         </div>
         <div class="hero-visual">
@@ -972,270 +1352,39 @@
       </section>
     </div>
 
-    <!-- ─── PROJECTS SECTION ─── -->
+    <!-- ─── PROJECTS (rendered from content data) ─── -->
     <div class="container" id="work">
       <section class="reveal">
         <h2 class="section-title">Projects</h2>
         <p class="section-sub">Work across Python, Excel, Power BI, and Tableau — from object-oriented systems to data dashboards.</p>
-
-        <!-- PYTHON -->
-        <div class="project-group">
-          <div class="group-heading">
-            <span class="group-dot dot-python"></span>
-            <h3>Python</h3>
-            <span class="group-count">2 projects</span>
-          </div>
-          <div class="projects-grid">
-
-            <div class="project-card reveal reveal-delay-1">
-              <div class="project-icon tone-python"><i class="fas fa-building-columns"></i></div>
-              <h3>Banking Management System</h3>
-              <p class="project-desc">
-                An OOP-based banking system — a <code>Bank</code> class inheriting from <code>User</code>, with
-                encapsulated balances, auto-generated account numbers, and deposit, withdraw, and transfer
-                operations, each with its own validation rules.
-              </p>
-              <div class="project-stats">
-                <div><strong>2</strong><span>Classes</span></div>
-                <div><strong>4</strong><span>Operations</span></div>
-                <div><strong>1</strong><span>Inheritance</span></div>
-              </div>
-              <div class="project-tags">
-                <span>Python</span>
-                <span>OOP</span>
-                <span>Encapsulation</span>
-              </div>
-            </div>
-
-            <div class="project-card reveal reveal-delay-2">
-              <div class="project-icon tone-python"><i class="fas fa-users-gear"></i></div>
-              <h3>Employee Management System</h3>
-              <p class="project-desc">
-                A base <code>Employee</code> class specialized into <code>Developer</code> and <code>Manager</code>
-                subclasses — managers maintain a team roster, and every employee gets an auto-generated company
-                email and an annual salary increment.
-              </p>
-              <div class="project-stats">
-                <div><strong>3</strong><span>Classes</span></div>
-                <div><strong>2</strong><span>Subclasses</span></div>
-                <div><strong>10%</strong><span>Increment</span></div>
-              </div>
-              <div class="project-tags">
-                <span>Python</span>
-                <span>Inheritance</span>
-                <span>OOP</span>
-              </div>
-            </div>
-
-          </div>
-        </div>
-
-        <!-- EXCEL -->
-        <div class="project-group">
-          <div class="group-heading">
-            <span class="group-dot dot-excel"></span>
-            <h3>Excel</h3>
-            <span class="group-count">2 projects</span>
-          </div>
-          <div class="projects-grid">
-
-            <div class="project-card reveal reveal-delay-1">
-              <div class="project-icon tone-excel"><i class="fas fa-chart-pie"></i></div>
-              <h3>Coffee Sales Dashboard</h3>
-              <p class="project-desc">
-                A multi-sheet interactive Excel dashboard built on a 4,200+ row coffee sales dataset — tracking
-                sales, profit, budget, and total expenses across product lines, states, and territories using
-                PivotTables and linked charts.
-              </p>
-              <div class="project-stats">
-                <div><strong>4,249</strong><span>Records</span></div>
-                <div><strong>4</strong><span>Dashboards</span></div>
-                <div><strong>15</strong><span>Fields</span></div>
-              </div>
-              <div class="project-tags">
-                <span>Excel</span>
-                <span>PivotTables</span>
-                <span>Dashboards</span>
-              </div>
-            </div>
-
-            <div class="project-card reveal reveal-delay-2">
-              <div class="project-icon tone-excel"><i class="fas fa-magnifying-glass"></i></div>
-              <h3>Dynamic Sales Search Box</h3>
-              <p class="project-desc">
-                An interactive search tool over a 34-record salesman sales dataset, built with a dynamic array
-                formula so results filter live as criteria change — no macros, no VBA, just native Excel formulas.
-              </p>
-              <div class="project-stats">
-                <div><strong>34</strong><span>Records</span></div>
-                <div><strong>8</strong><span>Fields</span></div>
-                <div><strong>0</strong><span>VBA Used</span></div>
-              </div>
-              <div class="project-tags">
-                <span>Excel</span>
-                <span>Array Formulas</span>
-                <span>Dynamic Search</span>
-              </div>
-            </div>
-
-          </div>
-        </div>
-
-        <!-- POWER BI -->
-        <div class="project-group">
-          <div class="group-heading">
-            <span class="group-dot dot-powerbi"></span>
-            <h3>Power BI</h3>
-            <span class="group-count">1 project</span>
-          </div>
-          <div class="projects-grid">
-
-            <div class="project-card reveal reveal-delay-1">
-              <div class="project-icon tone-powerbi"><i class="fas fa-chart-column"></i></div>
-              <h3>Academic Stress Dashboard</h3>
-              <p class="project-desc">
-                A one-page interactive dashboard analyzing a 122-response student survey on peer pressure,
-                academic pressure, study environment, and stress index — combining pie, bar, column, and area
-                charts with a slicer and pivot table for drill-down by academic stage.
-              </p>
-              <div class="project-stats">
-                <div><strong>122</strong><span>Responses</span></div>
-                <div><strong>9</strong><span>Visuals</span></div>
-                <div><strong>1</strong><span>Dashboard</span></div>
-              </div>
-              <div class="project-tags">
-                <span>Power BI</span>
-                <span>Dashboard</span>
-                <span>Survey Analysis</span>
-              </div>
-            </div>
-
-          </div>
-        </div>
-
-        <!-- TABLEAU -->
-        <div class="project-group">
-          <div class="group-heading">
-            <span class="group-dot dot-tableau"></span>
-            <h3>Tableau</h3>
-            <span class="group-count">1 project</span>
-          </div>
-          <div class="projects-grid">
-
-            <div class="project-card reveal reveal-delay-1">
-              <div class="project-icon tone-tableau"><i class="fas fa-diagram-project"></i></div>
-              <h3>Academic Stress Analysis</h3>
-              <p class="project-desc">
-                The same student-survey dataset explored through four Tableau views — a pie chart, side-by-side
-                bars, text tables, and a tree map — comparing stress indicators across academic stages.
-              </p>
-              <div class="project-stats">
-                <div><strong>4</strong><span>Views</span></div>
-                <div><strong>122</strong><span>Responses</span></div>
-                <div><strong>1</strong><span>Dataset</span></div>
-              </div>
-              <div class="project-tags">
-                <span>Tableau</span>
-                <span>Data Viz</span>
-                <span>Survey Analysis</span>
-              </div>
-            </div>
-
-          </div>
-        </div>
-
+        <div id="projects-root"></div>
       </section>
     </div>
 
-    <!-- ─── CERTIFICATIONS SECTION ─── -->
+    <!-- ─── PROMO VIDEO (shows only when a link is set) ─── -->
+    <div class="container" id="promo" hidden>
+      <section class="reveal">
+        <h2 class="section-title" id="promo-title">Promo video</h2>
+        <p class="section-sub">A quick look at what I do.</p>
+        <div id="promo-root"></div>
+      </section>
+    </div>
+
+    <!-- ─── CERTIFICATIONS ─── -->
     <div class="container" id="certifications">
       <section class="reveal">
         <h2 class="section-title">Certifications</h2>
         <p class="section-sub">Job simulations and courses I've completed to back up what I build.</p>
-
-        <div class="cert-grid">
-
-          <div class="cert-card reveal reveal-delay-1">
-            <div class="cert-badge deloitte"><i class="fas fa-magnifying-glass-chart"></i></div>
-            <div class="cert-info">
-              <h4>Data Analytics Job Simulation</h4>
-              <div class="cert-issuer">Deloitte · via Forage</div>
-              <div class="cert-date">Completed February 18, 2026</div>
-              <div class="cert-code">Verification: KXkXb2PbfnNzKXWAF</div>
-            </div>
-          </div>
-
-          <div class="cert-card reveal reveal-delay-2">
-            <div class="cert-badge deloitte"><i class="fas fa-robot"></i></div>
-            <div class="cert-info">
-              <h4>GenAI Powered Data Analytics Job Simulation</h4>
-              <div class="cert-issuer">Deloitte · via Forage</div>
-              <div class="cert-date">Completed May 10, 2026</div>
-              <div class="cert-code">Verification: n9FkGH85J7xwh3ERQ</div>
-            </div>
-          </div>
-
-          <div class="cert-card reveal reveal-delay-3">
-            <div class="cert-badge simplilearn"><i class="fas fa-file-excel"></i></div>
-            <div class="cert-info">
-              <h4>Excel Macros & VBA for Beginners</h4>
-              <div class="cert-issuer">SkillUp by Simplilearn · Microsoft</div>
-              <div class="cert-date">Completed January 27, 2026</div>
-              <div class="cert-code">Certificate code: 9769269</div>
-            </div>
-          </div>
-
-          <div class="cert-card reveal reveal-delay-4">
-            <div class="cert-badge tcs"><i class="fas fa-person-chalkboard"></i></div>
-            <div class="cert-info">
-              <h4>Presentation Skills</h4>
-              <div class="cert-issuer">TCS iON</div>
-              <div class="cert-date">Completed May 3, 2026</div>
-              <div class="cert-code">Cert ID: 66756-32181968-1016</div>
-            </div>
-          </div>
-
-        </div>
+        <div class="cert-grid" id="certs-root"></div>
       </section>
     </div>
 
-    <!-- ─── VIDEO EDITING SECTION ─── -->
+    <!-- ─── VIDEO EDITING ─── -->
     <div class="container" id="editing">
       <section class="reveal">
         <h2 class="section-title">Video editing</h2>
         <p class="section-sub">A creative side alongside the data work — short-form edits, some of which took off.</p>
-
-        <div class="reel-subhead">
-          <h3>Went viral</h3>
-          <span class="pill pill-viral">🔥 Viral on Instagram</span>
-        </div>
-        <div class="reel-grid">
-          <div class="reel-card">
-            <blockquote class="instagram-media" data-instgrm-permalink="https://www.instagram.com/reel/De1xulStw0R/" data-instgrm-version="14"></blockquote>
-          </div>
-          <div class="reel-card">
-            <blockquote class="instagram-media" data-instgrm-permalink="https://www.instagram.com/reel/DdtsEcxt6pI/" data-instgrm-version="14"></blockquote>
-          </div>
-          <div class="reel-card">
-            <blockquote class="instagram-media" data-instgrm-permalink="https://www.instagram.com/reel/DeAGy8URHWz/" data-instgrm-version="14"></blockquote>
-          </div>
-        </div>
-
-        <div class="reel-subhead">
-          <h3>Favorite edits</h3>
-          <span class="pill pill-edit">Well-edited picks</span>
-        </div>
-        <div class="reel-grid">
-          <div class="reel-card">
-            <blockquote class="instagram-media" data-instgrm-permalink="https://www.instagram.com/reel/DewLX9dN4gW/" data-instgrm-version="14"></blockquote>
-          </div>
-          <div class="reel-card">
-            <blockquote class="instagram-media" data-instgrm-permalink="https://www.instagram.com/reel/DfGq_mDtqjr/" data-instgrm-version="14"></blockquote>
-          </div>
-          <div class="reel-card">
-            <blockquote class="instagram-media" data-instgrm-permalink="https://www.instagram.com/reel/De9F0EuNeWV/" data-instgrm-version="14"></blockquote>
-          </div>
-        </div>
+        <div id="reels-root"></div>
       </section>
     </div>
 
@@ -1286,8 +1435,8 @@
         <p>I'm always open to collaboration, opportunities, or a quick chat. Reach out through any platform below.</p>
 
         <!-- Email button (optional: replace with your real email) -->
-        <a href="mailto:abdullahshaikh150704@gmail.com" class="btn btn-primary" style="margin-bottom: 0.5rem;">
-          <i class="fas fa-envelope" style="margin-right: 8px;"></i> abdullahshaikh150704@gmail.com
+        <a href="mailto:abdullahshaikh150704@gmail.com" id="mailBtn" class="btn btn-primary" style="margin-bottom: 0.5rem;">
+          <i class="fas fa-envelope" style="margin-right: 8px;"></i><span id="mailText">abdullahshaikh150704@gmail.com</span>
         </a>
 
         <!-- ALL YOUR SOCIAL LINKS ADDED BELOW -->
@@ -1328,8 +1477,731 @@
   <footer>
     <div class="container">
       <p>© 2025 Abdullah Shaikh — built with <i class="fas fa-heart" style="color: #6c5ce7;"></i></p>
+      <button class="footer-update" id="openEditor" type="button"><i class="fas fa-pen"></i>Update site</button>
     </div>
   </footer>
+
+  <!-- ─── PASSWORD GATE FOR UPDATE PANEL ─── -->
+  <div class="ed-gate" id="edGate" role="dialog" aria-modal="true" aria-labelledby="edGateTitle" hidden>
+    <form id="edGateForm" autocomplete="off">
+      <h2 id="edGateTitle">Enter password</h2>
+      <p>Only the site owner can update this site.</p>
+      <input type="password" id="edGatePass" aria-label="Password" autocomplete="current-password">
+      <p class="ed-gate-err" id="edGateErr" role="alert"></p>
+      <div class="ed-gate-actions">
+        <button class="btn btn-primary" type="submit">Unlock</button>
+        <button class="btn btn-outline" type="button" id="edGateCancel">Cancel</button>
+      </div>
+    </form>
+  </div>
+
+  <!-- ─── UPDATE PANEL ─── -->
+  <div class="ed-overlay" id="edOverlay"></div>
+  <aside class="ed-panel" id="edPanel" role="dialog" aria-modal="true" aria-label="Update site content" aria-hidden="true">
+    <div class="ed-head">
+      <h2>Update site</h2>
+      <button class="ed-icon-btn" id="edClose" type="button" aria-label="Close">✕</button>
+    </div>
+    <p class="ed-note">Changes show instantly, but only in this browser. To publish them: download <strong>content.json</strong> and upload it to Netlify next to index.html.</p>
+    <div class="ed-tabs" id="edTabs" role="tablist"></div>
+    <div class="ed-body" id="edBody"></div>
+    <div class="ed-foot">
+      <button class="btn btn-primary" id="edDownload" type="button">Download content.json</button>
+      <button class="btn btn-outline" id="edCopy" type="button">Copy JSON</button>
+      <button class="btn btn-outline" id="edReset" type="button">Discard draft</button>
+      <p class="ed-status" id="edStatus" role="status" aria-live="polite"></p>
+    </div>
+  </aside>
+
+  <!-- ─── SITE CONTENT (edit via the Update panel, or edit content.json) ─── -->
+  <script id="site-data" type="application/json">
+{
+  "links": {
+    "github": "https://github.com/Abdullah-Shaikh-22/Projects",
+    "resume": "resume.pdf",
+    "email": "abdullahshaikh150704@gmail.com"
+  },
+  "promo": {
+    "title": "Promo video",
+    "url": "",
+    "note": ""
+  },
+  "projects": [
+    {
+      "category": "Python",
+      "title": "Banking Management System",
+      "desc": "An OOP-based banking system — a `Bank` class inheriting from `User`, with encapsulated balances, auto-generated account numbers, and deposit, withdraw, and transfer operations, each with its own validation rules.",
+      "tags": [
+        "Python",
+        "OOP",
+        "Encapsulation"
+      ],
+      "stats": [
+        [
+          "2",
+          "Classes"
+        ],
+        [
+          "4",
+          "Operations"
+        ],
+        [
+          "1",
+          "Inheritance"
+        ]
+      ],
+      "icon": "fa-building-columns",
+      "link": "https://github.com/Abdullah-Shaikh-22/Projects"
+    },
+    {
+      "category": "Python",
+      "title": "Employee Management System",
+      "desc": "A base `Employee` class specialized into `Developer` and `Manager` subclasses — managers maintain a team roster, and every employee gets an auto-generated company email and an annual salary increment.",
+      "tags": [
+        "Python",
+        "Inheritance",
+        "OOP"
+      ],
+      "stats": [
+        [
+          "3",
+          "Classes"
+        ],
+        [
+          "2",
+          "Subclasses"
+        ],
+        [
+          "10%",
+          "Increment"
+        ]
+      ],
+      "icon": "fa-users-gear",
+      "link": "https://github.com/Abdullah-Shaikh-22/Projects"
+    },
+    {
+      "category": "Excel",
+      "title": "Coffee Sales Dashboard",
+      "desc": "A multi-sheet interactive Excel dashboard built on a 4,200+ row coffee sales dataset — tracking sales, profit, budget, and total expenses across product lines, states, and territories using PivotTables and linked charts.",
+      "tags": [
+        "Excel",
+        "PivotTables",
+        "Dashboards"
+      ],
+      "stats": [
+        [
+          "4,249",
+          "Records"
+        ],
+        [
+          "4",
+          "Dashboards"
+        ],
+        [
+          "15",
+          "Fields"
+        ]
+      ],
+      "icon": "fa-chart-pie",
+      "link": "https://github.com/Abdullah-Shaikh-22/Projects"
+    },
+    {
+      "category": "Excel",
+      "title": "Dynamic Sales Search Box",
+      "desc": "An interactive search tool over a 34-record salesman sales dataset, built with a dynamic array formula so results filter live as criteria change — no macros, no VBA, just native Excel formulas.",
+      "tags": [
+        "Excel",
+        "Array Formulas",
+        "Dynamic Search"
+      ],
+      "stats": [
+        [
+          "34",
+          "Records"
+        ],
+        [
+          "8",
+          "Fields"
+        ],
+        [
+          "0",
+          "VBA Used"
+        ]
+      ],
+      "icon": "fa-magnifying-glass",
+      "link": "https://github.com/Abdullah-Shaikh-22/Projects"
+    },
+    {
+      "category": "Power BI",
+      "title": "Academic Stress Dashboard",
+      "desc": "A one-page interactive dashboard analyzing a 122-response student survey on peer pressure, academic pressure, study environment, and stress index — combining pie, bar, column, and area charts with a slicer and pivot table for drill-down by academic stage.",
+      "tags": [
+        "Power BI",
+        "Dashboard",
+        "Survey Analysis"
+      ],
+      "stats": [
+        [
+          "122",
+          "Responses"
+        ],
+        [
+          "9",
+          "Visuals"
+        ],
+        [
+          "1",
+          "Dashboard"
+        ]
+      ],
+      "icon": "fa-chart-column",
+      "link": "https://github.com/Abdullah-Shaikh-22/Projects"
+    },
+    {
+      "category": "Tableau",
+      "title": "Academic Stress Analysis",
+      "desc": "The same student-survey dataset explored through four Tableau views — a pie chart, side-by-side bars, text tables, and a tree map — comparing stress indicators across academic stages.",
+      "tags": [
+        "Tableau",
+        "Data Viz",
+        "Survey Analysis"
+      ],
+      "stats": [
+        [
+          "4",
+          "Views"
+        ],
+        [
+          "122",
+          "Responses"
+        ],
+        [
+          "1",
+          "Dataset"
+        ]
+      ],
+      "icon": "fa-diagram-project",
+      "link": "https://github.com/Abdullah-Shaikh-22/Projects"
+    }
+  ],
+  "certs": [
+    {
+      "title": "Data Analytics Job Simulation",
+      "issuer": "Deloitte · via Forage",
+      "date": "Completed February 18, 2026",
+      "code": "Verification: KXkXb2PbfnNzKXWAF",
+      "link": "",
+      "icon": "fa-magnifying-glass-chart"
+    },
+    {
+      "title": "GenAI Powered Data Analytics Job Simulation",
+      "issuer": "Deloitte · via Forage",
+      "date": "Completed May 10, 2026",
+      "code": "Verification: n9FkGH85J7xwh3ERQ",
+      "link": "",
+      "icon": "fa-robot"
+    },
+    {
+      "title": "Excel Macros & VBA for Beginners",
+      "issuer": "SkillUp by Simplilearn · Microsoft",
+      "date": "Completed January 27, 2026",
+      "code": "Certificate code: 9769269",
+      "link": "",
+      "icon": "fa-file-excel"
+    },
+    {
+      "title": "Presentation Skills",
+      "issuer": "TCS iON",
+      "date": "Completed May 3, 2026",
+      "code": "Cert ID: 66756-32181968-1016",
+      "link": "",
+      "icon": "fa-person-chalkboard"
+    }
+  ],
+  "reels": [
+    {
+      "url": "https://www.instagram.com/reel/De1xulStw0R/",
+      "group": "viral"
+    },
+    {
+      "url": "https://www.instagram.com/reel/DdtsEcxt6pI/",
+      "group": "viral"
+    },
+    {
+      "url": "https://www.instagram.com/reel/DeAGy8URHWz/",
+      "group": "viral"
+    },
+    {
+      "url": "https://www.instagram.com/reel/DewLX9dN4gW/",
+      "group": "edit"
+    },
+    {
+      "url": "https://www.instagram.com/reel/DfGq_mDtqjr/",
+      "group": "edit"
+    },
+    {
+      "url": "https://www.instagram.com/reel/De9F0EuNeWV/",
+      "group": "edit"
+    }
+  ]
+}
+  </script>
+
+  <!-- ─── CONTENT RENDERING, THEME, UPDATE PANEL ─── -->
+  <script>
+  (function () {
+    'use strict';
+
+    /* ---------- helpers ---------- */
+    var $ = function (s, r) { return (r || document).querySelector(s); };
+    var esc = function (s) {
+      return String(s == null ? '' : s).replace(/[&<>"']/g, function (c) {
+        return { '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;', "'": '&#39;' }[c];
+      });
+    };
+    var rich = function (s) { return esc(s).replace(/`([^`]+)`/g, '<code>$1</code>'); };
+    var clone = function (o) { return JSON.parse(JSON.stringify(o)); };
+    var safeUrl = function (u) {
+      u = String(u || '').trim();
+      if (/^https?:\/\//i.test(u) || /^mailto:/i.test(u) || /^[\w.\/%-]+$/.test(u)) return u;
+      return '';
+    };
+    var store = {
+      get: function (k) { try { return localStorage.getItem(k); } catch (e) { return null; } },
+      set: function (k, v) { try { localStorage.setItem(k, v); } catch (e) {} },
+      del: function (k) { try { localStorage.removeItem(k); } catch (e) {} }
+    };
+
+    /* ---------- theme ---------- */
+    var root = document.documentElement;
+    var toggle = $('#themeToggle');
+    function applyTheme(t, persist) {
+      root.setAttribute('data-theme', t);
+      if (toggle) {
+        toggle.innerHTML = t === 'dark' ? '<i class="fas fa-sun"></i>' : '<i class="fas fa-moon"></i>';
+        toggle.setAttribute('aria-label', t === 'dark' ? 'Switch to light mode' : 'Switch to dark mode');
+      }
+      if (persist) store.set('theme', t);
+    }
+    applyTheme(root.getAttribute('data-theme') === 'dark' ? 'dark' : 'light', false);
+    if (toggle) toggle.addEventListener('click', function () {
+      applyTheme(root.getAttribute('data-theme') === 'dark' ? 'light' : 'dark', true);
+    });
+
+    /* ---------- data ---------- */
+    var DEFAULT = JSON.parse($('#site-data').textContent);
+
+    function normalize(d) {
+      var base = { links: {}, promo: {}, projects: [], certs: [], reels: [] };
+      d = d || {};
+      var out = {
+        links: Object.assign({}, DEFAULT.links, d.links || {}),
+        promo: Object.assign({ title: '', url: '', note: '' }, d.promo || {}),
+        projects: Array.isArray(d.projects) ? d.projects : base.projects,
+        certs: Array.isArray(d.certs) ? d.certs : base.certs,
+        reels: Array.isArray(d.reels) ? d.reels : base.reels
+      };
+      return out;
+    }
+
+    var PUBLISHED = normalize(DEFAULT);
+    var SITE = clone(PUBLISHED);
+    var editorOpen = false;
+
+    /* ---------- rendering ---------- */
+    var CAT = {
+      'python': { tone: 'python', icon: 'fa-code' },
+      'excel': { tone: 'excel', icon: 'fa-table-cells' },
+      'power bi': { tone: 'powerbi', icon: 'fa-chart-column' },
+      'powerbi': { tone: 'powerbi', icon: 'fa-chart-column' },
+      'tableau': { tone: 'tableau', icon: 'fa-diagram-project' }
+    };
+    function catInfo(name) { return CAT[String(name || '').trim().toLowerCase()] || { tone: 'other', icon: 'fa-folder-open' }; }
+
+    function certTone(issuer) {
+      var s = String(issuer || '').toLowerCase();
+      if (s.indexOf('deloitte') > -1) return 'deloitte';
+      if (s.indexOf('simplilearn') > -1) return 'simplilearn';
+      if (s.indexOf('tcs') > -1) return 'tcs';
+      return 'other';
+    }
+
+    function iconClass(icon, fallback) {
+      icon = String(icon || '').trim();
+      return /^fa-[a-z0-9-]+$/.test(icon) ? icon : fallback;
+    }
+
+    function reelId(url) {
+      var m = String(url || '').match(/instagram\.com\/(?:[\w.]+\/)?(?:reel|reels|p)\/([\w-]+)/);
+      return m ? m[1] : '';
+    }
+
+    function renderStats() {
+      var viral = SITE.reels.filter(function (r) { return r.group === 'viral'; }).length;
+      $('#stat-projects').textContent = SITE.projects.length;
+      $('#stat-certs').textContent = SITE.certs.length;
+      $('#stat-viral').textContent = viral;
+      $('#stat-viral-label').textContent = viral === 1 ? 'Viral reel' : 'Viral reels';
+    }
+
+    function renderLinks() {
+      var l = SITE.links;
+      var resume = $('#resumeBtn');
+      var rurl = safeUrl(l.resume);
+      resume.hidden = !rurl;
+      if (rurl) resume.setAttribute('href', rurl);
+      var mail = $('#mailBtn');
+      if (l.email) {
+        mail.setAttribute('href', 'mailto:' + l.email);
+        $('#mailText').textContent = l.email;
+      }
+    }
+
+    var vis;
+    function renderProjects() {
+      var groups = [], map = {};
+      SITE.projects.forEach(function (p) {
+        var key = String(p.category || 'Other').trim() || 'Other';
+        if (!map[key]) { map[key] = []; groups.push(key); }
+        map[key].push(p);
+      });
+      var html = '';
+      groups.forEach(function (g) {
+        var info = catInfo(g), items = map[g];
+        html += '<div class="project-group"><div class="group-heading"><span class="group-dot dot-' + info.tone + '"></span><h3>' + esc(g) +
+          '</h3><span class="group-count">' + items.length + (items.length === 1 ? ' project' : ' projects') + '</span></div><div class="projects-grid">';
+        items.forEach(function (p, i) {
+          var stats = (p.stats || []).map(function (s) {
+            return '<div><strong>' + esc(s[0]) + '</strong><span>' + esc(s[1]) + '</span></div>';
+          }).join('');
+          var tags = (p.tags || []).map(function (t) { return '<span>' + esc(t) + '</span>'; }).join('');
+          var link = safeUrl(p.link);
+          html += '<div class="project-card reveal' + vis + ' reveal-delay-' + ((i % 3) + 1) + '">' +
+            '<div class="project-icon tone-' + info.tone + '"><i class="fas ' + iconClass(p.icon, info.icon) + '"></i></div>' +
+            '<h3>' + esc(p.title) + '</h3><p class="project-desc">' + rich(p.desc) + '</p>' +
+            (stats ? '<div class="project-stats">' + stats + '</div>' : '') +
+            (tags ? '<div class="project-tags">' + tags + '</div>' : '') +
+            (link ? '<a class="project-link" href="' + esc(link) + '" target="_blank" rel="noopener"><i class="fab fa-github"></i> View on GitHub</a>' : '') +
+            '</div>';
+        });
+        html += '</div></div>';
+      });
+      $('#projects-root').innerHTML = html || '<p class="section-sub">Projects coming soon.</p>';
+    }
+
+    function renderCerts() {
+      $('#certs-root').innerHTML = SITE.certs.map(function (c, i) {
+        var link = safeUrl(c.link);
+        return '<div class="cert-card reveal' + vis + ' reveal-delay-' + ((i % 4) + 1) + '">' +
+          '<div class="cert-badge ' + certTone(c.issuer) + '"><i class="fas ' + iconClass(c.icon, 'fa-award') + '"></i></div>' +
+          '<div class="cert-info"><h4>' + esc(c.title) + '</h4><div class="cert-issuer">' + esc(c.issuer) + '</div>' +
+          (c.date ? '<div class="cert-date">' + esc(c.date) + '</div>' : '') +
+          (c.code ? '<div class="cert-code">' + esc(c.code) + '</div>' : '') +
+          (link ? '<a class="cert-link" href="' + esc(link) + '" target="_blank" rel="noopener">View certificate</a>' : '') +
+          '</div></div>';
+      }).join('');
+    }
+
+    function reelCard(r) {
+      var id = reelId(r.url);
+      if (!id) return '';
+      return '<div class="reel-card"><blockquote class="instagram-media" data-instgrm-permalink="https://www.instagram.com/reel/' + id + '/" data-instgrm-version="14"></blockquote></div>';
+    }
+
+    function renderReels() {
+      var out = '';
+      [['viral', 'Went viral', 'pill-viral', '🔥 Viral on Instagram'], ['edit', 'Favorite edits', 'pill-edit', 'Well-edited picks']].forEach(function (g) {
+        var list = SITE.reels.filter(function (r) { return r.group === g[0]; }).map(reelCard).join('');
+        if (list) out += '<div class="reel-subhead"><h3>' + g[1] + '</h3><span class="pill ' + g[2] + '">' + g[3] + '</span></div><div class="reel-grid">' + list + '</div>';
+      });
+      $('#reels-root').innerHTML = out;
+      if (window.instgrm && window.instgrm.Embeds) window.instgrm.Embeds.process();
+    }
+
+    function promoEmbed(url) {
+      var m;
+      if ((m = url.match(/(?:youtube\.com\/(?:watch\?(?:[^#]*&)?v=|shorts\/|embed\/)|youtu\.be\/)([\w-]{11})/))) {
+        return '<div class="video-frame"><iframe src="https://www.youtube.com/embed/' + m[1] + '" title="Promo video" allow="accelerometer; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen loading="lazy"></iframe></div>';
+      }
+      if (reelId(url)) {
+        return '<div class="reel-card promo-reel"><blockquote class="instagram-media" data-instgrm-permalink="https://www.instagram.com/reel/' + reelId(url) + '/" data-instgrm-version="14"></blockquote></div>';
+      }
+      if (/\.(mp4|webm|mov)(\?|$)/i.test(url) && safeUrl(url)) {
+        return '<div class="video-frame"><video src="' + esc(url) + '" controls preload="metadata" playsinline></video></div>';
+      }
+      return safeUrl(url) ? '<a class="btn btn-primary" href="' + esc(url) + '" target="_blank" rel="noopener"><i class="fas fa-play"></i>Watch the video</a>' : '';
+    }
+
+    function renderPromo() {
+      var p = SITE.promo, url = String(p.url || '').trim();
+      var html = url ? promoEmbed(url) : '';
+      $('#promo').hidden = !html;
+      if (!html) { $('#promo-root').innerHTML = ''; return; }
+      $('#promo-title').textContent = p.title || 'Promo video';
+      $('#promo-root').innerHTML = html + (p.note ? '<p class="promo-note">' + esc(p.note) + '</p>' : '');
+      if (window.instgrm && window.instgrm.Embeds) window.instgrm.Embeds.process();
+    }
+
+    var RENDER = { projects: renderProjects, certs: renderCerts, reels: renderReels, promo: renderPromo, links: renderLinks };
+    function renderAll(initial) {
+      vis = initial ? '' : ' visible';
+      renderLinks(); renderProjects(); renderPromo(); renderCerts(); renderReels(); renderStats();
+    }
+    renderAll(true);
+
+    /* ---------- load published content.json (if present) ---------- */
+    if (window.fetch && /^https?:/.test(location.protocol)) {
+      fetch('content.json', { cache: 'no-store' }).then(function (r) { return r.ok ? r.json() : null; }).then(function (j) {
+        if (!j || typeof j !== 'object') return;
+        PUBLISHED = normalize(j);
+        if (!editorOpen) { SITE = clone(PUBLISHED); renderAll(false); }
+      }).catch(function () {});
+    }
+
+    /* ---------- update panel ---------- */
+    var panel = $('#edPanel'), overlay = $('#edOverlay'), body = $('#edBody'), tabsEl = $('#edTabs'), statusEl = $('#edStatus');
+    var currentTab = 'projects', lastFocus = null, timers = {};
+
+    var SCHEMA = {
+      projects: {
+        label: 'Projects', noun: 'project',
+        blank: function () { return { category: 'Python', title: '', desc: '', tags: [], stats: [], link: SITE.links.github || '', icon: '' }; },
+        title: function (o) { return o.title || 'New project'; },
+        fields: [
+          { k: 'category', l: 'Category (Python, Excel, Power BI, Tableau — or type a new one)', t: 'text', list: 'cats' },
+          { k: 'title', l: 'Title', t: 'text' },
+          { k: 'desc', l: 'Description (wrap code words in `backticks`)', t: 'area' },
+          { k: 'tags', l: 'Tags (comma separated)', t: 'tags' },
+          { k: 'stats', l: 'Stats — one per line as: value | label', t: 'stats' },
+          { k: 'link', l: 'GitHub / project link', t: 'text' },
+          { k: 'icon', l: 'Icon (optional, Font Awesome name like fa-chart-pie)', t: 'text' }
+        ]
+      },
+      certs: {
+        label: 'Certifications', noun: 'certification',
+        blank: function () { return { title: '', issuer: '', date: '', code: '', link: '', icon: '' }; },
+        title: function (o) { return o.title || 'New certification'; },
+        fields: [
+          { k: 'title', l: 'Certificate title', t: 'text' },
+          { k: 'issuer', l: 'Issued by', t: 'text' },
+          { k: 'date', l: 'Date text (e.g. Completed May 3, 2026)', t: 'text' },
+          { k: 'code', l: 'Verification / certificate code (optional)', t: 'text' },
+          { k: 'link', l: 'Certificate link (optional)', t: 'text' },
+          { k: 'icon', l: 'Icon (optional, Font Awesome name)', t: 'text' }
+        ]
+      },
+      reels: {
+        label: 'Reels', noun: 'reel',
+        blank: function () { return { url: '', group: 'edit' }; },
+        title: function (o) { return reelId(o.url) ? 'Reel ' + reelId(o.url) : 'New reel'; },
+        fields: [
+          { k: 'url', l: 'Instagram reel link', t: 'text' },
+          { k: 'group', l: 'Show under', t: 'select', opts: [['viral', 'Went viral'], ['edit', 'Favorite edits']] }
+        ]
+      }
+    };
+
+    var PROMO_FIELDS = [
+      { k: 'title', l: 'Heading (e.g. Promo video)', t: 'text' },
+      { k: 'url', l: 'Video link — YouTube, Instagram reel or a direct .mp4 link (leave empty to hide the section)', t: 'text' },
+      { k: 'note', l: 'Short caption (optional)', t: 'area' }
+    ];
+    var LINK_FIELDS = [
+      { k: 'github', l: 'GitHub projects repo (used for new projects)', t: 'text' },
+      { k: 'resume', l: 'Resume file (put the PDF next to index.html, e.g. resume.pdf)', t: 'text' },
+      { k: 'email', l: 'Contact email', t: 'text' }
+    ];
+
+    function fieldHtml(f, obj, attrs) {
+      var v = obj[f.k];
+      if (f.t === 'tags') v = (v || []).join(', ');
+      if (f.t === 'stats') v = (v || []).map(function (s) { return s[0] + ' | ' + s[1]; }).join('\n');
+      var a = attrs + ' data-key="' + f.k + '" data-type="' + f.t + '"';
+      var inner;
+      if (f.t === 'area' || f.t === 'stats') inner = '<textarea ' + a + '>' + esc(v) + '</textarea>';
+      else if (f.t === 'select') inner = '<select ' + a + '>' + f.opts.map(function (o) { return '<option value="' + o[0] + '"' + (v === o[0] ? ' selected' : '') + '>' + o[1] + '</option>'; }).join('') + '</select>';
+      else inner = '<input type="text" ' + a + ' value="' + esc(v) + '"' + (f.list ? ' list="' + f.list + '"' : '') + '>';
+      return '<label class="ed-field"><span>' + esc(f.l) + '</span>' + inner + '</label>';
+    }
+
+    function buildTabs() {
+      var tabs = [['projects', 'Projects'], ['certs', 'Certifications'], ['reels', 'Reels'], ['promo', 'Promo video'], ['links', 'Links']];
+      tabsEl.innerHTML = tabs.map(function (t) {
+        return '<button class="ed-tab" role="tab" data-tab="' + t[0] + '" aria-selected="' + (t[0] === currentTab) + '">' + t[1] + '</button>';
+      }).join('');
+    }
+
+    function buildBody() {
+      var h = '';
+      if (SCHEMA[currentTab]) {
+        var sc = SCHEMA[currentTab], list = SITE[currentTab];
+        if (currentTab === 'reels') h += '<p class="ed-hint">Paste the reel link from Instagram (Copy link). Choose whether it shows under “Went viral” or “Favorite edits”.</p>';
+        if (currentTab === 'projects') h += '<datalist id="cats"><option>Python</option><option>Excel</option><option>Power BI</option><option>Tableau</option><option>Web</option><option>SQL</option></datalist>';
+        list.forEach(function (o, i) {
+          h += '<div class="ed-item"><div class="ed-item-head"><div class="ed-item-title">' + esc(sc.title(o)) + '</div><div class="ed-item-actions">' +
+            '<button class="ed-mini" data-act="up" data-i="' + i + '" aria-label="Move up">▲</button>' +
+            '<button class="ed-mini" data-act="down" data-i="' + i + '" aria-label="Move down">▼</button>' +
+            '<button class="ed-mini danger" data-act="del" data-i="' + i + '" aria-label="Delete">✕</button></div></div>' +
+            sc.fields.map(function (f) { return fieldHtml(f, o, 'data-list="' + currentTab + '" data-i="' + i + '"'); }).join('') + '</div>';
+        });
+        h += '<button class="ed-add" data-act="add">+ Add ' + sc.noun + '</button>';
+      } else if (currentTab === 'promo') {
+        h += '<p class="ed-hint">Add your promotional video link here once it is live. The section appears on the site only when a link is filled in.</p>' +
+          PROMO_FIELDS.map(function (f) { return fieldHtml(f, SITE.promo, 'data-obj="promo"'); }).join('');
+      } else {
+        h += LINK_FIELDS.map(function (f) { return fieldHtml(f, SITE.links, 'data-obj="links"'); }).join('');
+      }
+      body.innerHTML = h;
+    }
+
+    function parseValue(type, v) {
+      if (type === 'tags') return v.split(',').map(function (s) { return s.trim(); }).filter(Boolean);
+      if (type === 'stats') return v.split('\n').map(function (l) { var p = l.split('|'); return [(p[0] || '').trim(), (p.slice(1).join('|') || '').trim()]; }).filter(function (s) { return s[0] || s[1]; });
+      return v;
+    }
+
+    function status(msg) { statusEl.textContent = msg; clearTimeout(timers.st); timers.st = setTimeout(function () { statusEl.textContent = ''; }, 4000); }
+
+    function saveDraft() { store.set('portfolio-draft', JSON.stringify({ base: JSON.stringify(PUBLISHED), data: SITE })); }
+
+    function scheduleRender(which) {
+      clearTimeout(timers[which]);
+      timers[which] = setTimeout(function () {
+        vis = ' visible';
+        RENDER[which](); renderStats();
+      }, which === 'reels' || which === 'promo' ? 900 : 250);
+    }
+
+    body.addEventListener('input', function (e) {
+      var el = e.target; if (!el.dataset || !el.dataset.key) return;
+      var val = parseValue(el.dataset.type, el.value);
+      var which;
+      if (el.dataset.list) { SITE[el.dataset.list][+el.dataset.i][el.dataset.key] = val; which = el.dataset.list; }
+      else { SITE[el.dataset.obj][el.dataset.key] = val; which = el.dataset.obj; }
+      var t = el.closest('.ed-item'); if (t && SCHEMA[currentTab] && el.dataset.key === 'title') { t.querySelector('.ed-item-title').textContent = el.value || SCHEMA[currentTab].title({}); }
+      scheduleRender(which);
+      saveDraft();
+    });
+
+    body.addEventListener('click', function (e) {
+      var b = e.target.closest('[data-act]'); if (!b) return;
+      var list = SITE[currentTab], i = +b.dataset.i, act = b.dataset.act;
+      if (act === 'add') list.push(SCHEMA[currentTab].blank());
+      if (act === 'del' && confirm('Delete this ' + SCHEMA[currentTab].noun + '?')) list.splice(i, 1);
+      else if (act === 'del') return;
+      if (act === 'up' && i > 0) list.splice(i - 1, 0, list.splice(i, 1)[0]);
+      if (act === 'down' && i < list.length - 1) list.splice(i + 1, 0, list.splice(i, 1)[0]);
+      saveDraft(); buildBody(); vis = ' visible'; RENDER[currentTab](); renderStats();
+      if (act === 'add') { var inputs = body.querySelectorAll('.ed-item:last-of-type input[data-key="title"], .ed-item:last-of-type input[data-key="url"]'); var last = inputs[inputs.length - 1]; if (last) { last.focus(); last.scrollIntoView({ block: 'center' }); } }
+    });
+
+    tabsEl.addEventListener('click', function (e) {
+      var b = e.target.closest('[data-tab]'); if (!b) return;
+      currentTab = b.dataset.tab; buildTabs(); buildBody(); body.scrollTop = 0;
+    });
+
+    function openEditor() {
+      lastFocus = document.activeElement; editorOpen = true;
+      var draft = store.get('portfolio-draft');
+      if (draft) {
+        try {
+          var d = JSON.parse(draft);
+          if (d.base === JSON.stringify(PUBLISHED)) { SITE = normalize(d.data); vis = ' visible'; renderAll(false); }
+          else store.del('portfolio-draft');
+        } catch (e) {}
+      }
+      buildTabs(); buildBody();
+      panel.classList.add('open'); overlay.classList.add('open'); panel.setAttribute('aria-hidden', 'false');
+      setTimeout(function () { var c = $('#edClose'); if (c) c.focus(); }, 50);
+    }
+    function closeEditor() {
+      panel.classList.remove('open'); overlay.classList.remove('open'); panel.setAttribute('aria-hidden', 'true');
+      editorOpen = false; if (lastFocus && lastFocus.focus) lastFocus.focus();
+    }
+
+    /* password gate: salted SHA-256 compared in the browser (keeps casual visitors out;
+       real publishing still needs access to your Netlify account) */
+    var PASS_HASH = 'fee9a1bac6dc43f29475b4783f7d7d345ff11d7320e127e70e9e51202b96eeb8';
+    var gate = $('#edGate'), gateForm = $('#edGateForm'), gatePass = $('#edGatePass'), gateErr = $('#edGateErr');
+    var fails = 0, lockedUntil = 0;
+
+    function sha256Hex(text) {
+      if (!(window.crypto && crypto.subtle)) return Promise.reject(new Error('nocrypto'));
+      return crypto.subtle.digest('SHA-256', new TextEncoder().encode(text)).then(function (buf) {
+        return Array.prototype.map.call(new Uint8Array(buf), function (b) { return ('0' + b.toString(16)).slice(-2); }).join('');
+      });
+    }
+    function isUnlocked() { try { return sessionStorage.getItem('editor-unlocked') === '1'; } catch (e) { return false; } }
+    function openGate() {
+      lastFocus = document.activeElement;
+      gatePass.value = ''; gateErr.textContent = '';
+      gate.hidden = false; overlay.classList.add('open');
+      setTimeout(function () { gatePass.focus(); }, 50);
+    }
+    function closeGate() {
+      gate.hidden = true;
+      if (!editorOpen) { overlay.classList.remove('open'); if (lastFocus && lastFocus.focus) lastFocus.focus(); }
+    }
+    function requestOpen() { if (isUnlocked()) openEditor(); else openGate(); }
+
+    gateForm.addEventListener('submit', function (e) {
+      e.preventDefault();
+      var now = Date.now();
+      if (now < lockedUntil) { gateErr.textContent = 'Too many tries. Wait ' + Math.ceil((lockedUntil - now) / 1000) + ' seconds.'; return; }
+      sha256Hex('abdullah-portfolio:' + gatePass.value).then(function (h) {
+        if (h === PASS_HASH) {
+          try { sessionStorage.setItem('editor-unlocked', '1'); } catch (x) {}
+          fails = 0; gate.hidden = true; openEditor();
+        } else {
+          fails++;
+          gatePass.value = ''; gatePass.focus();
+          if (fails >= 5) { lockedUntil = Date.now() + 30000; fails = 0; gateErr.textContent = 'Too many tries. Wait 30 seconds.'; }
+          else gateErr.textContent = 'Wrong password.';
+        }
+      }, function () { gateErr.textContent = 'Password check needs a secure (https) page.'; });
+    });
+    $('#edGateCancel').addEventListener('click', closeGate);
+
+    $('#openEditor').addEventListener('click', requestOpen);
+    $('#edClose').addEventListener('click', closeEditor);
+    overlay.addEventListener('click', function () { if (!gate.hidden) closeGate(); else closeEditor(); });
+    document.addEventListener('keydown', function (e) {
+      if (e.key === 'Escape' && !gate.hidden) closeGate();
+      else if (e.key === 'Escape' && editorOpen) closeEditor();
+      if (e.key === 'Tab' && editorOpen) {
+        var f = panel.querySelectorAll('button, input, textarea, select, a[href]');
+        if (!f.length) return;
+        var first = f[0], last = f[f.length - 1];
+        if (e.shiftKey && document.activeElement === first) { e.preventDefault(); last.focus(); }
+        else if (!e.shiftKey && document.activeElement === last) { e.preventDefault(); first.focus(); }
+      }
+    });
+    if (location.hash === '#admin') requestOpen();
+
+    function exportJson() { return JSON.stringify(SITE, null, 2); }
+
+    $('#edDownload').addEventListener('click', function () {
+      var blob = new Blob([exportJson()], { type: 'application/json' });
+      var a = document.createElement('a');
+      a.href = URL.createObjectURL(blob); a.download = 'content.json';
+      document.body.appendChild(a); a.click(); a.remove();
+      setTimeout(function () { URL.revokeObjectURL(a.href); }, 1000);
+      status('content.json downloaded. Upload it to Netlify next to index.html to publish.');
+    });
+
+    $('#edCopy').addEventListener('click', function () {
+      var txt = exportJson();
+      if (navigator.clipboard && navigator.clipboard.writeText) {
+        navigator.clipboard.writeText(txt).then(function () { status('JSON copied.'); }, function () { status('Copy was blocked — use Download instead.'); });
+      } else status('Copy is not supported here — use Download instead.');
+    });
+
+    $('#edReset').addEventListener('click', function () {
+      if (!confirm('Discard your draft and go back to the published content?')) return;
+      store.del('portfolio-draft'); SITE = clone(PUBLISHED); vis = ' visible'; renderAll(false); buildBody(); status('Draft discarded.');
+    });
+  })();
+  </script>
 
   <!-- ─── SCROLL REVEAL + SMOOTH SCROLL SCRIPT ─── -->
   <script>
