@@ -411,12 +411,8 @@ nav{flex-direction:column;position:relative;padding:.8rem 1rem;gap:.5rem}
     {"title": "Presentation Skills", "issuer": "TCS iON", "date": "Completed May 3, 2026", "code": "Cert ID: 66756-32181968-1016", "link": "", "linkedin": "https://www.linkedin.com/in/abdullah-shaikh-315280435/details/certifications/", "icon": "fa-person-chalkboard"}
   ],
   "reels": [
-    {"url": "https://www.instagram.com/reel/De1xulStw0R/", "group": "viral"},
-    {"url": "https://www.instagram.com/reel/DdtsEcxt6pI/", "group": "viral"},
-    {"url": "https://www.instagram.com/reel/DeAGy8URHWz/", "group": "viral"},
-    {"url": "https://www.instagram.com/reel/DewLX9dN4gW/", "group": "edit"},
-    {"url": "https://www.instagram.com/reel/DfGq_mDtqjr/", "group": "edit"},
-    {"url": "https://www.instagram.com/reel/De9F0EuNeWV/", "group": "edit"}
+    {"url": "viral-1.mp4", "group": "viral"}, {"url": "viral-2.mp4", "group": "viral"}, {"url": "viral-3.mp4", "group": "viral"},
+    {"url": "fav-1.mp4", "group": "edit"}, {"url": "fav-2.mp4", "group": "edit"}, {"url": "fav-3.mp4", "group": "edit"}
   ]
 }
 </script>
@@ -539,7 +535,7 @@ nav{flex-direction:column;position:relative;padding:.8rem 1rem;gap:.5rem}
   }
   function renderReels() {
     var out = '';
-    [['viral', 'Went viral', 'pill-viral', '🔥 Viral on Instagram'], ['edit', 'Favorite edits', 'pill-edit', 'Well-edited picks']].forEach(function (g) {
+    [['viral', 'Went viral', 'pill-viral', '🔥 Viral edits'], ['edit', 'Favorite edits', 'pill-edit', 'Well-edited picks']].forEach(function (g) {
       var list = SITE.reels.filter(function (r) { return r.group === g[0]; }).map(reelCard).join('');
       if (list) out += '<div class="reel-subhead"><h3>' + g[1] + '</h3><span class="pill ' + g[2] + '">' + g[3] + '</span></div><div class="reel-grid">' + list + '</div>';
     });
@@ -603,7 +599,7 @@ nav{flex-direction:column;position:relative;padding:.8rem 1rem;gap:.5rem}
       blank: function () { return { url: '', group: 'edit' }; },
       title: function (o) { return reelId(o.url) ? 'Reel ' + reelId(o.url) : (o.url || 'New reel'); },
       fields: [
-        { k: 'url', l: 'Instagram reel link', t: 'text' },
+        { k: 'url', l: 'Instagram reel link or video file name (e.g. viral-4.mp4)', t: 'text' },
         { k: 'group', l: 'Show under', t: 'select', opts: [['viral', 'Went viral'], ['edit', 'Favorite edits']] }] }
   };
   var PROMO_FIELDS = [
@@ -634,7 +630,7 @@ nav{flex-direction:column;position:relative;padding:.8rem 1rem;gap:.5rem}
     var h = '';
     if (SCHEMA[currentTab]) {
       var sc = SCHEMA[currentTab], list = SITE[currentTab];
-      if (currentTab === 'reels') h += '<p class="ed-hint">Paste the reel link from Instagram (Copy link).</p>';
+      if (currentTab === 'reels') h += '<p class="ed-hint">Paste an Instagram reel link, or the file name of a video next to portfolio.html (e.g. viral-4.mp4).</p>';
       if (currentTab === 'projects') h += '<datalist id="cats"><option>Python</option><option>Full Stack</option><option>HTML &amp; CSS</option><option>Excel</option><option>Power BI</option><option>Tableau</option><option>SQL</option></datalist>';
       list.forEach(function (o, i) {
         h += '<div class="ed-item"><div class="ed-item-head"><div class="ed-item-title">' + esc(sc.title(o)) + '</div><div class="ed-item-actions">' +
