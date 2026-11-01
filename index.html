@@ -1,0 +1,1489 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+<title>Shafat Khan &amp; Aqsa Khan — Wedding Invitation</title>
+
+<meta property="og:title" content="Shafat Khan & Aqsa Khan — Wedding Invitation">
+<meta property="og:description" content="You are cordially invited · 19 &amp; 20 December 2026">
+<meta property="og:type" content="website">
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;1,500&family=Playfair+Display:ital,wght@0,500;0,600;0,700;1,500&family=Great+Vibes&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Noto+Nastaliq+Urdu:wght@400;500;600;700&display=swap" rel="stylesheet">
+<style>
+  *,*::before,*::after{ box-sizing:border-box; }
+  html,body{ margin:0; padding:0; background:#20180f; font-family:'Cormorant Garamond', serif; -webkit-tap-highlight-color:transparent; overflow:hidden; }
+  body{ background: radial-gradient(circle at 50% 0%, #3a2c1a 0%, #201509 60%, #150e07 100%); }
+
+  :root{
+    --cream:#FBF5E6; --cream-2:#F4E9CF; --paper:#FDF8EC;
+    --gold:#AD8A4E; --gold-deep:#8A6A34; --gold-light:#E7CE9B;
+    --ink:#4A3A22; --ink-soft:#7A6A4C;
+  }
+
+  .urdu-mode{ font-family: 'Noto Nastaliq Urdu', 'Cormorant Garamond', serif; }
+  .urdu-mode .script{
+    font-family: 'Noto Nastaliq Urdu', serif !important;
+    font-style: normal;
+    font-size: 26px;
+    line-height: 2.2;
+  }
+  .urdu-mode h1.display{
+    font-family: 'Noto Nastaliq Urdu', serif;
+    font-size: 20px;
+    line-height: 2;
+  }
+  .urdu-mode .sub, .urdu-mode .name-parent, .urdu-mode .kicker,
+  .urdu-mode .detail-title, .urdu-mode .detail-date, .urdu-mode .venue-name,
+  .urdu-mode .venue-addr, .urdu-mode .feedback-intro, .urdu-mode .event-time,
+  .urdu-mode .hint-box, .urdu-mode .menu-hint{
+    font-family: 'Noto Nastaliq Urdu', serif;
+    line-height: 2.2;
+  }
+  .urdu-mode .eyebrow, .urdu-mode .top-copy, .urdu-mode .btn,
+  .urdu-mode .cal-btn, .urdu-mode .feedback-btn, .urdu-mode .continue-btn,
+  .urdu-mode .rsvp-btn{
+    font-family: 'Noto Nastaliq Urdu', serif;
+    letter-spacing: 0 !important;
+    text-transform: none !important;
+    line-height: 2;
+  }
+  .urdu-mode .top-copy{ font-size: 20px; line-height: 2.2; }
+  .urdu-mode .countdown-label{ font-family: 'Noto Nastaliq Urdu', serif; }
+  .urdu-mode .countdown-num{ font-family: 'Playfair Display', serif; }
+
+  .scroller{
+    height:100vh; height:100dvh;
+    overflow-y:scroll;
+    scroll-snap-type: y mandatory;
+    scroll-behavior:smooth;
+    -webkit-overflow-scrolling:touch;
+    scrollbar-width:none;
+    position:relative;
+  }
+  .scroller::-webkit-scrollbar{ display:none; }
+
+  .panel{
+    position:relative;
+    min-height:100vh; min-height:100dvh;
+    scroll-snap-align:start;
+    scroll-snap-stop:always;
+    display:flex; align-items:center; justify-content:center;
+    padding:26px 18px;
+    overflow:hidden;
+  }
+  .panel.hidden-panel{ display: none; }
+
+  .card{
+    position:relative;
+    width:min(420px, 94vw);
+    min-height:min(680px, 88vh);
+    background:var(--cream);
+    border-radius:26px;
+    box-shadow: 0 30px 70px rgba(0,0,0,.55), 0 0 0 1px rgba(230,200,140,.15);
+    overflow:hidden;
+    padding:34px 24px 40px;
+    display:flex; flex-direction:column; align-items:center;
+    text-align:center;
+    transform: translateY(30px);
+    opacity:0;
+    transition: transform .7s ease, opacity .6s ease;
+    transform-origin: center bottom;
+  }
+  .panel.active .card{ transform: translateY(0); opacity:1; }
+  .card::after{
+    content:''; position:absolute; inset:0; pointer-events:none;
+    box-shadow: inset 0 0 80px rgba(60,40,10,.18);
+    border-radius:26px; z-index:5;
+  }
+
+  .reveal{
+    opacity:0;
+    transform: translateY(20px);
+    transition: opacity .5s ease, transform .6s ease;
+  }
+  .panel.active .reveal.in{ opacity:1; transform: translateY(0); }
+  .reveal.d1{ transition-delay:.1s; }
+  .reveal.d2{ transition-delay:.2s; }
+  .reveal.d3{ transition-delay:.3s; }
+  .reveal.d4{ transition-delay:.4s; }
+
+  .petals{ position:absolute; inset:0; overflow:hidden; pointer-events:none; z-index:1; }
+  .petal{ position:absolute; top:-60px; opacity:0; animation: petalFall linear infinite; }
+  .petal svg{ display:block; }
+  @keyframes petalFall{
+    0%{ transform: translate3d(0,-60px,0) rotate(0deg); opacity:0; }
+    10%{ opacity:.8; }
+    90%{ opacity:.8; }
+    100%{ transform: translate3d(var(--drift, 30px), calc(100vh + 120px), 0) rotate(var(--spin, 360deg)); opacity:0; }
+  }
+
+  .arch-frame{
+    position:absolute; inset:10px;
+    border:1px solid rgba(173,138,78,.55);
+    border-radius:130px 130px 18px 18px;
+    pointer-events:none;
+  }
+  .arch-frame::before{
+    content:''; position:absolute; inset:6px;
+    border:1px solid rgba(173,138,78,.32);
+    border-radius:124px 124px 12px 12px;
+  }
+
+  .lanterns{
+    position:absolute; top:26px; left:0; right:0; z-index:2;
+    display:flex; justify-content:space-between; padding:0 22px;
+    pointer-events:none;
+  }
+  .lantern{ width:26px; height:44px; opacity:.9; }
+
+  .lang-toggle{
+    position: fixed; top: 14px; right: 14px;
+    z-index: 100; display: flex; gap: 4px;
+    background: rgba(45,32,15,.9);
+    border: 1.5px solid var(--gold-light);
+    border-radius: 24px; padding: 4px;
+    box-shadow: 0 6px 18px rgba(0,0,0,.5);
+  }
+  .lang-toggle button{
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 13px; font-weight: 600;
+    letter-spacing: .08em;
+    padding: 6px 14px;
+    border-radius: 20px; border: none;
+    background: transparent; color: var(--gold-light);
+    cursor: pointer; transition: all .3s ease;
+  }
+  .lang-toggle button.on{
+    background: linear-gradient(135deg, var(--gold), var(--gold-deep));
+    color: var(--paper);
+  }
+  .lang-toggle button.urdu-btn{
+    font-family: 'Noto Nastaliq Urdu', serif;
+    font-size: 14px; padding: 4px 14px 8px;
+  }
+
+  .countdown-wrap{
+    width: 100%; max-width: 300px;
+    margin: 10px auto 0; padding: 16px 12px;
+    background: var(--paper);
+    border: 1.5px solid var(--gold-light);
+    border-radius: 16px;
+    box-shadow: 0 8px 20px rgba(60,40,10,.15);
+  }
+  .countdown-label{
+    font-family: 'Playfair Display', serif;
+    font-size: 12px; letter-spacing: .2em;
+    text-transform: uppercase;
+    color: var(--gold-deep); margin-bottom: 10px;
+  }
+  .countdown-grid{ display: flex; justify-content: center; gap: 8px; }
+  .countdown-cell{
+    flex: 1; min-width: 0;
+    background: var(--cream-2);
+    border: 1px solid var(--gold-light);
+    border-radius: 10px; padding: 8px 4px;
+  }
+  .countdown-num{
+    font-family: 'Playfair Display', serif;
+    font-weight: 700; font-size: 22px;
+    color: var(--ink); line-height: 1;
+  }
+  .countdown-unit{
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 10px; letter-spacing: .1em;
+    text-transform: uppercase;
+    color: var(--ink-soft); margin-top: 4px;
+  }
+  .countdown-done{
+    font-family: 'Playfair Display', serif;
+    font-size: 16px; color: var(--gold-deep);
+    font-weight: 600; padding: 8px 0;
+  }
+  .urdu-mode .countdown-label{ letter-spacing: 0; font-size: 13px; }
+  .urdu-mode .countdown-unit{
+    letter-spacing: 0; font-size: 11px;
+    font-family: 'Noto Nastaliq Urdu', serif;
+    line-height: 1.8;
+  }
+
+  .eyebrow{ font-family:'Cormorant Garamond', serif; font-size:13px; letter-spacing:.22em; color:var(--ink-soft); text-transform:uppercase; }
+  h1.display{ font-family:'Playfair Display', serif; font-weight:600; color:var(--ink); font-size:26px; line-height:1.25; margin:6px 0 0; }
+  .script{
+    font-family:'Playfair Display', serif; font-weight:600; font-style: italic;
+    color:var(--gold-deep); font-size:38px; line-height:1.15; margin:2px 0;
+    letter-spacing:.01em;
+    text-shadow: 0 2px 8px rgba(173,138,78,.3);
+  }
+  .sub{ font-family:'Cormorant Garamond', serif; font-size:15.5px; color:var(--ink-soft); line-height:1.55; max-width:280px; }
+  .heart{ color:var(--gold-deep); font-size:14px; margin:10px 0; display:inline-block; }
+
+  .spacer{ flex:1 1 auto; min-height:14px; }
+
+  .btn{
+    font-family:'Cormorant Garamond', serif;
+    font-size:13px; letter-spacing:.14em; text-transform:uppercase;
+    color:var(--paper);
+    background: linear-gradient(135deg, var(--gold), var(--gold-deep));
+    border:none; padding:12px 26px; border-radius:30px;
+    cursor:pointer; box-shadow:0 8px 18px rgba(120,90,40,.35);
+    display:inline-flex; align-items:center; gap:8px;
+    text-decoration:none;
+    transition: transform .2s ease;
+    margin-top:14px;
+  }
+  .btn:hover{ transform: translateY(-2px); }
+  .btn:active{ transform:scale(.97); }
+
+  .btn.detail{
+    width:100%; max-width:260px;
+    background: var(--paper); color: var(--gold-deep);
+    border:1.5px solid var(--gold);
+    box-shadow: 0 6px 14px rgba(120,90,40,.15);
+    font-weight:600; padding:14px 22px;
+    font-size:13.5px; margin-top:0;
+  }
+  .btn.detail:hover{
+    background: linear-gradient(135deg, var(--gold), var(--gold-deep));
+    color: var(--paper); border-color: var(--gold-deep);
+  }
+  .btn.detail.done{
+    background: linear-gradient(135deg, #C8D9B0, #9DAE7E);
+    color: #2E3A1E; border-color: #9DAE7E;
+    pointer-events: none;
+  }
+
+  .continue-btn{
+    margin-top: 18px; width: 100%; max-width: 260px;
+    opacity: .4; cursor: not-allowed;
+    transition: opacity .4s ease;
+  }
+  .continue-btn:not([disabled]){
+    opacity: 1; cursor: pointer;
+    animation: continuePulse 2s ease-in-out infinite;
+  }
+  @keyframes continuePulse{
+    0%,100%{ box-shadow: 0 8px 18px rgba(120,90,40,.35), 0 0 0 0 rgba(173,138,78,.5); }
+    50%{ box-shadow: 0 8px 18px rgba(120,90,40,.35), 0 0 0 12px rgba(173,138,78,0); }
+  }
+
+  .cal-btn{
+    margin-top: 14px;
+    background: var(--paper); color: var(--gold-deep);
+    border: 1.5px solid var(--gold);
+    box-shadow: 0 6px 14px rgba(120,90,40,.15);
+    font-weight: 600; font-size: 12.5px; padding: 11px 22px;
+  }
+  .cal-btn:hover{
+    background: linear-gradient(135deg, var(--gold), var(--gold-deep));
+    color: var(--paper);
+  }
+
+  .top-copy{ font-family:'Playfair Display', serif; font-weight:600; font-size:22px; letter-spacing:.04em; color:var(--ink); margin:20px 0 28px; }
+  .envelope-wrap{ position:relative; width:250px; height:180px; margin:0 auto; perspective:1000px; overflow:visible; }
+  .envelope{ position:absolute; inset:0; cursor:pointer; }
+  .env-body{
+    position:absolute; inset:0; border-radius:8px;
+    background: linear-gradient(160deg, var(--cream-2), var(--cream));
+    border:1px solid var(--gold-light);
+    box-shadow: 0 18px 30px rgba(60,40,10,.3);
+    z-index:1;
+  }
+  .letter-peek{
+    position:absolute; left:12px; right:12px; bottom:8px; top:40px;
+    background:var(--paper); border:1px solid var(--gold-light); border-radius:4px;
+    transform: translateY(0);
+    transition: transform .8s cubic-bezier(.65,0,.35,1) .15s;
+    z-index:2; overflow:hidden;
+  }
+  .letter-peek::before{ content:''; position:absolute; top:10px; left:50%; transform:translateX(-50%); width:60%; height:1px; background: var(--gold-light); }
+  .letter-peek::after{ content:''; position:absolute; top:22px; left:50%; transform:translateX(-50%); width:40%; height:1px; background: rgba(173,138,78,.4); }
+  .env-front{
+    position:absolute; left:0; right:0; bottom:0; top:50%;
+    background: linear-gradient(180deg, var(--cream-2), var(--cream));
+    border-radius:0 0 8px 8px;
+    border:1px solid var(--gold-light); border-top: none;
+    z-index:4; pointer-events: none;
+  }
+  .env-side-left, .env-side-right{ position:absolute; bottom:0; top:0; width:52%; z-index:5; pointer-events: none; }
+  .env-side-left{ left:0; border-radius: 0 0 0 8px; clip-path: polygon(0 0, 100% 100%, 0 100%); background: linear-gradient(135deg, var(--cream-2) 50%, transparent 52%); }
+  .env-side-right{ right:0; border-radius: 0 0 8px 0; clip-path: polygon(100% 0, 100% 100%, 0 100%); background: linear-gradient(225deg, var(--cream-2) 50%, transparent 52%); }
+  .env-flap{
+    position:absolute; top:0; left:0; right:0; height:0;
+    border-left:125px solid transparent; border-right:125px solid transparent;
+    border-top:100px solid var(--cream-2);
+    filter: drop-shadow(0 3px 3px rgba(60,40,10,.15));
+    transform-origin:top;
+    transition: transform .8s cubic-bezier(.65,0,.35,1);
+    z-index:6;
+  }
+  .envelope.open .env-flap{ transform: rotateX(180deg); }
+
+  .seal{
+    position:absolute; left:50%; top:60px; transform:translate(-50%,0);
+    width:52px; height:52px; border-radius:50%;
+    background: radial-gradient(circle at 35% 30%, var(--gold-light), var(--gold-deep));
+    border:2px solid var(--paper);
+    display:flex; align-items:center; justify-content:center;
+    font-family:'Playfair Display', serif; font-size:14px; color:#fff;
+    box-shadow:0 5px 10px rgba(60,40,10,.35);
+    z-index:7; transition: opacity .3s ease .1s, transform .4s ease .1s;
+  }
+  .envelope.open .seal{ opacity:0; transform:translate(-50%,-20px) scale(.5); }
+
+  .tassel{ position:absolute; left:50%; top:105px; transform:translateX(-50%); width:3px; height:38px; background:var(--gold-deep); z-index:8; transition:opacity .3s ease; }
+  .tassel::after{ content:''; position:absolute; bottom:-6px; left:50%; transform:translateX(-50%); width:14px; height:14px; border-radius:50%; background:var(--gold-deep); }
+  .envelope.open .tassel{ opacity:0; }
+
+  .envelope.open .letter-peek{ transform: translateY(-90px); z-index: 10; }
+
+  .tap-hint{ margin-top:26px; font-size:13px; letter-spacing:.15em; color:var(--ink-soft); display:flex; align-items:center; gap:8px; justify-content:center; }
+  .tap-hint svg{ width:16px; height:16px; }
+
+  .monogram{ width:70px; height:70px; border-radius:50%; border:1.5px solid var(--gold); display:flex; align-items:center; justify-content:center; font-family:'Playfair Display', serif; font-size:20px; color:var(--gold-deep); margin:18px auto; background:var(--paper); }
+
+  .bismillah{ font-family:'Playfair Display', serif; font-size:20px; color:var(--gold-deep); margin-top:24px; }
+
+  .kicker{ font-size:12.5px; letter-spacing:.16em; color:var(--ink-soft); text-transform:uppercase; max-width:250px; margin-top:20px; }
+  .name-block{ margin: 4px 0; }
+  .name-parent{ font-family:'Cormorant Garamond', serif; font-size: 13px; color: var(--ink-soft); letter-spacing: .06em; margin-top: 4px; font-style: italic; }
+  .weds{ font-family:'Playfair Display', serif; font-size: 13px; color: var(--gold-deep); letter-spacing: .4em; text-transform: uppercase; font-style: italic; margin: 12px 0; display: inline-block; font-weight: 500; }
+
+  .details-row{ display: flex; flex-direction: column; gap: 14px; width: 100%; max-width: 300px; margin-top: 22px; }
+  .detail-card{
+    background: var(--paper); border: 1px solid var(--gold-light);
+    border-radius: 14px; padding: 20px 16px;
+    text-align: center; box-shadow: 0 8px 18px rgba(60,40,10,.12);
+    opacity:0; transform: translateY(20px);
+    transition: opacity .6s ease, transform .6s ease;
+  }
+  #nikkahCard{ transition-delay:.2s; }
+  #receptionCard{ transition-delay:.35s; }
+  .panel.active #nikkahCard, .panel.active #receptionCard{ opacity:1; transform: translateY(0); }
+  .detail-icon{ font-size: 26px; margin-bottom: 8px; display: inline-block; }
+  .detail-title{ font-family:'Playfair Display', serif; font-size: 17px; font-weight: 600; color: var(--ink); margin-bottom: 14px; }
+
+  .scratch-single{ display: flex; justify-content: center; margin: 22px 0 14px; }
+  .scratch-card-lg{
+    position: relative; width: 220px; height: 200px;
+    border-radius: 16px; overflow: hidden; background: var(--paper);
+    border: 1.5px solid var(--gold-light);
+    box-shadow: 0 12px 26px rgba(60,40,10,.25);
+  }
+  .scratch-inner{ position: absolute; inset: 0; display: flex; flex-direction: column; align-items: center; justify-content: center; padding: 12px; text-align: center; }
+  .scratch-inner .sc-label{ font-family: 'Playfair Display', serif; font-size: 11px; letter-spacing: .3em; text-transform: uppercase; color: var(--gold-deep); margin-bottom: 4px; }
+  .scratch-inner .sc-event{ font-family: 'Playfair Display', serif; font-size: 15px; font-weight: 600; color: var(--ink); margin-bottom: 10px; }
+  .scratch-inner .sc-date{ font-family: 'Playfair Display', serif; font-size: 22px; font-weight: 700; color: var(--ink); line-height: 1.15; margin-bottom: 4px; }
+  .scratch-inner .sc-month{ font-family: 'Cormorant Garamond', serif; font-size: 14px; letter-spacing: .16em; color: var(--ink-soft); text-transform: uppercase; margin-bottom: 8px; }
+  .scratch-inner .sc-hijri{ font-family: 'Cormorant Garamond', serif; font-size: 12.5px; color: var(--gold-deep); font-style: italic; margin-bottom: 6px; }
+  .scratch-inner .sc-time{ font-family: 'Playfair Display', serif; font-size: 15px; font-weight: 600; color: var(--gold-deep); letter-spacing: .06em; }
+  .scratch-inner .sc-divider{ width: 40px; height: 1px; background: var(--gold); margin: 8px auto; }
+  .urdu-mode .scratch-inner .sc-date,
+  .urdu-mode .scratch-inner .sc-month,
+  .urdu-mode .scratch-inner .sc-time,
+  .urdu-mode .scratch-inner .sc-label,
+  .urdu-mode .scratch-inner .sc-hijri{
+    font-family: 'Noto Nastaliq Urdu', serif;
+    letter-spacing: 0;
+    line-height: 1.8;
+  }
+  .scratch-card-lg canvas{ position: absolute; inset: 0; width: 100%; height: 100%; display: block; touch-action: none; cursor: grab; }
+
+  .reveal-actions{ opacity: 0; max-height: 0; overflow: hidden; transition: opacity .5s ease .2s, max-height .5s ease .2s; display: flex; flex-direction: column; align-items: center; width: 100%; }
+  .reveal-actions.show{ opacity: 1; max-height: 800px; }
+
+  .hint-box{ display:flex; align-items:center; gap:8px; margin-top:12px; font-size:12.5px; color:var(--ink-soft); max-width:250px; border:1px solid var(--gold-light); border-radius:10px; padding:8px 12px; background:var(--cream-2); transition: background .4s ease; }
+
+  .map-wrap{ width:100%; max-width:280px; margin:14px auto 0; border-radius:14px; overflow:hidden; border:1.5px solid var(--gold-light); box-shadow: 0 10px 22px rgba(60,40,10,.18); background: var(--cream-2); }
+  .map-wrap iframe{ display:block; width:100%; height:180px; border:0; filter: saturate(.9) contrast(1.02); }
+  .venue-name{ font-family:'Playfair Display', serif; color:var(--ink); font-size:16px; font-weight: 600; margin-top: 4px; }
+  .venue-addr{ font-size:13px; color:var(--ink-soft); margin-top: 2px; }
+
+  .pin{ margin:8px auto 4px; }
+
+  .feedback-intro{ font-family:'Cormorant Garamond', serif; font-size:15.5px; color: var(--ink-soft); line-height: 1.6; max-width: 280px; margin-top: 8px; }
+  .feedback-arrow{ display: inline-block; margin-top: 12px; color: var(--gold-deep); font-size: 18px; }
+  .feedback-btn{ margin-top: 20px; width: 100%; max-width: 280px; padding: 16px 26px; font-size: 14px; letter-spacing: .16em; }
+  .thank-you-box{ display:none; flex-direction: column; align-items: center; text-align: center; max-width: 300px; }
+  .thank-you-box.show{ display: flex; animation: thankYouFadeIn .6s ease-out; }
+  @keyframes thankYouFadeIn{ 0%{ opacity:0; transform: scale(.85); } 100%{ opacity:1; transform: scale(1); } }
+  .thank-icon{ font-size: 52px; margin-bottom: 12px; display: inline-block; }
+  .thank-title{ font-family:'Great Vibes', cursive; font-size: 40px; color: var(--gold-deep); line-height: 1; margin-bottom: 12px; }
+  .urdu-mode .thank-title{ font-family: 'Noto Nastaliq Urdu', serif; font-size: 30px; line-height: 2; }
+  .thank-msg{ font-family:'Cormorant Garamond', serif; font-size: 15.5px; color: var(--ink-soft); line-height: 1.6; }
+  .thank-heart{ margin-top: 14px; color: var(--gold-deep); font-size: 20px; }
+
+  .confetti i{ position:fixed; top:-10px; width:8px; height:14px; animation: confettiFall linear forwards; border-radius:2px; pointer-events:none; z-index:100; }
+  @keyframes confettiFall{ 0%{ transform: translateY(0) rotate(0); opacity:1; } 100%{ transform: translateY(110vh) rotate(720deg); opacity:0; } }
+
+  .rail{ position:fixed; right:12px; top:50%; transform:translateY(-50%); z-index:50; display:flex; flex-direction:column; gap:8px; }
+  .rail span{ width:5px; height:5px; border-radius:50%; background: rgba(231,206,155,.25); transition: all .3s ease; cursor:pointer; pointer-events:auto; }
+  .rail span.on{ background:var(--gold-light); height:16px; border-radius:4px; }
+
+  .scroll-hint{ position:fixed; bottom:18px; left:50%; transform:translateX(-50%); z-index:50; color:rgba(231,206,155,.9); font-size:11px; letter-spacing:.25em; text-transform:uppercase; display:flex; flex-direction:column; align-items:center; gap:6px; pointer-events:none; transition: opacity .5s ease; }
+  .scroll-hint.hide{ opacity:0; }
+  .scroll-hint svg{ width:18px; height:18px; }
+
+  .music-btn{ position: fixed; bottom: 72px; right: 14px; width: 44px; height: 44px; border-radius: 50%; background: rgba(45,32,15,.9); border: 1.5px solid var(--gold-light); color: var(--gold-light); font-size: 18px; cursor: pointer; z-index: 60; display: none; align-items: center; justify-content: center; box-shadow: 0 6px 18px rgba(0,0,0,.5); transition: transform .2s ease, background .2s ease; }
+  .music-btn.show{ display: flex; animation: musicBtnIn .4s ease-out; }
+  @keyframes musicBtnIn{ 0%{ transform: scale(0); opacity:0; } 100%{ transform: scale(1); opacity:1; } }
+  .music-btn:hover{ transform: scale(1.1); background: linear-gradient(135deg, var(--gold), var(--gold-deep)); }
+  .music-btn.muted{ opacity: .55; }
+
+  @media (max-height:700px){
+    .script{ font-size:32px; }
+    .card{ padding:26px 20px 30px; min-height:min(620px, 90vh); }
+    .scratch-card-lg{ width: 200px; height: 185px; }
+    .envelope-wrap{ width: 220px; height: 160px; }
+    .env-flap{ border-left:110px solid transparent; border-right:110px solid transparent; border-top:88px solid var(--cream-2); }
+    .seal{ top:50px; }
+    .tassel{ top:92px; }
+    .music-btn{ bottom: 66px; right: 12px; width: 40px; height: 40px; font-size: 16px; }
+    .countdown-num{ font-size: 20px; }
+  }
+</style>
+</head>
+<body>
+
+<div class="lang-toggle" id="langToggle">
+  <button id="btnEN" class="on" onclick="setLang('en')">EN</button>
+  <button id="btnUR" class="urdu-btn" onclick="setLang('ur')">اردو</button>
+</div>
+
+<button class="music-btn" id="musicBtn" onclick="toggleMusic()" title="Toggle Music">🔊</button>
+
+<div class="scroller" id="scroller">
+
+  <!-- 1 — ENVELOPE -->
+  <section class="panel active">
+    <div class="petals" data-petals="6"></div>
+    <div class="card">
+      <div class="arch-frame"></div>
+      <div class="lanterns">
+        <svg class="lantern" viewBox="0 0 24 40"><path d="M12 0v4M6 4h12l-2 8H8L6 4zM8 12h8v18a4 4 0 0 1-8 0V12zM10 30h4" stroke="#AD8A4E" stroke-width="1.2" fill="none"/></svg>
+        <svg class="lantern" viewBox="0 0 24 40"><path d="M12 0v4M6 4h12l-2 8H8L6 4zM8 12h8v18a4 4 0 0 1-8 0V12zM10 30h4" stroke="#AD8A4E" stroke-width="1.2" fill="none"/></svg>
+      </div>
+      <div class="spacer"></div>
+      <div class="top-copy reveal" data-en="A special invitation<br>awaits you" data-ur="ایک خاص دعوت نامہ<br>آپ کا منتظر ہے">A special invitation<br>awaits you</div>
+
+      <div class="envelope-wrap reveal d1">
+        <div class="envelope" id="envelope">
+          <div class="letter-peek"></div>
+          <div class="env-body"></div>
+          <div class="env-side-left"></div>
+          <div class="env-side-right"></div>
+          <div class="env-front"></div>
+          <div class="env-flap"></div>
+          <div class="seal">S ♥ A</div>
+          <div class="tassel"></div>
+        </div>
+      </div>
+
+      <div class="tap-hint reveal d2">
+        <svg viewBox="0 0 24 24" fill="none" stroke="#7A6A4C" stroke-width="1.5"><path d="M9 12l2 2 4-4M12 3v3M5 6l2 2M19 6l-2 2"/><rect x="7" y="10" width="10" height="9" rx="2"/></svg>
+        <span data-en="Tap the envelope to open" data-ur="کھولنے کے لیے لفافے پر ٹیپ کریں">Tap the envelope to open</span>
+      </div>
+      <div class="spacer"></div>
+    </div>
+  </section>
+
+  <!-- 2 — INVITED -->
+  <section class="panel">
+    <div class="petals" data-petals="5"></div>
+    <div class="card">
+      <div class="arch-frame"></div>
+      <div class="spacer"></div>
+      <div class="bismillah reveal">﷽</div>
+      <div class="reveal d1" style="font-size:15px; letter-spacing:.14em; text-transform:uppercase; color:var(--ink-soft); margin-top:18px;" data-en="You are cordially invited<br>to the wedding of" data-ur="آپ کو بڑی خوشی سے دعوت دی جاتی ہے<br>شادی پر">You are cordially invited<br>to the wedding of</div>
+      <div class="monogram reveal d2">S ♥ A</div>
+      <div class="sub reveal d3" data-en="Let's begin this<br>beautiful journey together" data-ur="آئیے اس خوبصورت سفر<br>کا آغاز ساتھ کریں">Let's begin this<br>beautiful journey together</div>
+      <div class="heart reveal d3">♥</div>
+      <div class="spacer"></div>
+    </div>
+  </section>
+
+  <!-- 3 — WELCOME -->
+  <section class="panel">
+    <div class="petals" data-petals="6"></div>
+    <div class="card">
+      <div class="arch-frame"></div>
+      <div class="spacer"></div>
+      <div class="eyebrow reveal" data-en="Welcome to our" data-ur="خوش آمدید">Welcome to our</div>
+      <h1 class="display reveal d1" style="font-size:30px;" data-en="Wedding Journey" data-ur="شادی کا سفر">Wedding Journey</h1>
+      <div class="sub reveal d2" style="margin-top:10px;" data-en="Two hearts<br>one beautiful beginning" data-ur="دو دل<br>ایک خوبصورت آغاز">Two hearts<br>one beautiful beginning</div>
+      <svg class="reveal d3" width="80" height="50" viewBox="0 0 80 50" fill="none" stroke="#AD8A4E" stroke-width="1.3" style="margin:16px auto;">
+        <path d="M10 25c0-9 8-15 15-9 4 3 5 8 5 8s1-5 5-8c7-6 15 0 15 9 0 12-20 22-20 22S10 37 10 25z"/>
+      </svg>
+      <div class="spacer"></div>
+    </div>
+  </section>
+
+  <!-- 4 — NAMES -->
+  <section class="panel">
+    <div class="petals" data-petals="6"></div>
+    <div class="card">
+      <div class="arch-frame"></div>
+      <div class="spacer"></div>
+      <div class="kicker reveal" data-en="Together with our families<br>we invite you to the wedding of" data-ur="اپنے خاندانوں کے ساتھ<br>ہم آپ کو شادی کی دعوت دیتے ہیں">Together with our families<br>we invite you to the wedding of</div>
+
+      <div class="name-block reveal d1">
+        <div class="script" data-en="Shafat Khan" data-ur="شفاعت خان">Shafat Khan</div>
+        <div class="name-parent" data-en="S/o Rehmatullah Khan" data-ur="ولد رحمت اللہ خان">S/o Rehmatullah Khan</div>
+      </div>
+
+      <div class="weds reveal d2" data-en="weds" data-ur="اور">weds</div>
+
+      <div class="name-block reveal d2">
+        <div class="script" data-en="Aqsa Khan" data-ur="اقصیٰ خان">Aqsa Khan</div>
+        <div class="name-parent" data-en="D/o Yunus Khan" data-ur="دختر یونس خان">D/o Yunus Khan</div>
+      </div>
+
+      <div class="sub reveal d3" style="margin-top:14px;" data-en="A bond of faith<br>a lifetime of love" data-ur="ایمان کا رشتہ<br>محبت کی زندگی">A bond of faith<br>a lifetime of love</div>
+      <div class="spacer"></div>
+    </div>
+  </section>
+
+  <!-- 5 — EVENTS MENU -->
+  <section class="panel" id="eventsMenu">
+    <div class="petals" data-petals="5"></div>
+    <div class="card">
+      <div class="arch-frame"></div>
+      <div class="spacer"></div>
+      <div class="eyebrow reveal" data-en="Our Celebrations" data-ur="ہماری تقریبات">Our Celebrations</div>
+      <h1 class="display reveal d1" id="menuTitle" style="font-size:24px;">Nikkah &amp; Reception</h1>
+      <div class="heart reveal d1">♥</div>
+
+      <div class="details-row" id="detailsRow">
+        <div class="detail-card" id="nikkahCard">
+          <div class="detail-icon">💍</div>
+          <div class="detail-title" data-en="Nikkah Ceremony" data-ur="نکاح کی تقریب">Nikkah Ceremony</div>
+          <button class="btn detail" id="nikkahBtn" onclick="openScratch('nikkah')" data-en="Click here for details →" data-ur="تفصیلات کے لیے یہاں کلک کریں ←">Click here for details →</button>
+        </div>
+
+        <div class="detail-card" id="receptionCard">
+          <div class="detail-icon">🍽️</div>
+          <div class="detail-title" data-en="Reception" data-ur="ولیمہ">Reception</div>
+          <button class="btn detail" id="receptionBtn" onclick="openScratch('reception')" data-en="Click here for details →" data-ur="تفصیلات کے لیے یہاں کلک کریں ←">Click here for details →</button>
+        </div>
+      </div>
+
+      <div class="sub reveal d4" id="menuHint" style="margin-top:16px;">Tap the button above to reveal its details</div>
+
+      <button class="btn continue-btn" id="continueBtn" onclick="goToLocation()" disabled data-en="Continue to Location →" data-ur="مقام پر جائیں ←">Continue to Location →</button>
+
+      <div class="spacer"></div>
+    </div>
+  </section>
+
+  <!-- 6 — NIKKAH SCRATCH + COUNTDOWN -->
+  <section class="panel hidden-panel" id="nikkahPanel">
+    <div class="petals" data-petals="5"></div>
+    <div class="card">
+      <div class="arch-frame"></div>
+      <div class="spacer"></div>
+      <div class="eyebrow reveal" data-en="Nikkah Ceremony" data-ur="نکاح کی تقریب">Nikkah Ceremony</div>
+      <h1 class="display reveal d1" style="font-size:20px; font-style:italic; font-weight:500;" data-en="Scratch to reveal Nikkah details" data-ur="نکاح کی تفصیلات دیکھنے کے لیے کھرچیں">Scratch to reveal Nikkah details</h1>
+      <div class="heart reveal d1">♥</div>
+
+      <div class="scratch-single reveal d2">
+        <div class="scratch-card-lg" data-scratch="nikkah">
+          <div class="scratch-inner">
+            <div class="sc-label" data-en="Nikkah" data-ur="نکاح">Nikkah</div>
+            <div class="sc-event" data-en="Save the Date" data-ur="تاریخ محفوظ کریں">Save the Date</div>
+            <div class="sc-divider"></div>
+            <div class="sc-date" data-en="19 December" data-ur="19 دسمبر">19 December</div>
+            <div class="sc-month" data-en="Saturday · 2026" data-ur="ہفتہ · 2026">Saturday · 2026</div>
+            <div class="sc-hijri" data-en="10-Rajab-1448" data-ur="10-رجب-1448">10-Rajab-1448</div>
+            <div class="sc-divider"></div>
+            <div class="sc-time" data-en="7:00 PM" data-ur="شام 7:00 بجے">7:00 PM</div>
+          </div>
+          <canvas></canvas>
+        </div>
+      </div>
+
+      <div class="hint-box reveal d3" id="hintNikkah"><span>✦</span> <span data-en="Scratch the card to continue" data-ur="جاری رکھنے کے لیے کارڈ کھرچیں">Scratch the card to continue</span></div>
+
+      <div class="reveal-actions" id="nikkahActions">
+        <div class="countdown-wrap">
+          <div class="countdown-label" data-en="Countdown to Nikkah" data-ur="نکاح کے لیے الٹی گنتی">Countdown to Nikkah</div>
+          <div class="countdown-grid" id="countdownGridNikkah">
+            <div class="countdown-cell">
+              <div class="countdown-num" id="cdDaysN">--</div>
+              <div class="countdown-unit" data-en="Days" data-ur="دن">Days</div>
+            </div>
+            <div class="countdown-cell">
+              <div class="countdown-num" id="cdHoursN">--</div>
+              <div class="countdown-unit" data-en="Hours" data-ur="گھنٹے">Hours</div>
+            </div>
+            <div class="countdown-cell">
+              <div class="countdown-num" id="cdMinsN">--</div>
+              <div class="countdown-unit" data-en="Minutes" data-ur="منٹ">Minutes</div>
+            </div>
+            <div class="countdown-cell">
+              <div class="countdown-num" id="cdSecsN">--</div>
+              <div class="countdown-unit" data-en="Seconds" data-ur="سیکنڈ">Seconds</div>
+            </div>
+          </div>
+        </div>
+
+        <button class="btn cal-btn" onclick="addToCalendar('nikkah')" data-en="📅 Add Nikkah to Calendar" data-ur="📅 نکاح کیلنڈر میں شامل کریں">📅 Add Nikkah to Calendar</button>
+        <div style="font-size:12px; color:var(--ink-soft); margin-top:6px; font-style:italic;" data-en='Saves as "Shafat &amp; Aqsa — Nikkah"' data-ur="محفوظ ہوگا: شفاعت اور اقصیٰ — نکاح">Saves as "Shafat &amp; Aqsa — Nikkah"</div>
+        <button class="btn detail" style="margin-top:16px;" onclick="backToMenu()" data-en="← Back to Events Menu" data-ur="تقریبات کے مینو پر واپس →">← Back to Events Menu</button>
+      </div>
+
+      <div class="spacer"></div>
+    </div>
+  </section>
+
+  <!-- 7 — RECEPTION SCRATCH + COUNTDOWN -->
+  <section class="panel hidden-panel" id="receptionPanel">
+    <div class="petals" data-petals="5"></div>
+    <div class="card">
+      <div class="arch-frame"></div>
+      <div class="spacer"></div>
+      <div class="eyebrow reveal" data-en="Reception" data-ur="ولیمہ">Reception</div>
+      <h1 class="display reveal d1" style="font-size:20px; font-style:italic; font-weight:500;" data-en="Scratch to reveal Reception details" data-ur="ولیمہ کی تفصیلات دیکھنے کے لیے کھرچیں">Scratch to reveal Reception details</h1>
+      <div class="heart reveal d1">♥</div>
+
+      <div class="scratch-single reveal d2">
+        <div class="scratch-card-lg" data-scratch="reception">
+          <div class="scratch-inner">
+            <div class="sc-label" data-en="Reception" data-ur="ولیمہ">Reception</div>
+            <div class="sc-event" data-en="Save the Date" data-ur="تاریخ محفوظ کریں">Save the Date</div>
+            <div class="sc-divider"></div>
+            <div class="sc-date" data-en="20 December" data-ur="20 دسمبر">20 December</div>
+            <div class="sc-month" data-en="Sunday · 2026" data-ur="اتوار · 2026">Sunday · 2026</div>
+            <div class="sc-hijri" data-en="11-Rajab-1448" data-ur="11-رجب-1448">11-Rajab-1448</div>
+            <div class="sc-divider"></div>
+            <div class="sc-time" data-en="7:00 PM" data-ur="شام 7:00 بجے">7:00 PM</div>
+          </div>
+          <canvas></canvas>
+        </div>
+      </div>
+
+      <div class="hint-box reveal d3" id="hintReception"><span>✦</span> <span data-en="Scratch the card to continue" data-ur="جاری رکھنے کے لیے کارڈ کھرچیں">Scratch the card to continue</span></div>
+
+      <div class="reveal-actions" id="receptionActions">
+        <div class="countdown-wrap">
+          <div class="countdown-label" data-en="Countdown to Reception" data-ur="ولیمہ کے لیے الٹی گنتی">Countdown to Reception</div>
+          <div class="countdown-grid" id="countdownGridReception">
+            <div class="countdown-cell">
+              <div class="countdown-num" id="cdDaysR">--</div>
+              <div class="countdown-unit" data-en="Days" data-ur="دن">Days</div>
+            </div>
+            <div class="countdown-cell">
+              <div class="countdown-num" id="cdHoursR">--</div>
+              <div class="countdown-unit" data-en="Hours" data-ur="گھنٹے">Hours</div>
+            </div>
+            <div class="countdown-cell">
+              <div class="countdown-num" id="cdMinsR">--</div>
+              <div class="countdown-unit" data-en="Minutes" data-ur="منٹ">Minutes</div>
+            </div>
+            <div class="countdown-cell">
+              <div class="countdown-num" id="cdSecsR">--</div>
+              <div class="countdown-unit" data-en="Seconds" data-ur="سیکنڈ">Seconds</div>
+            </div>
+          </div>
+        </div>
+
+        <button class="btn cal-btn" onclick="addToCalendar('reception')" data-en="📅 Add Reception to Calendar" data-ur="📅 ولیمہ کیلنڈر میں شامل کریں">📅 Add Reception to Calendar</button>
+        <div style="font-size:12px; color:var(--ink-soft); margin-top:6px; font-style:italic;" data-en='Saves as "Shafat &amp; Aqsa — Reception"' data-ur="محفوظ ہوگا: شفاعت اور اقصیٰ — ولیمہ">Saves as "Shafat &amp; Aqsa — Reception"</div>
+        <button class="btn detail" style="margin-top:16px;" onclick="backToMenu()" data-en="← Back to Events Menu" data-ur="تقریبات کے مینو پر واپس →">← Back to Events Menu</button>
+      </div>
+
+      <div class="spacer"></div>
+    </div>
+  </section>
+
+  <!-- 8 — LOCATION -->
+  <section class="panel">
+    <div class="petals" data-petals="5"></div>
+    <div class="card">
+      <div class="arch-frame"></div>
+      <div class="spacer"></div>
+      <h1 class="display reveal" style="font-size:24px;" data-en="Location" data-ur="مقام">Location</h1>
+
+      <svg class="pin reveal d1" width="32" viewBox="0 0 24 24" fill="none" stroke="#8A6A34" stroke-width="1.4">
+        <circle cx="12" cy="12" r="11" opacity=".25"/>
+        <path d="M12 21s7-7.2 7-12a7 7 0 1 0-14 0c0 4.8 7 12 7 12z"/>
+        <circle cx="12" cy="9" r="2.4"/>
+      </svg>
+
+      <div class="reveal d2" style="margin-top:6px;">
+        <div class="venue-name" data-en="Badhai Ho Hall" data-ur="بدھائی ہو ہال">Badhai Ho Hall</div>
+        <div class="venue-addr" data-en="Retibunder, Mumbra<br>Maharashtra 400612" data-ur="ریتی بندر، ممبرا<br>مہاراشٹر 400612">Retibunder, Mumbra<br>Maharashtra 400612</div>
+      </div>
+
+      <div class="map-wrap reveal d3">
+        <iframe
+          src="https://www.google.com/maps?q=19.202261,73.021352&hl=en&z=16&output=embed"
+          loading="lazy"
+          referrerpolicy="no-referrer-when-downgrade"
+          allowfullscreen>
+        </iframe>
+      </div>
+
+      <a class="btn reveal d4"
+         href="https://maps.app.goo.gl/zxdXweyWAcHd6cdd8"
+         target="_blank"
+         rel="noopener"
+         data-en="📍 Get Directions" data-ur="📍 راستہ حاصل کریں">📍 Get Directions</a>
+
+      <div class="spacer"></div>
+    </div>
+  </section>
+
+  <!-- 9 — FEEDBACK -->
+  <section class="panel">
+    <div class="petals" data-petals="8"></div>
+    <div class="card">
+      <div class="arch-frame"></div>
+      <div class="spacer"></div>
+
+      <h1 class="display reveal" style="font-size:26px;" data-en="Your Response" data-ur="آپ کا جواب">Your Response</h1>
+      <div class="heart reveal d1">♥</div>
+      <div class="feedback-intro reveal d2" data-en="We would love to hear from you.<br>Please take a moment to respond<br>so we can prepare for your arrival." data-ur="ہم آپ سے سننا پسند کریں گے۔<br>براہ کرم ایک لمحہ نکال کر جواب دیں<br>تاکہ ہم آپ کی آمد کی تیاری کر سکیں۔">We would love to hear from you.<br>Please take a moment to respond<br>so we can prepare for your arrival.</div>
+      <span class="feedback-arrow reveal d2">↓</span>
+
+      <button class="btn feedback-btn reveal d3" id="feedbackBtn" onclick="openFeedbackForm()" data-en="♥ Share Your Response" data-ur="♥ اپنا جواب دیں">♥ Share Your Response</button>
+
+      <div class="sub reveal d4" id="feedbackSub" style="margin-top:14px;" data-en="Your wishes mean the world to us ♥" data-ur="آپ کی دعائیں ہمارے لیے سب کچھ ہیں ♥">Your wishes mean the world to us ♥</div>
+
+      <div class="thank-you-box" id="thankYouBox">
+        <div class="thank-icon">💐</div>
+        <div class="thank-title" data-en="Thank You!" data-ur="شکریہ!">Thank You!</div>
+        <div class="thank-msg" data-en="Thank you for your response.<br>Your presence will make our day<br>truly memorable. See you soon!" data-ur="آپ کے جواب کا شکریہ۔<br>آپ کی موجودگی ہمارے دن کو<br>یادگار بنا دے گی۔ ملتے ہیں!">Thank you for your response.<br>Your presence will make our day<br>truly memorable. See you soon!</div>
+        <div class="thank-heart">♥</div>
+      </div>
+
+      <div class="spacer"></div>
+    </div>
+  </section>
+
+</div>
+
+<div class="rail" id="rail"></div>
+<div class="scroll-hint" id="scrollHint">
+  <span>Scroll</span>
+  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M6 9l6 6 6-6"/></svg>
+</div>
+
+<script>
+/* ============================================================
+   CONFIG
+   ============================================================ */
+const GOOGLE_FORM_URL = 'https://docs.google.com/forms/d/e/1FAIpQLSfTiQF2aloy4py8Oz-RGWHSityCxhrBQSDkQlBnZHz-PhkG4A/viewform';
+const WEBCAL_BASE = 'webcal://shafat-aqsa.netlify.app';
+
+/* ============================================================
+   LANGUAGE TOGGLE
+   ============================================================ */
+let currentLang = 'en';
+
+function setLang(lang){
+  currentLang = lang;
+  const body = document.body;
+
+  if(lang === 'ur'){
+    body.classList.add('urdu-mode');
+    document.getElementById('btnEN').classList.remove('on');
+    document.getElementById('btnUR').classList.add('on');
+    document.documentElement.dir = 'rtl';
+  } else {
+    body.classList.remove('urdu-mode');
+    document.getElementById('btnEN').classList.add('on');
+    document.getElementById('btnUR').classList.remove('on');
+    document.documentElement.dir = 'ltr';
+  }
+
+  document.querySelectorAll('[data-en][data-ur]').forEach(el=>{
+    const text = lang === 'ur' ? el.getAttribute('data-ur') : el.getAttribute('data-en');
+    if(text !== null){ el.innerHTML = text; }
+  });
+
+  updateContinueBtn();
+}
+
+/* ============================================================
+   COUNTDOWN TIMERS — Nikkah + Reception
+   ============================================================ */
+const NIKKAH_DATE = new Date('2026-12-19T19:00:00+05:30').getTime();
+const RECEPTION_DATE = new Date('2026-12-20T19:00:00+05:30').getTime();
+
+function pad(n){ return String(n).padStart(2,'0'); }
+
+function calculateTime(targetTime){
+  const diff = targetTime - Date.now();
+  if(diff <= 0) return null;
+  return {
+    days:  Math.floor(diff / (1000 * 60 * 60 * 24)),
+    hours: Math.floor((diff % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60)),
+    mins:  Math.floor((diff % (1000 * 60 * 60)) / (1000 * 60)),
+    secs:  Math.floor((diff % (1000 * 60)) / 1000)
+  };
+}
+
+function updateCountdown(){
+  // NIKKAH
+  const nikkahGrid = document.getElementById('countdownGridNikkah');
+  if(nikkahGrid){
+    const t = calculateTime(NIKKAH_DATE);
+    if(!t){
+      nikkahGrid.innerHTML = '<div class="countdown-done" data-en="Alhamdulillah — The day is here!" data-ur="الحمدللہ — دن آ گیا!">Alhamdulillah — The day is here!</div>';
+    } else {
+      const dEl = document.getElementById('cdDaysN');
+      const hEl = document.getElementById('cdHoursN');
+      const mEl = document.getElementById('cdMinsN');
+      const sEl = document.getElementById('cdSecsN');
+      if(dEl) dEl.textContent = pad(t.days);
+      if(hEl) hEl.textContent = pad(t.hours);
+      if(mEl) mEl.textContent = pad(t.mins);
+      if(sEl) sEl.textContent = pad(t.secs);
+    }
+  }
+
+  // RECEPTION
+  const recGrid = document.getElementById('countdownGridReception');
+  if(recGrid){
+    const t = calculateTime(RECEPTION_DATE);
+    if(!t){
+      recGrid.innerHTML = '<div class="countdown-done" data-en="Alhamdulillah — The day is here!" data-ur="الحمدللہ — دن آ گیا!">Alhamdulillah — The day is here!</div>';
+    } else {
+      const dEl = document.getElementById('cdDaysR');
+      const hEl = document.getElementById('cdHoursR');
+      const mEl = document.getElementById('cdMinsR');
+      const sEl = document.getElementById('cdSecsR');
+      if(dEl) dEl.textContent = pad(t.days);
+      if(hEl) hEl.textContent = pad(t.hours);
+      if(mEl) mEl.textContent = pad(t.mins);
+      if(sEl) sEl.textContent = pad(t.secs);
+    }
+  }
+}
+
+setInterval(updateCountdown, 1000);
+updateCountdown();
+
+/* ============================================================
+   BACKGROUND MUSIC
+   ============================================================ */
+const bgMusic = new Audio('wedding-music.mp3');
+bgMusic.loop = true;
+bgMusic.volume = 0.35;
+bgMusic.preload = 'auto';
+
+let musicPlaying = false;
+
+function startMusic(){
+  if(musicPlaying) return;
+  bgMusic.volume = 0;
+  bgMusic.play().then(()=>{
+    musicPlaying = true;
+    showMusicButton();
+    fadeInMusic();
+  }).catch(err => {
+    console.log('Music blocked:', err);
+    document.addEventListener('click', retryMusic, { once: true });
+    document.addEventListener('touchstart', retryMusic, { once: true });
+  });
+}
+
+function retryMusic(){
+  if(musicPlaying) return;
+  bgMusic.play().then(()=>{
+    musicPlaying = true;
+    showMusicButton();
+    fadeInMusic();
+  }).catch(()=>{});
+}
+
+function fadeInMusic(){
+  let vol = 0;
+  const target = 0.35;
+  const step = target / 40;
+  const fade = setInterval(()=>{
+    vol += step;
+    if(vol >= target){ bgMusic.volume = target; clearInterval(fade); }
+    else { bgMusic.volume = vol; }
+  }, 50);
+}
+
+function showMusicButton(){
+  const btn = document.getElementById('musicBtn');
+  if(btn) btn.classList.add('show');
+}
+
+function toggleMusic(){
+  const btn = document.getElementById('musicBtn');
+  if(!btn) return;
+  if(bgMusic.paused){
+    bgMusic.play();
+    btn.innerHTML = '🔊';
+    btn.classList.remove('muted');
+  } else {
+    bgMusic.pause();
+    btn.innerHTML = '🔇';
+    btn.classList.add('muted');
+  }
+}
+
+document.addEventListener('visibilitychange', ()=>{
+  if(!musicPlaying) return;
+  if(document.hidden){ bgMusic.pause(); }
+  else if(!document.getElementById('musicBtn').classList.contains('muted')){
+    bgMusic.play().catch(()=>{});
+  }
+});
+
+/* ============================================================
+   INVITE TYPE DETECTION
+   ============================================================ */
+function getInviteType(){
+  let type = null;
+  const urlParams = new URLSearchParams(window.location.search);
+  type = urlParams.get('invite');
+  if(!type && window.location.hash){
+    const hash = window.location.hash.replace(/^#/, '');
+    const hashParams = new URLSearchParams(hash);
+    type = hashParams.get('invite');
+  }
+  if(type) type = type.toLowerCase().trim();
+  if(type === 'nikkah')    return 'nikkah';
+  if(type === 'reception') return 'reception';
+  return 'both';
+}
+const INVITE_TYPE = getInviteType();
+
+function applyInviteType(){
+  const menuTitle = document.getElementById('menuTitle');
+  const nikkahCard = document.getElementById('nikkahCard');
+  const receptionCard = document.getElementById('receptionCard');
+  const menuHint = document.getElementById('menuHint');
+
+  if(INVITE_TYPE === 'nikkah'){
+    if(receptionCard) receptionCard.style.display = 'none';
+    if(menuTitle){
+      menuTitle.setAttribute('data-en', 'Nikkah Ceremony');
+      menuTitle.setAttribute('data-ur', 'نکاح کی تقریب');
+      menuTitle.innerHTML = currentLang === 'ur' ? 'نکاح کی تقریب' : 'Nikkah Ceremony';
+    }
+    if(menuHint){
+      menuHint.setAttribute('data-en', 'Tap the button to reveal Nikkah details');
+      menuHint.setAttribute('data-ur', 'نکاح کی تفصیلات دیکھنے کے لیے بٹن دبائیں');
+      menuHint.textContent = currentLang === 'ur' ? 'نکاح کی تفصیلات دیکھنے کے لیے بٹن دبائیں' : 'Tap the button to reveal Nikkah details';
+    }
+  }
+  else if(INVITE_TYPE === 'reception'){
+    if(nikkahCard) nikkahCard.style.display = 'none';
+    if(menuTitle){
+      menuTitle.setAttribute('data-en', 'Reception');
+      menuTitle.setAttribute('data-ur', 'ولیمہ');
+      menuTitle.innerHTML = currentLang === 'ur' ? 'ولیمہ' : 'Reception';
+    }
+    if(menuHint){
+      menuHint.setAttribute('data-en', 'Tap the button to reveal Reception details');
+      menuHint.setAttribute('data-ur', 'ولیمہ کی تفصیلات دیکھنے کے لیے بٹن دبائیں');
+      menuHint.textContent = currentLang === 'ur' ? 'ولیمہ کی تفصیلات دیکھنے کے لیے بٹن دبائیں' : 'Tap the button to reveal Reception details';
+    }
+  }
+}
+
+/* ============================================================
+   DEVICE DETECTION
+   ============================================================ */
+function isIOS(){
+  return /iPad|iPhone|iPod/.test(navigator.userAgent) ||
+         (navigator.platform === 'MacIntel' && navigator.maxTouchPoints > 1);
+}
+function isMac(){
+  return /Macintosh|Mac OS X/i.test(navigator.userAgent) && !isIOS();
+}
+
+/* ============================================================
+   PETALS
+   ============================================================ */
+const petalSVGs = [
+  `<svg width="18" height="18" viewBox="0 0 24 24"><path d="M12 2C8 6 4 8 4 14c0 4 4 8 8 8s8-4 8-8c0-6-4-8-8-12z" fill="#E7A9A0" opacity=".8"/></svg>`,
+  `<svg width="16" height="16" viewBox="0 0 24 24"><circle cx="12" cy="12" r="3" fill="#F9D77E"/><circle cx="12" cy="5" r="4" fill="#FBD9E0" opacity=".85"/><circle cx="12" cy="19" r="4" fill="#FBD9E0" opacity=".85"/><circle cx="5" cy="12" r="4" fill="#FBD9E0" opacity=".85"/><circle cx="19" cy="12" r="4" fill="#FBD9E0" opacity=".85"/></svg>`,
+];
+
+function spawnPetals(container){
+  const count = parseInt(container.dataset.petals || 5, 10);
+  for(let i=0;i<count;i++){
+    const p = document.createElement('div');
+    p.className = 'petal';
+    p.innerHTML = petalSVGs[Math.floor(Math.random()*petalSVGs.length)];
+    p.style.left = Math.random()*100 + '%';
+    p.style.animationDuration = (10 + Math.random()*8) + 's';
+    p.style.animationDelay = (Math.random()*12) + 's';
+    p.style.setProperty('--drift', (Math.random()*160 - 80).toFixed(0) + 'px');
+    p.style.setProperty('--spin', (Math.random()*720 + 360).toFixed(0) + 'deg');
+    container.appendChild(p);
+  }
+}
+document.querySelectorAll('.petals').forEach(spawnPetals);
+
+/* ============================================================
+   PANEL ACTIVATION
+   ============================================================ */
+const scroller = document.getElementById('scroller');
+const panels = [...document.querySelectorAll('.panel')];
+const rail = document.getElementById('rail');
+
+panels.forEach((_,i)=>{
+  const s = document.createElement('span');
+  if(i===0) s.classList.add('on');
+  s.addEventListener('click', ()=>{
+    const p = panels[i];
+    if(p.classList.contains('hidden-panel')) return;
+    if(!envelopeOpened && i > 0) return;
+    if(i >= 5 && !(nikkahDone || receptionDone)) return;
+    p.scrollIntoView({behavior:'smooth'});
+  });
+  rail.appendChild(s);
+});
+const railDots = [...rail.children];
+
+const panelObserver = new IntersectionObserver((entries)=>{
+  entries.forEach(e=>{
+    if(e.isIntersecting && e.intersectionRatio > 0.5){
+      const i = panels.indexOf(e.target);
+      panels.forEach(p=> p.classList.remove('active'));
+      e.target.classList.add('active');
+      railDots.forEach((d,j)=> d.classList.toggle('on', j===i));
+      e.target.querySelectorAll('.reveal').forEach(r=> r.classList.add('in'));
+    }
+  });
+},{ root: scroller, threshold: [0.5] });
+panels.forEach(p=> panelObserver.observe(p));
+
+let hintHidden = false;
+scroller.addEventListener('scroll', ()=>{
+  if(!hintHidden && scroller.scrollTop > 40){
+    document.getElementById('scrollHint').classList.add('hide');
+    hintHidden = true;
+  }
+},{ passive:true });
+
+/* ============================================================
+   STATE
+   ============================================================ */
+let envelopeOpened = false;
+let nikkahDone = false;
+let receptionDone = false;
+let openingScratch = false;
+
+/* ============================================================
+   SCROLL LOCK
+   ============================================================ */
+scroller.addEventListener('scroll', ()=>{
+  if(!envelopeOpened){
+    if(scroller.scrollTop > 20){ scroller.scrollTop = 0; }
+    return;
+  }
+  if(!nikkahDone && !receptionDone){
+    if(openingScratch) return;
+    const lockTop = panels[4].offsetTop;
+    if(scroller.scrollTop > lockTop + 20){
+      scroller.scrollTop = lockTop;
+    }
+  }
+}, { passive:true });
+
+/* ============================================================
+   ENVELOPE
+   ============================================================ */
+document.getElementById('envelope').addEventListener('click', function(){
+  if(this.classList.contains('open')) return;
+  this.classList.add('open');
+  envelopeOpened = true;
+
+  startMusic();
+
+  setTimeout(()=>{
+    openingScratch = true;
+    panels[1].scrollIntoView({behavior:'smooth'});
+    setTimeout(()=>{ openingScratch = false; }, 1000);
+  }, 900);
+});
+
+/* ============================================================
+   OPEN SCRATCH
+   ============================================================ */
+function openScratch(type){
+  if(INVITE_TYPE === 'nikkah' && type !== 'nikkah') return;
+  if(INVITE_TYPE === 'reception' && type !== 'reception') return;
+  if(type === 'nikkah' && nikkahDone) return;
+  if(type === 'reception' && receptionDone) return;
+
+  const nikkahPanel = document.getElementById('nikkahPanel');
+  const receptionPanel = document.getElementById('receptionPanel');
+
+  nikkahPanel.classList.add('hidden-panel');
+  receptionPanel.classList.add('hidden-panel');
+
+  const targetPanel = (type === 'nikkah') ? nikkahPanel : receptionPanel;
+  targetPanel.classList.remove('hidden-panel');
+
+  openingScratch = true;
+  setTimeout(()=>{
+    targetPanel.scrollIntoView({behavior:'smooth'});
+    setTimeout(()=>{ openingScratch = false; }, 1200);
+  }, 30);
+
+  const resizeCanvas = ()=>{
+    const card = targetPanel.querySelector('.scratch-card-lg');
+    if(card && typeof card._resizeFn === 'function'){ card._resizeFn(); }
+  };
+  setTimeout(resizeCanvas, 400);
+  setTimeout(resizeCanvas, 900);
+
+  document.getElementById('scrollHint').classList.add('hide');
+}
+
+/* ============================================================
+   BACK TO MENU
+   ============================================================ */
+function backToMenu(){
+  const nikkahPanel = document.getElementById('nikkahPanel');
+  const receptionPanel = document.getElementById('receptionPanel');
+  nikkahPanel.classList.add('hidden-panel');
+  receptionPanel.classList.add('hidden-panel');
+
+  openingScratch = true;
+  panels[4].scrollIntoView({behavior:'smooth'});
+  setTimeout(()=>{ openingScratch = false; }, 1000);
+
+  updateContinueBtn();
+}
+
+/* ============================================================
+   SCRATCH CARDS
+   ============================================================ */
+document.querySelectorAll('.scratch-card-lg').forEach(card=>{
+  const type = card.dataset.scratch;
+  const canvas = card.querySelector('canvas');
+  const ctx = canvas.getContext('2d');
+  let w = 0, h = 0;
+  let drawing = false, done = false;
+
+  function size(){
+    const rect = card.getBoundingClientRect();
+    if(rect.width === 0 || rect.height === 0) return;
+    w = Math.round(rect.width);
+    h = Math.round(rect.height);
+    canvas.width = w;
+    canvas.height = h;
+    canvas.style.opacity = '1';
+    canvas.style.display = 'block';
+    drawScratchSurface();
+  }
+  card._resizeFn = size;
+
+  function drawScratchSurface(){
+    ctx.globalCompositeOperation = 'source-over';
+    ctx.clearRect(0, 0, w, h);
+
+    const grad = ctx.createLinearGradient(0, 0, w, h);
+    grad.addColorStop(0, '#D9B36A');
+    grad.addColorStop(.5, '#B08A44');
+    grad.addColorStop(1, '#D9B36A');
+    ctx.fillStyle = grad;
+    ctx.fillRect(0, 0, w, h);
+
+    ctx.fillStyle = 'rgba(255,255,255,.12)';
+    for (let i = 0; i < 30; i++){
+      ctx.fillRect(Math.random()*w, Math.random()*h, 2, 2);
+    }
+
+    ctx.strokeStyle = 'rgba(120,90,40,.35)';
+    ctx.lineWidth = 2;
+    ctx.strokeRect(1, 1, w-2, h-2);
+
+    ctx.fillStyle = '#FBF5E6';
+    ctx.textAlign = 'center';
+    ctx.textBaseline = 'middle';
+
+    ctx.font = '600 15px "Playfair Display", serif';
+    ctx.fillText('SCRATCH', w/2, h/2 - 20);
+
+    ctx.strokeStyle = 'rgba(251,245,230,.6)';
+    ctx.lineWidth = 1;
+    ctx.beginPath();
+    ctx.moveTo(w/2 - 30, h/2);
+    ctx.lineTo(w/2 + 30, h/2);
+    ctx.stroke();
+
+    ctx.fillStyle = '#FBF5E6';
+    ctx.font = '600 15px "Playfair Display", serif';
+    ctx.fillText('HERE', w/2, h/2 + 22);
+
+    ctx.font = '500 10px "Cormorant Garamond", serif';
+    ctx.fillStyle = 'rgba(251,245,230,.75)';
+    ctx.fillText(type === 'nikkah' ? 'NIKKAH DETAILS' : 'RECEPTION DETAILS', w/2, h - 16);
+  }
+
+  function getPos(e){
+    const rect = canvas.getBoundingClientRect();
+    const cx = (e.touches ? e.touches[0].clientX : e.clientX) - rect.left;
+    const cy = (e.touches ? e.touches[0].clientY : e.clientY) - rect.top;
+    return {
+      x: cx * (canvas.width / rect.width),
+      y: cy * (canvas.height / rect.height)
+    };
+  }
+
+  function scratchAt(x, y){
+    ctx.globalCompositeOperation = 'destination-out';
+    ctx.beginPath();
+    ctx.arc(x, y, 24, 0, Math.PI*2);
+    ctx.fill();
+  }
+
+  function checkCleared(){
+    if (done) return;
+    const data = ctx.getImageData(0, 0, w, h).data;
+    let cleared = 0, total = 0;
+    for (let i = 3; i < data.length; i += 4 * 12){
+      total++;
+      if (data[i] < 60) cleared++;
+    }
+    if (cleared / total > 0.5){
+      done = true;
+      canvas.style.transition = 'opacity .4s ease';
+      canvas.style.opacity = '0';
+      setTimeout(()=> { canvas.style.display = 'none'; }, 400);
+
+      if(type === 'nikkah'){
+        nikkahDone = true;
+        const hint = document.getElementById('hintNikkah');
+        if(hint){
+          hint.innerHTML = '<span>✦</span> <span>' + (currentLang === 'ur' ? 'نکاح کی تفصیلات ظاہر ہو گئیں' : 'Nikkah details revealed') + '</span>';
+          hint.style.background = '#E7CE9B';
+        }
+        const btn = document.getElementById('nikkahBtn');
+        if(btn){
+          btn.classList.add('done');
+          btn.innerHTML = currentLang === 'ur' ? '✓ نکاح ظاہر ہو گیا' : '✓ Nikkah revealed';
+        }
+        setTimeout(()=>{
+          document.getElementById('nikkahActions').classList.add('show');
+        }, 400);
+      } else {
+        receptionDone = true;
+        const hint = document.getElementById('hintReception');
+        if(hint){
+          hint.innerHTML = '<span>✦</span> <span>' + (currentLang === 'ur' ? 'ولیمہ کی تفصیلات ظاہر ہو گئیں' : 'Reception details revealed') + '</span>';
+          hint.style.background = '#E7CE9B';
+        }
+        const btn = document.getElementById('receptionBtn');
+        if(btn){
+          btn.classList.add('done');
+          btn.innerHTML = currentLang === 'ur' ? '✓ ولیمہ ظاہر ہو گیا' : '✓ Reception revealed';
+        }
+        setTimeout(()=>{
+          document.getElementById('receptionActions').classList.add('show');
+        }, 400);
+      }
+
+      launchConfetti(40);
+      updateContinueBtn();
+    }
+  }
+
+  function start(e){
+    drawing = true;
+    const p = getPos(e);
+    scratchAt(p.x, p.y);
+    checkCleared();
+  }
+  function move(e){
+    if(!drawing) return;
+    e.preventDefault();
+    const p = getPos(e);
+    scratchAt(p.x, p.y);
+    checkCleared();
+  }
+  function end(){ drawing = false; }
+
+  canvas.addEventListener('mousedown', start);
+  canvas.addEventListener('mousemove', move);
+  window.addEventListener('mouseup', end);
+  canvas.addEventListener('touchstart', start, { passive: true });
+  canvas.addEventListener('touchmove', move, { passive: false });
+  canvas.addEventListener('touchend', end);
+
+  window.addEventListener('resize', ()=>{ if(!done) size(); });
+});
+
+/* ============================================================
+   CONTINUE BUTTON
+   ============================================================ */
+function updateContinueBtn(){
+  const btn = document.getElementById('continueBtn');
+  const hint = document.getElementById('menuHint');
+  if(!btn || !hint) return;
+
+  if(INVITE_TYPE === 'nikkah'){
+    btn.disabled = !nikkahDone;
+    if(nikkahDone){
+      hint.textContent = currentLang === 'ur' ? 'نکاح کی تفصیلات ظاہر ہو گئیں — آپ جاری رکھ سکتے ہیں' : 'Nikkah details revealed — you can continue';
+    } else {
+      hint.textContent = currentLang === 'ur' ? 'نکاح کی تفصیلات دیکھنے کے لیے اوپر بٹن دبائیں' : 'Tap the button above to reveal Nikkah details';
+    }
+    return;
+  }
+  if(INVITE_TYPE === 'reception'){
+    btn.disabled = !receptionDone;
+    if(receptionDone){
+      hint.textContent = currentLang === 'ur' ? 'ولیمہ کی تفصیلات ظاہر ہو گئیں — آپ جاری رکھ سکتے ہیں' : 'Reception details revealed — you can continue';
+    } else {
+      hint.textContent = currentLang === 'ur' ? 'ولیمہ کی تفصیلات دیکھنے کے لیے اوپر بٹن دبائیں' : 'Tap the button above to reveal Reception details';
+    }
+    return;
+  }
+
+  if(nikkahDone && receptionDone){
+    btn.disabled = false;
+    hint.textContent = currentLang === 'ur' ? 'دونوں تفصیلات ظاہر ہو گئیں — نیچے جاری رکھیں' : 'Both details revealed — continue below';
+  } else if(nikkahDone){
+    btn.disabled = false;
+    hint.textContent = currentLang === 'ur' ? 'نکاح کی تفصیلات ظاہر — آپ جاری رکھ سکتے ہیں' : 'Nikkah details revealed — you can continue';
+  } else if(receptionDone){
+    btn.disabled = false;
+    hint.textContent = currentLang === 'ur' ? 'ولیمہ کی تفصیلات ظاہر — آپ جاری رکھ سکتے ہیں' : 'Reception details revealed — you can continue';
+  } else {
+    btn.disabled = true;
+    hint.textContent = currentLang === 'ur' ? 'تفصیلات دیکھنے کے لیے اوپر کوئی ایک بٹن دبائیں' : 'Tap any one button above to reveal its details';
+  }
+}
+
+function goToLocation(){
+  if(INVITE_TYPE === 'nikkah' && !nikkahDone) return;
+  if(INVITE_TYPE === 'reception' && !receptionDone) return;
+  if(INVITE_TYPE === 'both' && !(nikkahDone || receptionDone)) return;
+  panels[7].scrollIntoView({behavior:'smooth'});
+}
+
+/* ============================================================
+   ADD TO CALENDAR
+   ============================================================ */
+function addToCalendar(type){
+  const icsPath = (type === 'nikkah') ? '/nikkah.ics' : '/reception.ics';
+
+  const events = {
+    nikkah: {
+      title: 'Shafat & Aqsa — Nikkah Ceremony',
+      start: '20261219T133000Z',
+      end:   '20261219T173000Z',
+      location: 'Badhai Ho Hall, Retibunder, Mumbra, Maharashtra 400612',
+      details: 'Nikkah Ceremony of Shafat Khan & Aqsa Khan · 19 December 2026 · 10-Rajab-1448 · 7:00 PM'
+    },
+    reception: {
+      title: 'Shafat & Aqsa — Reception',
+      start: '20261220T133000Z',
+      end:   '20261220T173000Z',
+      location: 'Badhai Ho Hall, Retibunder, Mumbra, Maharashtra 400612',
+      details: 'Reception of Shafat Khan & Aqsa Khan · 20 December 2026 · 11-Rajab-1448 · 7:00 PM'
+    }
+  };
+
+  const ev = events[type];
+  if(!ev) return;
+
+  if(isIOS() || isMac()){
+    window.location.href = WEBCAL_BASE + icsPath;
+    showCalendarToast(currentLang === 'ur' ? 'کیلنڈر کھول رہے ہیں...' : 'Opening Calendar...');
+    return;
+  }
+
+  const gcalUrl = 'https://calendar.google.com/calendar/render' +
+    '?action=TEMPLATE' +
+    '&text=' + encodeURIComponent(ev.title) +
+    '&dates=' + ev.start + '/' + ev.end +
+    '&details=' + encodeURIComponent(ev.details) +
+    '&location=' + encodeURIComponent(ev.location) +
+    '&sf=true&output=xml';
+
+  window.open(gcalUrl, '_blank');
+  showCalendarToast(currentLang === 'ur' ? 'گوگل کیلنڈر کھول رہے ہیں...' : 'Opening Google Calendar...');
+}
+
+function showCalendarToast(msg){
+  let t = document.getElementById('calToast');
+  if(!t){
+    t = document.createElement('div');
+    t.id = 'calToast';
+    t.style.cssText = `
+      position:fixed; bottom:130px; left:50%; transform:translateX(-50%);
+      background:rgba(45,32,15,.95); color:#E7CE9B;
+      padding:12px 22px; border-radius:30px;
+      font-family:'Cormorant Garamond', serif;
+      font-size:14px; letter-spacing:.08em;
+      box-shadow:0 8px 24px rgba(0,0,0,.4);
+      z-index:9999; pointer-events:none;
+      opacity:0; transition:opacity .3s ease;
+      border:1px solid rgba(231,206,155,.35);
+    `;
+    document.body.appendChild(t);
+  }
+  t.textContent = msg;
+  t.style.opacity = '1';
+  clearTimeout(t._hideTimer);
+  t._hideTimer = setTimeout(()=>{ t.style.opacity = '0'; }, 2500);
+}
+
+/* ============================================================
+   FEEDBACK
+   ============================================================ */
+function openFeedbackForm(){
+  window.open(GOOGLE_FORM_URL, '_blank');
+  setTimeout(()=>{ showThankYou(); }, 1500);
+}
+
+function showThankYou(){
+  const btn = document.getElementById('feedbackBtn');
+  const box = document.getElementById('thankYouBox');
+  const sub = document.getElementById('feedbackSub');
+
+  if(btn) btn.style.display = 'none';
+  document.querySelectorAll('.feedback-intro').forEach(e=> e.style.display = 'none');
+  document.querySelectorAll('.feedback-arrow').forEach(e=> e.style.display = 'none');
+  if(sub) sub.style.display = 'none';
+
+  if(box) box.classList.add('show');
+  launchConfetti(80);
+}
+
+/* ============================================================
+   CONFETTI
+   ============================================================ */
+function launchConfetti(count){
+  count = count || 60;
+  const colors = ['#AD8A4E','#E7CE9B','#E8899A','#F4B7C2','#F9D77E','#FBF5E6'];
+  for(let i=0;i<count;i++){
+    const c = document.createElement('i');
+    c.style.left = Math.random()*100 + 'vw';
+    c.style.background = colors[Math.floor(Math.random()*colors.length)];
+    c.style.animationDuration = (2.5 + Math.random()*2) + 's';
+    c.style.animationDelay = (Math.random()*0.5) + 's';
+    c.style.width = (6 + Math.random()*8) + 'px';
+    c.style.height = (10 + Math.random()*10) + 'px';
+    document.body.appendChild(c);
+    setTimeout(()=> c.remove(), 5500);
+  }
+}
+
+/* ============================================================
+   INIT
+   ============================================================ */
+applyInviteType();
+updateContinueBtn();
+updateCountdown();
+panels[0].classList.add('active');
+</script>
+</body>
+</html>

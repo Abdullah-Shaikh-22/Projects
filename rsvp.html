@@ -1,0 +1,1022 @@
+```html
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Wedding RSVP</title>
+
+    <style>
+
+        @import url('https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@400;500;600&family=DM+Sans:wght@400;500;600&display=swap');
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            background: #f6f3ef;
+            color: #302b29;
+            font-family: "DM Sans", sans-serif;
+            min-height: 100vh;
+        }
+
+        /* =========================
+           MAIN
+        ========================= */
+
+        .rsvp-section {
+            min-height: 100vh;
+
+            display: flex;
+            justify-content: center;
+            align-items: center;
+
+            padding: 60px 20px;
+        }
+
+        .rsvp-container {
+            width: 100%;
+            max-width: 1100px;
+
+            background: #ffffff;
+
+            display: grid;
+            grid-template-columns: 42% 58%;
+
+            box-shadow:
+                0 25px 80px rgba(48, 43, 41, 0.12);
+        }
+
+
+        /* =========================
+           LEFT / INVITATION
+        ========================= */
+
+        .invitation {
+            min-height: 720px;
+
+            position: relative;
+
+            display: flex;
+            align-items: center;
+            justify-content: center;
+
+            text-align: center;
+
+            padding: 50px;
+
+            color: white;
+
+            background:
+                linear-gradient(
+                    rgba(46, 38, 35, 0.48),
+                    rgba(46, 38, 35, 0.62)
+                ),
+                url("https://images.unsplash.com/photo-1519225421980-715cb0215aed?auto=format&fit=crop&w=1000&q=85");
+
+            background-size: cover;
+            background-position: center;
+        }
+
+        .invitation-content {
+            position: relative;
+            z-index: 2;
+        }
+
+        .invitation-top {
+            font-size: 11px;
+            letter-spacing: 4px;
+            text-transform: uppercase;
+        }
+
+        .invitation h1 {
+            font-family: "Cormorant Garamond", serif;
+            font-size: 76px;
+            font-weight: 400;
+            line-height: 1;
+
+            margin: 28px 0 18px;
+        }
+
+        .couple-names {
+            font-family: "Cormorant Garamond", serif;
+            font-size: 38px;
+            font-weight: 500;
+        }
+
+        .line {
+            width: 70px;
+            height: 1px;
+
+            background: rgba(255,255,255,0.7);
+
+            margin: 28px auto;
+        }
+
+        .wedding-date {
+            font-size: 13px;
+            letter-spacing: 2px;
+            text-transform: uppercase;
+        }
+
+        .venue {
+            font-family: "Cormorant Garamond", serif;
+            font-size: 20px;
+            margin-top: 12px;
+        }
+
+
+        /* =========================
+           RIGHT / FORM
+        ========================= */
+
+        .form-section {
+            padding: 65px 65px;
+        }
+
+        .form-header {
+            margin-bottom: 38px;
+        }
+
+        .eyebrow {
+            color: #a47769;
+            font-size: 11px;
+            letter-spacing: 2.5px;
+            text-transform: uppercase;
+            font-weight: 600;
+        }
+
+        .form-header h2 {
+            font-family: "Cormorant Garamond", serif;
+            font-size: 50px;
+            font-weight: 500;
+
+            margin: 8px 0 12px;
+        }
+
+        .form-header p {
+            color: #756d69;
+            font-size: 14px;
+            line-height: 1.8;
+            max-width: 470px;
+        }
+
+
+        /* =========================
+           FORM
+        ========================= */
+
+        .form-group {
+            margin-bottom: 24px;
+        }
+
+        .form-label {
+            display: block;
+
+            font-size: 12px;
+            font-weight: 600;
+
+            margin-bottom: 9px;
+
+            color: #403936;
+        }
+
+        .required {
+            color: #b47868;
+        }
+
+        input,
+        select,
+        textarea {
+
+            width: 100%;
+
+            border: 1px solid #ddd7d2;
+
+            background: #fff;
+
+            padding: 14px 15px;
+
+            font-family: "DM Sans", sans-serif;
+            font-size: 13px;
+
+            color: #302b29;
+
+            outline: none;
+
+            border-radius: 2px;
+
+            transition: 0.2s ease;
+        }
+
+        input::placeholder,
+        textarea::placeholder {
+            color: #aaa39f;
+        }
+
+        input:focus,
+        select:focus,
+        textarea:focus {
+            border-color: #a47769;
+
+            box-shadow:
+                0 0 0 3px rgba(164,119,105,0.08);
+        }
+
+        textarea {
+            min-height: 110px;
+            resize: vertical;
+        }
+
+
+        /* =========================
+           ATTENDANCE
+        ========================= */
+
+        .attendance-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+
+            gap: 12px;
+        }
+
+        .attendance-option {
+            position: relative;
+        }
+
+        .attendance-option input {
+            position: absolute;
+            opacity: 0;
+        }
+
+        .attendance-option label {
+
+            display: block;
+
+            border: 1px solid #ddd7d2;
+
+            padding: 15px;
+
+            text-align: center;
+
+            cursor: pointer;
+
+            font-size: 12px;
+            font-weight: 500;
+
+            transition: 0.2s ease;
+        }
+
+        .attendance-option label:hover {
+            border-color: #a47769;
+        }
+
+        .attendance-option input:checked + label {
+
+            background: #a47769;
+
+            border-color: #a47769;
+
+            color: white;
+        }
+
+
+        /* =========================
+           CONDITIONAL SECTION
+        ========================= */
+
+        #guestDetails {
+            display: none;
+
+            animation: fadeIn 0.25s ease;
+        }
+
+        @keyframes fadeIn {
+
+            from {
+                opacity: 0;
+                transform: translateY(-5px);
+            }
+
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+
+        }
+
+
+        /* =========================
+           TWO COLUMNS
+        ========================= */
+
+        .two-column {
+
+            display: grid;
+
+            grid-template-columns: 1fr 1fr;
+
+            gap: 15px;
+        }
+
+
+        /* =========================
+           BUTTON
+        ========================= */
+
+        .submit-button {
+
+            width: 100%;
+
+            border: none;
+
+            background: #302b29;
+
+            color: white;
+
+            padding: 16px;
+
+            font-family: "DM Sans", sans-serif;
+
+            font-size: 11px;
+
+            font-weight: 600;
+
+            letter-spacing: 2px;
+
+            text-transform: uppercase;
+
+            cursor: pointer;
+
+            transition: 0.25s ease;
+        }
+
+        .submit-button:hover {
+
+            background: #a47769;
+
+            transform: translateY(-1px);
+
+        }
+
+        .submit-button:disabled {
+
+            opacity: 0.6;
+
+            cursor: not-allowed;
+
+            transform: none;
+        }
+
+
+        /* =========================
+           FOOTNOTE
+        ========================= */
+
+        .form-note {
+
+            text-align: center;
+
+            color: #99918d;
+
+            font-size: 10px;
+
+            margin-top: 15px;
+        }
+
+
+        /* =========================
+           SUCCESS
+        ========================= */
+
+        .success-screen {
+
+            display: none;
+
+            text-align: center;
+
+            padding: 70px 20px;
+        }
+
+        .success-icon {
+
+            width: 70px;
+            height: 70px;
+
+            margin: 0 auto 25px;
+
+            border: 1px solid #a47769;
+
+            border-radius: 50%;
+
+            display: flex;
+            align-items: center;
+            justify-content: center;
+
+            color: #a47769;
+
+            font-size: 28px;
+        }
+
+        .success-screen h2 {
+
+            font-family: "Cormorant Garamond", serif;
+
+            font-size: 48px;
+
+            font-weight: 500;
+
+            margin-bottom: 10px;
+        }
+
+        .success-screen p {
+
+            color: #756d69;
+
+            font-size: 13px;
+
+            line-height: 1.8;
+        }
+
+
+        /* =========================
+           ERROR
+        ========================= */
+
+        .error-message {
+
+            display: none;
+
+            color: #b34d4d;
+
+            font-size: 11px;
+
+            margin-top: 6px;
+        }
+
+
+        /* =========================
+           MOBILE
+        ========================= */
+
+        @media (max-width: 850px) {
+
+            .rsvp-container {
+
+                grid-template-columns: 1fr;
+
+            }
+
+            .invitation {
+
+                min-height: 430px;
+
+            }
+
+            .form-section {
+
+                padding: 45px 30px;
+
+            }
+
+        }
+
+
+        @media (max-width: 500px) {
+
+            .rsvp-section {
+
+                padding: 15px;
+
+            }
+
+            .invitation {
+
+                min-height: 360px;
+
+                padding: 30px 20px;
+
+            }
+
+            .invitation h1 {
+
+                font-size: 58px;
+
+            }
+
+            .couple-names {
+
+                font-size: 30px;
+
+            }
+
+            .form-section {
+
+                padding: 38px 22px;
+
+            }
+
+            .form-header h2 {
+
+                font-size: 40px;
+
+            }
+
+            .attendance-grid {
+
+                grid-template-columns: 1fr;
+
+            }
+
+            .two-column {
+
+                grid-template-columns: 1fr;
+
+            }
+
+        }
+
+    </style>
+</head>
+
+
+<body>
+
+
+<section class="rsvp-section">
+
+
+    <div class="rsvp-container">
+
+
+        <!-- =========================
+             INVITATION
+        ========================= -->
+
+        <div class="invitation">
+
+            <div class="invitation-content">
+
+                <div class="invitation-top">
+                    Together with their families
+                </div>
+
+                <h1>
+                    RSVP
+                </h1>
+
+                <div class="couple-names">
+                    Abdullah & Sarah
+                </div>
+
+                <div class="line"></div>
+
+                <div class="wedding-date">
+                    Saturday · 20 December 2026
+                </div>
+
+                <div class="venue">
+                    The Grand Wedding Hall
+                </div>
+
+            </div>
+
+        </div>
+
+
+        <!-- =========================
+             FORM
+        ========================= -->
+
+        <div class="form-section">
+
+
+            <div id="formContent">
+
+
+                <div class="form-header">
+
+                    <div class="eyebrow">
+                        We would love to have you
+                    </div>
+
+                    <h2>
+                        Kindly Respond
+                    </h2>
+
+                    <p>
+                        Your presence would make our celebration
+                        even more special. Please let us know if
+                        you will be joining us.
+                    </p>
+
+                </div>
+
+
+                <form id="rsvpForm">
+
+
+                    <!-- NAME -->
+
+                    <div class="form-group">
+
+                        <label class="form-label" for="name">
+
+                            Full Name
+                            <span class="required">*</span>
+
+                        </label>
+
+                        <input
+                            type="text"
+                            id="name"
+                            placeholder="Enter your full name"
+                            autocomplete="name"
+                            required
+                        >
+
+                    </div>
+
+
+                    <!-- EMAIL -->
+
+                    <div class="form-group">
+
+                        <label class="form-label" for="email">
+
+                            Email Address
+                            <span class="required">*</span>
+
+                        </label>
+
+                        <input
+                            type="email"
+                            id="email"
+                            placeholder="you@example.com"
+                            autocomplete="email"
+                            required
+                        >
+
+                    </div>
+
+
+                    <!-- PHONE -->
+
+                    <div class="form-group">
+
+                        <label class="form-label" for="phone">
+
+                            Phone Number
+
+                        </label>
+
+                        <input
+                            type="tel"
+                            id="phone"
+                            placeholder="+91 XXXXX XXXXX"
+                            autocomplete="tel"
+                        >
+
+                    </div>
+
+
+                    <!-- ATTENDANCE -->
+
+                    <div class="form-group">
+
+                        <label class="form-label">
+
+                            Will you be joining us?
+                            <span class="required">*</span>
+
+                        </label>
+
+
+                        <div class="attendance-grid">
+
+
+                            <div class="attendance-option">
+
+                                <input
+                                    type="radio"
+                                    name="attendance"
+                                    id="yes"
+                                    value="yes"
+                                    required
+                                >
+
+                                <label for="yes">
+                                    ✓ Yes, I'll be there
+                                </label>
+
+                            </div>
+
+
+                            <div class="attendance-option">
+
+                                <input
+                                    type="radio"
+                                    name="attendance"
+                                    id="no"
+                                    value="no"
+                                >
+
+                                <label for="no">
+                                    × Sorry, I can't attend
+                                </label>
+
+                            </div>
+
+
+                        </div>
+
+                    </div>
+
+
+                    <!-- CONDITIONAL GUEST DETAILS -->
+
+                    <div id="guestDetails">
+
+
+                        <!-- GUEST + MEAL -->
+
+                        <div class="two-column">
+
+
+                            <div class="form-group">
+
+                                <label
+                                    class="form-label"
+                                    for="guests"
+                                >
+                                    Number of Guests
+                                </label>
+
+                                <select id="guests">
+
+                                    <option value="1">
+                                        1 Guest
+                                    </option>
+
+                                    <option value="2">
+                                        2 Guests
+                                    </option>
+
+                                    <option value="3">
+                                        3 Guests
+                                    </option>
+
+                                    <option value="4">
+                                        4 Guests
+                                    </option>
+
+                                    <option value="5">
+                                        5 Guests
+                                    </option>
+
+                                </select>
+
+                            </div>
+
+
+                            <div class="form-group">
+
+                                <label
+                                    class="form-label"
+                                    for="meal"
+                                >
+                                    Meal Preference
+                                </label>
+
+                                <select id="meal">
+
+                                    <option value="">
+                                        Select
+                                    </option>
+
+                                    <option value="vegetarian">
+                                        Vegetarian
+                                    </option>
+
+                                    <option value="non-vegetarian">
+                                        Non-Vegetarian
+                                    </option>
+
+                                    <option value="vegan">
+                                        Vegan
+                                    </option>
+
+                                </select>
+
+                            </div>
+
+
+                        </div>
+
+
+                        <!-- GUEST NAMES -->
+
+                        <div class="form-group">
+
+                            <label
+                                class="form-label"
+                                for="guestNames"
+                            >
+                                Guest Names
+                            </label>
+
+                            <input
+                                type="text"
+                                id="guestNames"
+                                placeholder="Names of accompanying guests"
+                            >
+
+                        </div>
+
+
+                    </div>
+
+
+                    <!-- MESSAGE -->
+
+                    <div class="form-group">
+
+                        <label
+                            class="form-label"
+                            for="message"
+                        >
+                            Message
+                        </label>
+
+                        <textarea
+                            id="message"
+                            placeholder="Leave a message for the couple..."
+                        ></textarea>
+
+                    </div>
+
+
+                    <!-- SUBMIT -->
+
+                    <button
+                        type="submit"
+                        class="submit-button"
+                        id="submitButton"
+                    >
+                        Submit RSVP
+                    </button>
+
+
+                    <div class="form-note">
+                        We appreciate your response.
+                    </div>
+
+
+                </form>
+
+            </div>
+
+
+            <!-- =========================
+                 SUCCESS
+            ========================= -->
+
+            <div
+                class="success-screen"
+                id="successScreen"
+            >
+
+                <div class="success-icon">
+                    ✓
+                </div>
+
+                <h2>
+                    Thank You
+                </h2>
+
+                <p>
+                    Your RSVP has been successfully received.
+                    <br><br>
+                    We look forward to celebrating
+                    this beautiful occasion with you.
+                </p>
+
+            </div>
+
+
+        </div>
+
+
+    </div>
+
+
+</section>
+
+
+<script>
+
+
+    const form =
+        document.getElementById("rsvpForm");
+
+
+    const formContent =
+        document.getElementById("formContent");
+
+
+    const successScreen =
+        document.getElementById("successScreen");
+
+
+    const guestDetails =
+        document.getElementById("guestDetails");
+
+
+    const yes =
+        document.getElementById("yes");
+
+
+    const no =
+        document.getElementById("no");
+
+
+    const submitButton =
+        document.getElementById("submitButton");
+
+
+    /* =========================
+       ATTENDANCE
+    ========================= */
+
+    yes.addEventListener("change", function () {
+
+        guestDetails.style.display = "block";
+
+    });
+
+
+    no.addEventListener("change", function () {
+
+        guestDetails.style.display = "none";
+
+    });
+
+
+    /* =========================
+       FORM SUBMISSION
+    ========================= */
+
+    form.addEventListener("submit", function (event) {
+
+        event.preventDefault();
+
+
+        const name =
+            document.getElementById("name").value.trim();
+
+
+        const email =
+            document.getElementById("email").value.trim();
+
+
+        if (!name || !email) {
+
+            alert(
+                "Please complete all required fields."
+            );
+
+            return;
+
+        }
+
+
+        /* Button loading */
+
+        submitButton.disabled = true;
+
+        submitButton.textContent =
+            "Submitting...";
+
+
+        setTimeout(function () {
+
+            formContent.style.display =
+                "none";
+
+            successScreen.style.display =
+                "block";
+
+        }, 800);
+
+    });
+
+
+</script>
+
+</body>
+</html>
+```
