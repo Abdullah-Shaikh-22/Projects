@@ -222,26 +222,97 @@ nav{flex-direction:column;position:relative;padding:.8rem 1rem;gap:.5rem}
 .contact-section h2{font-size:2rem}.section-title{font-size:1.9rem}
 .social-links{gap:1.2rem}.social-links a{width:48px;height:48px;font-size:1.5rem}}
 @media (max-width:480px){.container{padding:0 1.5rem}.hero h1{font-size:2.2rem}.btn{padding:.7rem 1.6rem}.project-card{padding:1.8rem 1.5rem}.social-links a{width:42px;height:42px;font-size:1.3rem}}
-@media (prefers-reduced-motion:reduce){*,*::before,*::after{animation:none!important;transition-duration:.01ms!important;scroll-behavior:auto!important}.skill-item{opacity:1!important}}
+@media (prefers-reduced-motion:reduce){*,*::before,*::after{animation:none!important;transition-duration:.01ms!important;scroll-behavior:auto!important}.skill-item,.hero-visual,.reveal,.hero *{opacity:1!important;transform:none!important}}
+/* quick nav + project filter */
+[id]{scroll-margin-top:90px}
+.quick-nav{display:flex;flex-wrap:wrap;gap:.7rem;margin-top:1.6rem}
+.qn{display:inline-flex;align-items:center;gap:.5rem;padding:.55rem 1.1rem;border-radius:30px;font-size:.88rem;font-weight:600;background:var(--chip);border:1px solid var(--chipb);color:var(--ac);transition:all .3s cubic-bezier(.2,.9,.3,1)}
+.qn:hover{background:linear-gradient(135deg,#3b3b98,#6c5ce7);color:#fff;border-color:transparent;transform:translateY(-3px);box-shadow:0 10px 20px -8px rgba(59,59,152,.5)}
+.qn-viral i{color:#ff6b6b}.qn:hover i{color:#fff}
+.proj-filter{display:flex;flex-wrap:wrap;gap:.7rem;margin-bottom:2rem}
+.pf-btn{display:inline-flex;align-items:center;gap:.5rem;padding:.6rem 1.1rem;border-radius:30px;font:600 .9rem 'Inter',sans-serif;background:var(--card);color:var(--tx);border:1.5px solid var(--chipb);cursor:pointer;transition:all .3s cubic-bezier(.2,.9,.3,1)}
+.pf-btn b{font-size:.75rem;background:var(--chip);color:var(--ac);border-radius:20px;padding:.05rem .5rem}
+.pf-btn:hover{transform:translateY(-3px);border-color:#6c5ce7;box-shadow:0 10px 20px -10px rgba(108,92,231,.5)}
+.pf-btn.active{background:linear-gradient(135deg,#3b3b98,#6c5ce7);color:#fff;border-color:transparent}
+.pf-btn.active b{background:rgba(255,255,255,.22);color:#fff}
+.pf-btn:focus-visible{outline:3px solid #a29bfe;outline-offset:2px}
+.proj-hint{color:var(--mu2);font-size:.95rem}.proj-hint i{margin-right:6px}
+.project-card.pop{animation:popIn .5s cubic-bezier(.2,.9,.3,1)}
+.tone-word,.dot-word{background:linear-gradient(135deg,#2b579a,#4a86e8)}
+.tone-js,.dot-js{background:linear-gradient(135deg,#b89400,#f0c800)}
+.tone-java,.dot-java{background:linear-gradient(135deg,#b3261e,#e76f51)}
+@media (max-width:768px){.quick-nav{justify-content:center}.proj-filter{justify-content:center}}
+/* pages */
+body:not([data-view="home"]) .home-only{display:none!important}
+body[data-view="home"] #page-root{display:none}
+.page{padding:2.2rem 0 4rem;animation:fadeUp .5s cubic-bezier(.2,.9,.3,1)}
+.page-head{margin-bottom:1.6rem}
+.back-btn{display:inline-flex;align-items:center;gap:.5rem;padding:.5rem 1.1rem;border-radius:30px;font-size:.88rem;font-weight:600;color:var(--ac);background:var(--chip);border:1px solid var(--chipb);margin:0 .5rem 1.2rem 0;transition:all .25s}
+.back-btn:hover{background:#3b3b98;color:#fff;transform:translateX(-3px)}
+.explore-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(230px,1fr));gap:1.5rem}
+.explore-card{--c1:#3b3b98;--c2:#6c5ce7;position:relative;display:flex;flex-direction:column;gap:.5rem;padding:1.8rem 1.6rem;border-radius:26px;background:var(--card);border:1px solid var(--cb);box-shadow:0 10px 30px -14px rgba(30,30,47,.12);overflow:hidden;transition:transform .4s cubic-bezier(.2,.9,.3,1),box-shadow .4s,opacity .8s}
+.explore-card::after{content:'';position:absolute;inset:auto -30% -60% auto;width:160px;height:160px;border-radius:50%;background:linear-gradient(135deg,var(--c1),var(--c2));opacity:.14;transition:transform .5s,opacity .5s}
+.explore-card:hover{transform:translateY(-8px);box-shadow:0 30px 50px -18px rgba(59,59,152,.3)}
+.explore-card:hover::after{transform:scale(1.8);opacity:.22}
+.ex-icon{width:52px;height:52px;border-radius:16px;display:flex;align-items:center;justify-content:center;font-size:1.3rem;color:#fff;background:linear-gradient(135deg,var(--c1),var(--c2));box-shadow:0 10px 18px -8px var(--c1);margin-bottom:.4rem}
+.explore-card h3{font-size:1.2rem;color:var(--hd)}.explore-card p{color:var(--mu);font-size:.92rem;flex-grow:1}
+.ex-count{display:flex;align-items:center;justify-content:space-between;font-size:.85rem;font-weight:700;color:var(--ac);margin-top:.6rem}
+.ex-count i{transition:transform .3s}.explore-card:hover .ex-count i{transform:translateX(6px)}
+.c-viral{--c1:#e8453c;--c2:#ff9f43}.c-fav{--c1:#d4a000;--c2:#f2c811}.c-cert{--c1:#12719e;--c2:#1f88c0}
+a.pf-btn{text-decoration:none}
+.project-card.clickable{cursor:pointer}
+.project-card h3 a:hover{color:var(--ac)}
+.pd-hero{display:flex;gap:1.4rem;align-items:flex-start;margin-bottom:1.6rem;flex-wrap:wrap}
+.pd-hero .project-icon{width:72px;height:72px;font-size:1.8rem;border-radius:22px}
+.pd-pills{display:flex;gap:.5rem;flex-wrap:wrap;margin-bottom:.5rem}
+.pd-title{font-size:2.2rem;font-weight:700;letter-spacing:-.02em;line-height:1.2;color:var(--hd);margin-bottom:.6rem}
+.pd-summary{color:var(--mu);max-width:720px;margin-bottom:1rem}
+.pd-stats{display:flex;gap:2rem;flex-wrap:wrap;padding:1.2rem 1.6rem;border-radius:22px;background:var(--card);border:1px solid var(--cb);margin-bottom:2rem}
+.pd-stats div{display:flex;flex-direction:column}.pd-stats strong{font-size:1.5rem;color:var(--hd)}.pd-stats span{font-size:.75rem;color:var(--mu2);text-transform:uppercase;letter-spacing:.4px}
+.pd-grid{display:grid;grid-template-columns:minmax(0,2fr) minmax(0,1fr);gap:2rem;align-items:start}
+@media (max-width:860px){.pd-grid{grid-template-columns:1fr}.pd-title{font-size:1.8rem}}
+.pd-section{margin-bottom:2rem}
+.pd-section h3{font-size:1.15rem;margin-bottom:.9rem;color:var(--hd);display:flex;align-items:center;gap:.6rem}
+.pd-section h3 i{color:#6c5ce7}
+.pd-section p{color:var(--mu);margin-bottom:.9rem}
+.pd-section code,.pd-list code{font-family:Consolas,Monaco,monospace;background:var(--chip);border:1px solid var(--chipb);color:var(--ac);padding:.1rem .35rem;border-radius:6px;font-size:.88em}
+.pd-list{list-style:none;display:flex;flex-direction:column;gap:.7rem}
+.pd-list li{display:flex;gap:.8rem;padding:.8rem 1rem;border-radius:14px;background:var(--card);border:1px solid var(--cb);color:var(--mu);font-size:.95rem}
+.pd-list li i{color:#2f9e58;margin-top:.25rem}.pd-list.learn li i{color:#e0a100}
+.pd-side{position:sticky;top:90px;padding:1.5rem;border-radius:24px;background:var(--card);border:1px solid var(--cb);box-shadow:0 10px 30px -14px rgba(30,30,47,.1)}
+.pd-side h4{font-size:.8rem;text-transform:uppercase;letter-spacing:.5px;color:var(--ac);margin:0 0 .7rem}
+.pd-side .project-tags{margin-bottom:1.3rem}.pd-side .project-links{flex-direction:column}
+.pd-gallery{display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:1rem}
+.pd-gallery img,.cert-img{width:100%;border-radius:16px;border:1px solid var(--cb);cursor:zoom-in;transition:transform .35s,box-shadow .35s;display:block}
+.pd-gallery img:hover,.cert-img:hover{transform:scale(1.02);box-shadow:0 20px 40px -16px rgba(0,0,0,.35)}
+.pd-nav{display:flex;justify-content:space-between;gap:1rem;margin-top:2.5rem;flex-wrap:wrap}
+.pd-nav-btn{display:flex;align-items:center;gap:.9rem;padding:1rem 1.3rem;border-radius:18px;background:var(--card);border:1px solid var(--cb);font-weight:600;color:var(--hd);transition:all .3s;max-width:48%}
+.pd-nav-btn small{display:block;font-size:.7rem;color:var(--mu2);text-transform:uppercase;letter-spacing:.4px}
+.pd-nav-btn:hover{transform:translateY(-3px);border-color:#6c5ce7}.pd-nav-btn.next{text-align:right;margin-left:auto}
+.reel-title{padding:.8rem 1rem;font-size:.88rem;font-weight:600;color:var(--hd)}
+.cert-card.big{flex-direction:column;gap:1rem}.cert-row{display:flex;gap:1.1rem}
+.lightbox{position:fixed;inset:0;background:rgba(10,10,20,.88);z-index:1000;display:flex;align-items:center;justify-content:center;padding:2rem;cursor:zoom-out}
+.lightbox img{max-width:100%;max-height:100%;border-radius:12px;box-shadow:0 30px 80px rgba(0,0,0,.6)}
+.lb-close{position:absolute;top:1.2rem;right:1.4rem;width:42px;height:42px;border-radius:50%;border:none;background:rgba(255,255,255,.15);color:#fff;font-size:1.1rem;cursor:pointer}
 </style>
 </head>
-<body>
+<body data-view="home">
 <div class="scroll-progress" id="scrollBar"></div>
 <div class="bg-blobs" aria-hidden="true"><span></span><span></span><span></span></div>
 <div class="cursor-glow" id="cursorGlow"></div>
 
 <header>
   <nav>
-    <div class="logo">abdullah.dev</div>
+    <a class="logo" href="#home">abdullah.dev</a>
     <div class="nav-links">
-      <a href="#work">Work</a><a href="#certifications">Certifications</a><a href="#editing">Editing</a><a href="#skills">Skills</a><a href="#contact">Contact</a>
+      <a href="#projects">Projects</a><a href="#viral">Videos</a><a href="#certifications">Certifications</a><a href="#skills">Skills</a><a href="#contact">Contact</a>
       <button class="theme-toggle" id="themeToggle" type="button" aria-label="Switch to dark mode"><i class="fas fa-moon"></i></button>
     </div>
   </nav>
 </header>
 
 <main>
-  <div class="container">
+  <div class="container home-only">
     <section class="hero">
       <div class="hero-content">
         <div class="hero-badge"><i class="fas fa-code" style="margin-right:6px"></i> Available for opportunities</div>
@@ -249,12 +320,13 @@ nav{flex-direction:column;position:relative;padding:.8rem 1rem;gap:.5rem}
         <div class="typed-line">I'm a <span id="typed"></span><i class="caret"></i></div>
         <p>I code in Python, C, C++, Java, and SQL. I build with HTML, CSS, and shell scripting. I also work with Excel, Power BI, and Tableau — plus I have a creative side for video editing.</p>
         <div class="hero-actions">
-          <a href="#work" class="btn btn-primary">See my work</a>
+          <a href="#projects" class="btn btn-primary">See my work</a>
           <a href="resume.pdf" id="resumeBtn" class="btn btn-outline" download><i class="fas fa-file-arrow-down"></i>Download Resume</a>
           <a href="#contact" class="btn btn-outline">Let's talk</a>
         </div>
+        <div class="quick-nav" aria-label="Quick links"><a href="#projects" class="qn"><i class="fas fa-folder-open"></i>Projects</a><a href="#viral" class="qn qn-viral"><i class="fas fa-fire"></i>Viral videos</a><a href="#favorites" class="qn"><i class="fas fa-star"></i>Favorite edits</a><a href="#certifications" class="qn"><i class="fas fa-award"></i>Certifications</a></div>
         <div class="hero-stats">
-          <div><strong id="stat-projects">9</strong><span>Projects</span></div>
+          <div><strong id="stat-projects">13</strong><span>Projects</span></div>
           <div><strong id="stat-certs">4</strong><span>Certifications</span></div>
           <div><strong id="stat-viral">3</strong><span id="stat-viral-label">Viral reels</span></div>
         </div>
@@ -266,15 +338,15 @@ nav{flex-direction:column;position:relative;padding:.8rem 1rem;gap:.5rem}
     </section>
   </div>
 
-  <div class="container" id="work">
+  <div class="container home-only" id="explore">
     <section class="reveal">
-      <h2 class="section-title">Projects</h2>
-      <p class="section-sub">Work across Python, full-stack, HTML/CSS, Excel, Power BI, and Tableau — from object-oriented systems to data dashboards.</p>
-      <div id="projects-root"></div>
+      <h2 class="section-title">Explore my work</h2>
+      <p class="section-sub">Tap a card to open its page.</p>
+      <div class="explore-grid" id="explore-root"></div>
     </section>
   </div>
 
-  <div class="container" id="promo" hidden>
+  <div class="container home-only" id="promo" hidden>
     <section class="reveal">
       <h2 class="section-title" id="promo-title">Promo video</h2>
       <p class="section-sub">A quick look at what I do.</p>
@@ -282,23 +354,9 @@ nav{flex-direction:column;position:relative;padding:.8rem 1rem;gap:.5rem}
     </section>
   </div>
 
-  <div class="container" id="certifications">
-    <section class="reveal">
-      <h2 class="section-title">Certifications</h2>
-      <p class="section-sub">Job simulations and courses I've completed to back up what I build.</p>
-      <div class="cert-grid" id="certs-root"></div>
-    </section>
-  </div>
+  <div class="container" id="page-root"></div>
 
-  <div class="container" id="editing">
-    <section class="reveal">
-      <h2 class="section-title">Video editing</h2>
-      <p class="section-sub">A creative side alongside the data work — short-form edits, some of which took off.</p>
-      <div id="reels-root"></div>
-    </section>
-  </div>
-
-  <div class="container" id="skills">
+  <div class="container home-only" id="skills">
     <div class="skills-section reveal">
       <h2 class="section-title" style="margin-bottom:.5rem">Skills &amp; tools</h2>
       <p class="section-sub" style="margin-bottom:2rem">Technologies and tools I work with.</p>
@@ -313,7 +371,7 @@ nav{flex-direction:column;position:relative;padding:.8rem 1rem;gap:.5rem}
     </div>
   </div>
 
-  <div class="container" id="contact">
+  <div class="container home-only" id="contact">
     <div class="contact-section reveal">
       <h2>Let's connect</h2>
       <p>I'm always open to collaboration, opportunities, or a quick chat. Reach out through any platform below.</p>
@@ -338,6 +396,8 @@ nav{flex-direction:column;position:relative;padding:.8rem 1rem;gap:.5rem}
   </div>
 </footer>
 
+<div class="lightbox" id="lightbox" hidden><button class="lb-close" type="button" aria-label="Close">✕</button><img alt=""></div>
+
 <div class="ed-gate" id="edGate" role="dialog" aria-modal="true" aria-labelledby="edGateTitle" hidden>
   <form id="edGateForm" autocomplete="off">
     <h2 id="edGateTitle">Enter password</h2>
@@ -351,71 +411,723 @@ nav{flex-direction:column;position:relative;padding:.8rem 1rem;gap:.5rem}
 <div class="ed-overlay" id="edOverlay"></div>
 <aside class="ed-panel" id="edPanel" role="dialog" aria-modal="true" aria-label="Update site content" aria-hidden="true">
   <div class="ed-head"><h2>Update site</h2><button class="ed-icon-btn" id="edClose" type="button" aria-label="Close">✕</button></div>
-  <p class="ed-note">Changes show instantly, but only in this browser. To publish them: download <strong>content.json</strong> and upload it to Netlify next to portfolio.html.</p>
+  <p class="ed-note">Press <strong>Update</strong> — your changes go live for every visitor, no file to download. First time only: open the <strong>Publish</strong> tab and paste your GitHub token.</p>
   <div class="ed-tabs" id="edTabs" role="tablist"></div>
   <div class="ed-body" id="edBody"></div>
   <div class="ed-foot">
-    <button class="btn btn-primary" id="edDownload" type="button">Download content.json</button>
-    <button class="btn btn-outline" id="edCopy" type="button">Copy JSON</button>
+    <button class="btn btn-primary" id="edUpdate" type="button"><i class="fas fa-rotate"></i>Update</button>
     <button class="btn btn-outline" id="edReset" type="button">Discard draft</button>
     <p class="ed-status" id="edStatus" role="status" aria-live="polite"></p>
   </div>
 </aside>
 
-<script id="site-data" type="application/json">
-{
-  "links": {"github": "https://github.com/Abdullah-Shaikh-22/Projects", "resume": "resume.pdf", "email": "abdullahshaikh150704@gmail.com"},
-  "promo": {"title": "Promo video", "url": "", "note": ""},
-  "projects": [
-    {"category": "Python", "title": "Banking Management System",
-     "desc": "An OOP-based banking system — a `Bank` class inheriting from `User`, with encapsulated balances, auto-generated account numbers, and deposit, withdraw, and transfer operations, each with its own validation rules.",
-     "tags": ["Python", "OOP", "Encapsulation"], "stats": [["2", "Classes"], ["4", "Operations"], ["1", "Inheritance"]],
-     "icon": "fa-building-columns", "link": "https://github.com/Abdullah-Shaikh-22/Projects"},
-    {"category": "Python", "title": "Employee Management System",
-     "desc": "A base `Employee` class specialized into `Developer` and `Manager` subclasses — managers maintain a team roster, and every employee gets an auto-generated company email and an annual salary increment.",
-     "tags": ["Python", "Inheritance", "OOP"], "stats": [["3", "Classes"], ["2", "Subclasses"], ["10%", "Increment"]],
-     "icon": "fa-users-gear", "link": "https://github.com/Abdullah-Shaikh-22/Projects"},
-    {"category": "Full Stack", "title": "QR Attendance System", "badge": "Built at college",
-     "desc": "A Flask + MySQL attendance system built for my college class — students register and get auto-generated IDs (`A1`–`Z10`), scan a QR code to mark attendance, and are tagged Present, Late or Absent by time window. Includes an admin dashboard and automated monthly Excel reports emailed to the teacher.",
-     "tags": ["Python", "Flask", "MySQL", "QR Code", "Automation"], "stats": [["3", "Tables"], ["260", "Student IDs"], ["QR", "Check-in"]],
-     "icon": "fa-qrcode", "link": "https://github.com/Abdullah-Shaikh-22/Projects", "demo": ""},
-    {"category": "HTML & CSS", "title": "Wedding Invitation Website",
-     "desc": "A bilingual (English / Urdu) wedding invitation site with a live countdown, scratch-to-reveal cards for the Nikkah and Reception details, a menu, an embedded Google Map location and an RSVP section.",
-     "tags": ["HTML", "CSS", "JavaScript", "Canvas"], "stats": [["2", "Languages"], ["2", "Scratch Cards"], ["1", "Countdown"]],
-     "icon": "fa-envelope-open-text", "link": "https://github.com/Abdullah-Shaikh-22/Projects", "demo": "index.html"},
-    {"category": "HTML & CSS", "title": "Wedding RSVP Page",
-     "desc": "A responsive RSVP form in plain HTML, CSS and JavaScript — a split-screen layout with a photo invite panel, an attending / not-attending toggle that reveals guest details, and an animated thank-you screen.",
-     "tags": ["HTML", "CSS", "JavaScript", "Responsive"], "stats": [["1", "Page"], ["2", "RSVP States"], ["0", "Frameworks"]],
-     "icon": "fa-heart", "link": "https://github.com/Abdullah-Shaikh-22/Projects", "demo": "rsvp.html"},
-    {"category": "Excel", "title": "Coffee Sales Dashboard",
-     "desc": "A multi-sheet interactive Excel dashboard built on a 4,200+ row coffee sales dataset — tracking sales, profit, budget, and total expenses across product lines, states, and territories using PivotTables and linked charts.",
-     "tags": ["Excel", "PivotTables", "Dashboards"], "stats": [["4,249", "Records"], ["4", "Dashboards"], ["15", "Fields"]],
-     "icon": "fa-chart-pie", "link": "https://github.com/Abdullah-Shaikh-22/Projects"},
-    {"category": "Excel", "title": "Dynamic Sales Search Box",
-     "desc": "An interactive search tool over a 34-record salesman sales dataset, built with a dynamic array formula so results filter live as criteria change — no macros, no VBA, just native Excel formulas.",
-     "tags": ["Excel", "Array Formulas", "Dynamic Search"], "stats": [["34", "Records"], ["8", "Fields"], ["0", "VBA Used"]],
-     "icon": "fa-magnifying-glass", "link": "https://github.com/Abdullah-Shaikh-22/Projects"},
-    {"category": "Power BI", "title": "Academic Stress Dashboard",
-     "desc": "A one-page interactive dashboard analyzing a 122-response student survey on peer pressure, academic pressure, study environment, and stress index — combining pie, bar, column, and area charts with a slicer and pivot table for drill-down by academic stage.",
-     "tags": ["Power BI", "Dashboard", "Survey Analysis"], "stats": [["122", "Responses"], ["9", "Visuals"], ["1", "Dashboard"]],
-     "icon": "fa-chart-column", "link": "https://github.com/Abdullah-Shaikh-22/Projects"},
-    {"category": "Tableau", "title": "Academic Stress Analysis",
-     "desc": "The same student-survey dataset explored through four Tableau views — a pie chart, side-by-side bars, text tables, and a tree map — comparing stress indicators across academic stages.",
-     "tags": ["Tableau", "Data Viz", "Survey Analysis"], "stats": [["4", "Views"], ["122", "Responses"], ["1", "Dataset"]],
-     "icon": "fa-diagram-project", "link": "https://github.com/Abdullah-Shaikh-22/Projects"}
-  ],
-  "certs": [
-    {"title": "Data Analytics Job Simulation", "issuer": "Deloitte · via Forage", "date": "Completed February 18, 2026", "code": "Verification: KXkXb2PbfnNzKXWAF", "link": "", "linkedin": "https://www.linkedin.com/in/abdullah-shaikh-315280435/details/certifications/", "icon": "fa-magnifying-glass-chart"},
-    {"title": "GenAI Powered Data Analytics Job Simulation", "issuer": "Deloitte · via Forage", "date": "Completed May 10, 2026", "code": "Verification: n9FkGH85J7xwh3ERQ", "link": "", "linkedin": "https://www.linkedin.com/in/abdullah-shaikh-315280435/details/certifications/", "icon": "fa-robot"},
-    {"title": "Excel Macros & VBA for Beginners", "issuer": "SkillUp by Simplilearn · Microsoft", "date": "Completed January 27, 2026", "code": "Certificate code: 9769269", "link": "", "linkedin": "https://www.linkedin.com/in/abdullah-shaikh-315280435/details/certifications/", "icon": "fa-file-excel"},
-    {"title": "Presentation Skills", "issuer": "TCS iON", "date": "Completed May 3, 2026", "code": "Cert ID: 66756-32181968-1016", "link": "", "linkedin": "https://www.linkedin.com/in/abdullah-shaikh-315280435/details/certifications/", "icon": "fa-person-chalkboard"}
-  ],
-  "reels": [
-    {"url": "viral-1.mp4", "group": "viral"}, {"url": "viral-2.mp4", "group": "viral"}, {"url": "viral-3.mp4", "group": "viral"},
-    {"url": "fav-1.mp4", "group": "edit"}, {"url": "fav-2.mp4", "group": "edit"}, {"url": "fav-3.mp4", "group": "edit"}
-  ]
-}
-</script>
+<script id="site-data" type="application/json">{
+ "links": {
+  "github": "https://github.com/Abdullah-Shaikh-22/Projects",
+  "resume": "resume.pdf",
+  "email": "abdullahshaikh150704@gmail.com"
+ },
+ "promo": {
+  "title": "Promo video",
+  "url": "",
+  "note": ""
+ },
+ "projects": [
+  {
+   "category": "Python",
+   "title": "Banking Management System",
+   "desc": "An OOP-based banking system — a `Bank` class inheriting from `User`, with encapsulated balances, auto-generated account numbers, and deposit, withdraw, and transfer operations, each with its own validation rules.",
+   "overview": "A banking system written in Python to practise object-oriented programming. A `User` class holds the account holder's details, and a `Bank` class inherits from it to add the banking behaviour — so a bank account is a user with money-handling abilities.\n\nThe balance is encapsulated: it is kept private and can only change through the deposit, withdraw and transfer methods, and each of them runs its own validation before touching the money. Account numbers are generated automatically so every account gets a unique one.",
+   "features": [
+    "Inheritance — `Bank` extends `User` and reuses the user's details",
+    "Encapsulated balance, changed only through methods",
+    "Auto-generated account numbers",
+    "Deposit, withdraw and transfer operations",
+    "A separate validation rule for each operation"
+   ],
+   "tools": [
+    "Python",
+    "OOP",
+    "Encapsulation",
+    "Inheritance"
+   ],
+   "learned": [
+    "Designing classes and using inheritance in a real example",
+    "Protecting data with encapsulation instead of editing balances directly",
+    "Validating input so invalid operations are rejected cleanly"
+   ],
+   "tags": [
+    "Python",
+    "OOP",
+    "Encapsulation"
+   ],
+   "stats": [
+    [
+     "2",
+     "Classes"
+    ],
+    [
+     "4",
+     "Operations"
+    ],
+    [
+     "1",
+     "Inheritance"
+    ]
+   ],
+   "icon": "fa-building-columns",
+   "link": "https://github.com/Abdullah-Shaikh-22/Projects",
+   "images": [],
+   "file": ""
+  },
+  {
+   "category": "Python",
+   "title": "Employee Management System",
+   "desc": "A base `Employee` class specialized into `Developer` and `Manager` subclasses — managers maintain a team roster, and every employee gets an auto-generated company email and an annual salary increment.",
+   "overview": "An employee management system that models a company using inheritance. A base `Employee` class holds what every employee shares, and two subclasses — `Developer` and `Manager` — specialise it.\n\nEvery employee gets an automatically generated company email and an annual salary increment of 10%. Managers additionally keep a team roster so they can see who reports to them.",
+   "features": [
+    "Base `Employee` class with `Developer` and `Manager` subclasses",
+    "Auto-generated company email for each employee",
+    "Annual salary increment of 10%",
+    "Managers maintain a roster of their team members"
+   ],
+   "tools": [
+    "Python",
+    "OOP",
+    "Inheritance"
+   ],
+   "learned": [
+    "Inheritance and method reuse across subclasses",
+    "Generating derived data, such as emails, in code",
+    "Modelling real relationships — a manager and a team — with objects"
+   ],
+   "tags": [
+    "Python",
+    "Inheritance",
+    "OOP"
+   ],
+   "stats": [
+    [
+     "3",
+     "Classes"
+    ],
+    [
+     "2",
+     "Subclasses"
+    ],
+    [
+     "10%",
+     "Increment"
+    ]
+   ],
+   "icon": "fa-users-gear",
+   "link": "https://github.com/Abdullah-Shaikh-22/Projects",
+   "images": [],
+   "file": ""
+  },
+  {
+   "category": "Full Stack",
+   "title": "QR Attendance System",
+   "badge": "Built at college",
+   "desc": "A Flask + MySQL attendance system built for my college class — students register and get auto-generated IDs (`A1`–`Z10`), scan a QR code to mark attendance, and are tagged Present, Late or Absent by time window. Includes an admin dashboard and automated monthly Excel reports emailed to the teacher.",
+   "overview": "A complete attendance system built for my college class with Flask and MySQL. Students register once, receive a short student ID, and mark attendance each morning by scanning a QR code that opens the attendance form.\n\nThe server decides the status from the time of marking — Present before 9:00 AM and Late from 9:00 AM to 12:00 PM — and rejects attempts before 8:00 AM or after 12:00 PM. Anyone who never marks is set to Absent by a daily scheduled job. A password-protected admin dashboard shows registrations and attendance, and a monthly Excel report with charts is generated and emailed to the teacher.",
+   "features": [
+    "Registration with validation — letters-only name, exactly 10-digit mobile number, valid email and year selection; a duplicate mobile or email is rejected with the existing student ID",
+    "Auto-generated student IDs in the pattern A1–A10, B1–B10 … Z10 (up to 260 students)",
+    "QR code generated by the app that opens the attendance page",
+    "Time-window logic: opens at 8:00 AM, Present before 9:00 AM, Late until 12:00 PM, then closed",
+    "One attendance entry per student per day, enforced by a database unique key",
+    "Automatic Absent marking through a token-protected scheduled endpoint",
+    "Admin login with securely hashed passwords and a dashboard of all registrations and the latest 200 attendance records",
+    "Monthly Excel report: a raw-data sheet plus an analytics sheet with a filterable table and 5 charts (overall and weekly attendance %)",
+    "Report emailed to the class teacher over SMTP"
+   ],
+   "tools": [
+    "Python",
+    "Flask",
+    "MySQL",
+    "mysql-connector",
+    "qrcode",
+    "Pillow",
+    "openpyxl",
+    "HTML / CSS (Jinja templates)",
+    "Scheduled cron jobs"
+   ],
+   "learned": [
+    "Building a full web app with routes, forms, sessions and a MySQL database",
+    "Validating input on the server and handling duplicates and edge cases",
+    "Scheduling background work for a serverless-style deployment with token-protected endpoints",
+    "Generating Excel reports with charts from Python and sending them by email"
+   ],
+   "tags": [
+    "Python",
+    "Flask",
+    "MySQL",
+    "QR Code",
+    "Automation"
+   ],
+   "stats": [
+    [
+     "3",
+     "Tables"
+    ],
+    [
+     "260",
+     "Student IDs"
+    ],
+    [
+     "QR",
+     "Check-in"
+    ]
+   ],
+   "icon": "fa-qrcode",
+   "link": "https://github.com/Abdullah-Shaikh-22/Projects",
+   "demo": "",
+   "images": [],
+   "file": ""
+  },
+  {
+   "category": "HTML & CSS",
+   "title": "Wedding Invitation Website",
+   "desc": "A bilingual (English / Urdu) wedding invitation site with a live countdown, scratch-to-reveal cards for the Nikkah and Reception details, a menu, an embedded Google Map location and an RSVP section.",
+   "overview": "A mobile-first digital wedding invitation that feels like opening a real envelope. Guests tap the envelope to open it, switch between English and Urdu, and move through the invitation step by step.\n\nAn events menu lets a guest pick the Nikkah or the Reception. Each one opens a scratch card that has to be scratched to reveal the date and time, followed by a live countdown. The invitation ends with the venue, a directions button and a feedback and thank-you step.",
+   "features": [
+    "Tap-to-open envelope introduction",
+    "English / Urdu language toggle — every text has an Urdu version",
+    "Background music button",
+    "Events menu with separate Nikkah and Reception details",
+    "Scratch-to-reveal cards drawn on an HTML canvas",
+    "Live countdown timers (days, hours, minutes, seconds) for each event",
+    "Add-to-calendar button for each event",
+    "Venue section with a Google Maps directions button",
+    "Feedback button and a thank-you message at the end"
+   ],
+   "tools": [
+    "HTML",
+    "CSS",
+    "JavaScript",
+    "Canvas API"
+   ],
+   "learned": [
+    "Building interactive UI with plain JavaScript — a canvas scratch effect, timers and screen state",
+    "Supporting two languages, including right-to-left Urdu text",
+    "Designing a mobile-first, animated, step-by-step experience"
+   ],
+   "tags": [
+    "HTML",
+    "CSS",
+    "JavaScript",
+    "Canvas"
+   ],
+   "stats": [
+    [
+     "2",
+     "Languages"
+    ],
+    [
+     "2",
+     "Scratch Cards"
+    ],
+    [
+     "2",
+     "Countdowns"
+    ]
+   ],
+   "icon": "fa-envelope-open-text",
+   "link": "https://github.com/Abdullah-Shaikh-22/Projects",
+   "demo": "index.html",
+   "images": [],
+   "file": ""
+  },
+  {
+   "category": "HTML & CSS",
+   "title": "Wedding RSVP Page",
+   "desc": "A responsive RSVP page in plain HTML, CSS and JavaScript — a split-screen layout with an invitation panel beside the reply form, an attending / not-attending toggle that reveals guest details, and a thank-you screen.",
+   "overview": "A clean, responsive RSVP page for a wedding. The left panel shows the invitation details — couple, date and venue — and the right side holds the reply form.\n\nGuests enter their name, email and phone, then choose whether they will attend. Choosing Yes reveals extra fields for the number of guests (1–5), meal preference (vegetarian, non-vegetarian or vegan) and the guests' names, and everyone can leave a message. After submitting, a short delay leads into a thank-you screen. The names shown are sample names.",
+   "features": [
+    "Split-screen layout — invitation panel beside the reply form",
+    "Required name and email fields",
+    "Yes / No attendance toggle",
+    "Guest details (count, meal preference, names) appear only when the guest attends",
+    "Message box for the couple",
+    "Thank-you screen shown after submitting"
+   ],
+   "tools": [
+    "HTML",
+    "CSS",
+    "JavaScript"
+   ],
+   "learned": [
+    "Building a clean, responsive two-column layout",
+    "Showing and hiding form sections with JavaScript",
+    "Designing a simple, elegant form experience"
+   ],
+   "images": [],
+   "tags": [
+    "HTML",
+    "CSS",
+    "JavaScript",
+    "Responsive"
+   ],
+   "stats": [
+    [
+     "1",
+     "Page"
+    ],
+    [
+     "2",
+     "RSVP States"
+    ],
+    [
+     "0",
+     "Frameworks"
+    ]
+   ],
+   "icon": "fa-heart",
+   "link": "https://github.com/Abdullah-Shaikh-22/Projects",
+   "demo": "rsvp.html",
+   "file": ""
+  },
+  {
+   "category": "MS Word",
+   "title": "Cafe Menu",
+   "desc": "A two-page cafe menu in MS Word — a bold cover page followed by a menu page with Coffee, Bread and Snacks sections and prices.",
+   "overview": "A cafe menu designed to practise page layout and text formatting. The first page is a cover with a large, styled \"CAFE MENU\" title on a coloured page background. The second page lists the items in sections — coffee, bread and snacks — each with its price.\n\nThe project focuses on consistent headings, neatly aligned items and prices, and a colour scheme that works on screen and in print.",
+   "features": [
+    "Cover page with a large styled title and a full-page background colour",
+    "Menu sections: Coffee, Bread and Snacks",
+    "Items with prices lined up in a clean list",
+    "Consistent heading and text formatting across both pages",
+    "Exported to PDF for easy sharing"
+   ],
+   "tools": [
+    "MS Word",
+    "Page layout",
+    "Text formatting"
+   ],
+   "learned": [
+    "Page colour and layout settings",
+    "Aligning items and prices neatly",
+    "Exporting a finished document to PDF"
+   ],
+   "images": [],
+   "file": "",
+   "tags": [
+    "MS Word",
+    "Layout",
+    "Formatting"
+   ],
+   "stats": [
+    [
+     "2",
+     "Pages"
+    ],
+    [
+     "3",
+     "Sections"
+    ],
+    [
+     "PDF",
+     "Export"
+    ]
+   ],
+   "icon": "fa-mug-hot"
+  },
+  {
+   "category": "MS Word",
+   "title": "Brew House Cafe Menu",
+   "desc": "A magazine-style cafe menu with numbered sections, item / price tables, photos and a branded header banner.",
+   "overview": "A more designed menu that treats the Word page like a layout canvas. Numbered section labels — such as 01 Espresso & Hot Coffee and 02 Iced Coffee — sit in text boxes next to photos, and each section has a two-column table for item and price.\n\nA banner image across the top sets the cafe's look, and a green accent colour ties the sections together. All brand logos and photos from the original reference were replaced with original graphics so the project is safe to publish.",
+   "features": [
+    "Numbered section labels in text boxes (01 Espresso & Hot Coffee, 02 Iced Coffee …)",
+    "Item / price tables sized so prices never wrap",
+    "Photos and graphics placed with text wrapping",
+    "Header banner image and a consistent green accent",
+    "Original graphics instead of brand logos"
+   ],
+   "tools": [
+    "MS Word",
+    "Tables",
+    "Text boxes",
+    "Picture layout"
+   ],
+   "learned": [
+    "Combining tables, text boxes and pictures in one layout",
+    "Fixing table column widths so text does not wrap",
+    "Replacing copyrighted images so the work is safe to publish"
+   ],
+   "images": [
+    "brew_house_cafe_menu-1.png"
+   ],
+   "file": "brew_house_cafe_menu.docx",
+   "tags": [
+    "MS Word",
+    "Tables",
+    "Design"
+   ],
+   "stats": [
+    [
+     "1",
+     "Page"
+    ],
+    [
+     "2+",
+     "Sections"
+    ],
+    [
+     "4",
+     "Pictures"
+    ]
+   ],
+   "icon": "fa-mug-saucer"
+  },
+  {
+   "category": "MS Word",
+   "title": "Billing Letter (Invoice)",
+   "desc": "A formatted billing letter with a company header, a Bill To block and a product table with cost, quantity and total.",
+   "overview": "A business billing letter that looks like a real invoice. The top block carries the company name, contact details, date and billing number; below it a \"Bill To\" block holds the client's details; and a table lists each product with its cost, quantity and total.\n\nHorizontal dividers separate the sections and shaded labels make the company and client names stand out. Contact details in the preview are sample values.",
+   "features": [
+    "Company header with contact details, date and billing number",
+    "Bill To section for the client's details",
+    "Product table with Product, Cost, Quantity and Total columns (pipes, taps, showers and sinks)",
+    "Divider lines and shaded labels for clear sections",
+    "Placeholder fields in square brackets so the letter can be reused"
+   ],
+   "tools": [
+    "MS Word",
+    "Tables",
+    "Borders & shading",
+    "Formatting"
+   ],
+   "learned": [
+    "Building a bordered table with centred columns",
+    "Structuring a business document into clear blocks",
+    "Using placeholders to make a document reusable"
+   ],
+   "images": [],
+   "file": "",
+   "tags": [
+    "MS Word",
+    "Tables",
+    "Business"
+   ],
+   "stats": [
+    [
+     "1",
+     "Page"
+    ],
+    [
+     "4",
+     "Products"
+    ],
+    [
+     "4",
+     "Columns"
+    ]
+   ],
+   "icon": "fa-file-invoice-dollar"
+  },
+  {
+   "category": "MS Word",
+   "title": "Request Letter Template",
+   "desc": "A reusable formal leave-request letter saved as a Word template, with placeholders for company, manager and sender.",
+   "overview": "A formal leave request letter saved as a Word template (.dot) so it can be reused any time. The company name, manager and sender are placeholders that get filled in for each letter.\n\nThe letter follows a standard structure — recipient, subject line, a respectful opening, a clear reason with an assurance paragraph, a closing and signature lines — with a blue title and colour-highlighted key phrases.",
+   "features": [
+    "Standard formal-letter structure: To, Subject, body, closing",
+    "Placeholders in square brackets for quick reuse",
+    "Blue title and highlighted key phrases",
+    "Signature line for the college in-charge",
+    "Saved as a Word template (.dot)"
+   ],
+   "tools": [
+    "MS Word",
+    "Templates",
+    "Formatting"
+   ],
+   "learned": [
+    "Saving a document as a template for reuse",
+    "Writing a clear, polite formal letter",
+    "Using colour and bold text to highlight key details"
+   ],
+   "images": [],
+   "file": "",
+   "tags": [
+    "MS Word",
+    "Template",
+    "Letter"
+   ],
+   "stats": [
+    [
+     "1",
+     "Page"
+    ],
+    [
+     "DOT",
+     "Template"
+    ],
+    [
+     "1",
+     "Signature line"
+    ]
+   ],
+   "icon": "fa-file-signature"
+  },
+  {
+   "category": "Excel",
+   "title": "Coffee Sales Dashboard",
+   "desc": "A multi-sheet interactive Excel dashboard built on a 4,200+ row coffee sales dataset — tracking sales, profit, budget, and total expenses across product lines, states, and territories using PivotTables and linked charts.",
+   "overview": "A multi-sheet dashboard built in Excel from a coffee-chain sales dataset of more than 4,200 rows and 15 fields. It tracks sales, profit, budget and total expenses and lets the reader compare product lines, states and territories.\n\nThe analysis is done with PivotTables, and the charts are linked to them, so each dashboard stays in step with the data.",
+   "features": [
+    "4,249 records across 15 fields",
+    "Four dashboard sheets",
+    "PivotTables summarising sales, profit, budget and total expenses",
+    "Breakdowns by product line, state and territory",
+    "Charts linked to the PivotTables"
+   ],
+   "tools": [
+    "Excel",
+    "PivotTables",
+    "Charts",
+    "Dashboards"
+   ],
+   "learned": [
+    "Structuring a large dataset for analysis",
+    "Building PivotTables and linking charts to them",
+    "Designing a dashboard that tells the story at a glance"
+   ],
+   "tags": [
+    "Excel",
+    "PivotTables",
+    "Dashboards"
+   ],
+   "stats": [
+    [
+     "4,249",
+     "Records"
+    ],
+    [
+     "4",
+     "Dashboards"
+    ],
+    [
+     "15",
+     "Fields"
+    ]
+   ],
+   "icon": "fa-chart-pie",
+   "link": "https://github.com/Abdullah-Shaikh-22/Projects",
+   "images": [],
+   "file": ""
+  },
+  {
+   "category": "Excel",
+   "title": "Dynamic Sales Search Box",
+   "desc": "An interactive search tool over a 34-record salesman sales dataset, built with a dynamic array formula so results filter live as criteria change — no macros, no VBA, just native Excel formulas.",
+   "overview": "An interactive search tool over a small salesman sales dataset (34 records, 8 fields). Change the search criteria and the matching rows appear straight away.\n\nIt is built entirely with a native Excel dynamic array formula — no macros and no VBA — so it works without enabling anything.",
+   "features": [
+    "Live filtering — results update as soon as the criteria change",
+    "A dynamic array formula returns all matching records at once",
+    "34 records and 8 fields of salesman sales data",
+    "No macros or VBA needed"
+   ],
+   "tools": [
+    "Excel",
+    "Dynamic array formulas"
+   ],
+   "learned": [
+    "How dynamic array formulas spill results automatically",
+    "Building a friendly search interface with formulas only"
+   ],
+   "tags": [
+    "Excel",
+    "Array Formulas",
+    "Dynamic Search"
+   ],
+   "stats": [
+    [
+     "34",
+     "Records"
+    ],
+    [
+     "8",
+     "Fields"
+    ],
+    [
+     "0",
+     "VBA Used"
+    ]
+   ],
+   "icon": "fa-magnifying-glass",
+   "link": "https://github.com/Abdullah-Shaikh-22/Projects",
+   "images": [],
+   "file": ""
+  },
+  {
+   "category": "Power BI",
+   "title": "Academic Stress Dashboard",
+   "desc": "A one-page interactive dashboard analyzing a 122-response student survey on peer pressure, academic pressure, study environment, and stress index — combining pie, bar, column, and area charts with a slicer and pivot table for drill-down by academic stage.",
+   "overview": "A one-page interactive dashboard built in Power BI from a survey of 122 students about academic stress. It looks at peer pressure, academic pressure, the study environment and an overall stress index.\n\nPie, bar, column and area charts give different views of the answers, while a slicer and a pivot table let the reader drill down by academic stage.",
+   "features": [
+    "122 survey responses analysed",
+    "9 visuals on a single dashboard",
+    "Pie, bar, column and area charts",
+    "Slicer to filter by academic stage",
+    "Pivot table for detailed drill-down",
+    "Themes: peer pressure, academic pressure, study environment, stress index"
+   ],
+   "tools": [
+    "Power BI",
+    "Dashboard design",
+    "Survey analysis"
+   ],
+   "learned": [
+    "Turning raw survey responses into visuals",
+    "Choosing the right chart for each question",
+    "Adding slicers so readers can explore the data themselves"
+   ],
+   "tags": [
+    "Power BI",
+    "Dashboard",
+    "Survey Analysis"
+   ],
+   "stats": [
+    [
+     "122",
+     "Responses"
+    ],
+    [
+     "9",
+     "Visuals"
+    ],
+    [
+     "1",
+     "Dashboard"
+    ]
+   ],
+   "icon": "fa-chart-column",
+   "link": "https://github.com/Abdullah-Shaikh-22/Projects",
+   "images": [],
+   "file": ""
+  },
+  {
+   "category": "Tableau",
+   "title": "Academic Stress Analysis",
+   "desc": "The same student-survey dataset explored through four Tableau views — a pie chart, side-by-side bars, text tables, and a tree map — comparing stress indicators across academic stages.",
+   "overview": "The same student stress survey, explored again in Tableau. Four views — a pie chart, side-by-side bars, text tables and a tree map — compare stress indicators across academic stages, and each view shows a different angle of the data.",
+   "features": [
+    "4 views: pie chart, side-by-side bars, text tables and a tree map",
+    "122 survey responses",
+    "Comparison of stress indicators across academic stages"
+   ],
+   "tools": [
+    "Tableau",
+    "Data visualization",
+    "Survey analysis"
+   ],
+   "learned": [
+    "Comparing how Tableau and Power BI handle the same data",
+    "Picking visual types that suit categorical survey data"
+   ],
+   "tags": [
+    "Tableau",
+    "Data Viz",
+    "Survey Analysis"
+   ],
+   "stats": [
+    [
+     "4",
+     "Views"
+    ],
+    [
+     "122",
+     "Responses"
+    ],
+    [
+     "1",
+     "Dataset"
+    ]
+   ],
+   "icon": "fa-diagram-project",
+   "link": "https://github.com/Abdullah-Shaikh-22/Projects",
+   "images": [],
+   "file": ""
+  }
+ ],
+ "certs": [
+  {
+   "title": "Data Analytics Job Simulation",
+   "issuer": "Deloitte · via Forage",
+   "date": "Completed February 18, 2026",
+   "code": "Verification: KXkXb2PbfnNzKXWAF",
+   "link": "",
+   "linkedin": "https://www.linkedin.com/in/abdullah-shaikh-315280435/details/certifications/",
+   "image": "",
+   "icon": "fa-magnifying-glass-chart"
+  },
+  {
+   "title": "GenAI Powered Data Analytics Job Simulation",
+   "issuer": "Deloitte · via Forage",
+   "date": "Completed May 10, 2026",
+   "code": "Verification: n9FkGH85J7xwh3ERQ",
+   "link": "",
+   "linkedin": "https://www.linkedin.com/in/abdullah-shaikh-315280435/details/certifications/",
+   "image": "",
+   "icon": "fa-robot"
+  },
+  {
+   "title": "Excel Macros & VBA for Beginners",
+   "issuer": "SkillUp by Simplilearn · Microsoft",
+   "date": "Completed January 27, 2026",
+   "code": "Certificate code: 9769269",
+   "link": "",
+   "linkedin": "https://www.linkedin.com/in/abdullah-shaikh-315280435/details/certifications/",
+   "image": "",
+   "icon": "fa-file-excel"
+  },
+  {
+   "title": "Presentation Skills",
+   "issuer": "TCS iON",
+   "date": "Completed May 3, 2026",
+   "code": "Cert ID: 66756-32181968-1016",
+   "link": "",
+   "linkedin": "https://www.linkedin.com/in/abdullah-shaikh-315280435/details/certifications/",
+   "image": "",
+   "icon": "fa-person-chalkboard"
+  }
+ ],
+ "reels": [
+  {
+   "url": "viral-1.mp4",
+   "group": "viral",
+   "title": "Street walk — fast-cut edit"
+  },
+  {
+   "url": "viral-2.mp4",
+   "group": "viral",
+   "title": "Stay Focused — motivational edit"
+  },
+  {
+   "url": "viral-3.mp4",
+   "group": "viral",
+   "title": "Lyric text edit"
+  },
+  {
+   "url": "fav-1.mp4",
+   "group": "edit",
+   "title": "Books & discipline montage"
+  },
+  {
+   "url": "fav-2.mp4",
+   "group": "edit",
+   "title": "Consistency — study & commute edit"
+  },
+  {
+   "url": "fav-3.mp4",
+   "group": "edit",
+   "title": "Reading on the move — glitch transitions"
+  }
+ ]
+}</script>
 
 <script>
 (function () {
@@ -452,7 +1164,8 @@ nav{flex-direction:column;position:relative;padding:.8rem 1rem;gap:.5rem}
       promo: Object.assign({ title: '', url: '', note: '' }, d.promo || {}),
       projects: Array.isArray(d.projects) ? d.projects : [],
       certs: Array.isArray(d.certs) ? d.certs : [],
-      reels: Array.isArray(d.reels) ? d.reels : []
+      reels: Array.isArray(d.reels) ? d.reels : [],
+      meta: d.meta || { updatedAt: 0 }
     };
   }
   var PUBLISHED = normalize(DEFAULT), SITE = clone(PUBLISHED), editorOpen = false, vis = '';
@@ -462,13 +1175,19 @@ nav{flex-direction:column;position:relative;padding:.8rem 1rem;gap:.5rem}
     'python': { tone: 'python', icon: 'fa-code' }, 'excel': { tone: 'excel', icon: 'fa-table-cells' },
     'power bi': { tone: 'powerbi', icon: 'fa-chart-column' }, 'powerbi': { tone: 'powerbi', icon: 'fa-chart-column' },
     'tableau': { tone: 'tableau', icon: 'fa-diagram-project' }, 'html': { tone: 'html', icon: 'fa-code' },
-    'html & css': { tone: 'html', icon: 'fa-code' }, 'full stack': { tone: 'fullstack', icon: 'fa-server' }
+    'html & css': { tone: 'html', icon: 'fa-code' }, 'full stack': { tone: 'fullstack', icon: 'fa-server' },
+    'ms word': { tone: 'word', icon: 'fa-file-word' }, 'javascript': { tone: 'js', icon: 'fa-code' }, 'java script': { tone: 'js', icon: 'fa-code' }, 'java': { tone: 'java', icon: 'fa-mug-hot' }
   };
   function catInfo(n) { return CAT[String(n || '').trim().toLowerCase()] || { tone: 'other', icon: 'fa-folder-open' }; }
   function certTone(i) { var s = String(i || '').toLowerCase(); return s.indexOf('deloitte') > -1 ? 'deloitte' : s.indexOf('simplilearn') > -1 ? 'simplilearn' : s.indexOf('tcs') > -1 ? 'tcs' : 'other'; }
   function iconClass(i, f) { i = String(i || '').trim(); return /^fa-[a-z0-9-]+$/.test(i) ? i : f; }
   function reelId(u) { var m = String(u || '').match(/instagram\.com\/(?:[\w.]+\/)?(?:reel|reels|p)\/([\w-]+)/); return m ? m[1] : ''; }
   var isMp4 = function (u) { return /\.(mp4|webm|mov)(\?|$)/i.test(u || '') && !!safeUrl(u); };
+  function slugify(t) { return String(t || '').toLowerCase().replace(/[^a-z0-9]+/g, '-').replace(/^-+|-+$/g, '') || 'project'; }
+  function pid(p) { return slugify(p.id || p.title); }
+  function paras(t) { return String(t || '').split(/\n\s*\n/).map(function (x) { return x.trim(); }).filter(Boolean); }
+  function short(t, n) { t = String(t || '').replace(/`/g, ''); if (t.length <= n) return t; var c = t.slice(0, n); return c.slice(0, Math.max(c.lastIndexOf(' '), 40)) + '…'; }
+  function count(g) { return SITE.reels.filter(function (r) { return r.group === g; }).length; }
 
   function setNum(el, n) {
     var from = el.dataset.done ? (+el.textContent || 0) : 0; el.dataset.done = '1';
@@ -481,7 +1200,7 @@ nav{flex-direction:column;position:relative;padding:.8rem 1rem;gap:.5rem}
     });
   }
   function renderStats() {
-    var viral = SITE.reels.filter(function (r) { return r.group === 'viral'; }).length;
+    var viral = count('viral');
     setNum($('#stat-projects'), SITE.projects.length); setNum($('#stat-certs'), SITE.certs.length); setNum($('#stat-viral'), viral);
     $('#stat-viral-label').textContent = viral === 1 ? 'Viral reel' : 'Viral reels';
   }
@@ -489,58 +1208,6 @@ nav{flex-direction:column;position:relative;padding:.8rem 1rem;gap:.5rem}
     var l = SITE.links, resume = $('#resumeBtn'), rurl = safeUrl(l.resume);
     resume.hidden = !rurl; if (rurl) resume.setAttribute('href', rurl);
     if (l.email) { $('#mailBtn').setAttribute('href', 'mailto:' + l.email); $('#mailText').textContent = l.email; }
-  }
-  function renderProjects() {
-    var groups = [], map = {};
-    SITE.projects.forEach(function (p) { var k = String(p.category || 'Other').trim() || 'Other'; if (!map[k]) { map[k] = []; groups.push(k); } map[k].push(p); });
-    var html = '';
-    groups.forEach(function (g) {
-      var info = catInfo(g), items = map[g];
-      html += '<div class="project-group"><div class="group-heading"><span class="group-dot dot-' + info.tone + '"></span><h3>' + esc(g) + '</h3><span class="group-count">' + items.length + (items.length === 1 ? ' project' : ' projects') + '</span></div><div class="projects-grid">';
-      items.forEach(function (p, i) {
-        var stats = (p.stats || []).map(function (s) { return '<div><strong>' + esc(s[0]) + '</strong><span>' + esc(s[1]) + '</span></div>'; }).join('');
-        var tags = (p.tags || []).map(function (t) { return '<span>' + esc(t) + '</span>'; }).join('');
-        var link = safeUrl(p.link), demo = safeUrl(p.demo);
-        html += '<div class="project-card reveal' + vis + ' reveal-delay-' + ((i % 3) + 1) + '">' +
-          (p.badge ? '<span class="project-badge">' + esc(p.badge) + '</span>' : '') +
-          '<div class="project-icon tone-' + info.tone + '"><i class="fas ' + iconClass(p.icon, info.icon) + '"></i></div>' +
-          '<h3>' + esc(p.title) + '</h3><p class="project-desc">' + rich(p.desc) + '</p>' +
-          (stats ? '<div class="project-stats">' + stats + '</div>' : '') + (tags ? '<div class="project-tags">' + tags + '</div>' : '') +
-          '<div class="project-links">' +
-          (link ? '<a class="project-link" href="' + esc(link) + '" target="_blank" rel="noopener"><i class="fab fa-github"></i> View on GitHub</a>' : '') +
-          (demo ? '<a class="project-link live" href="' + esc(demo) + '" target="_blank" rel="noopener"><i class="fas fa-arrow-up-right-from-square"></i> Live demo</a>' : '') +
-          '</div></div>';
-      });
-      html += '</div></div>';
-    });
-    $('#projects-root').innerHTML = html || '<p class="section-sub">Projects coming soon.</p>';
-  }
-  function renderCerts() {
-    $('#certs-root').innerHTML = SITE.certs.map(function (c, i) {
-      var link = safeUrl(c.link), li = safeUrl(c.linkedin);
-      return '<div class="cert-card reveal' + vis + ' reveal-delay-' + ((i % 4) + 1) + '">' +
-        '<div class="cert-badge ' + certTone(c.issuer) + '"><i class="fas ' + iconClass(c.icon, 'fa-award') + '"></i></div>' +
-        '<div class="cert-info"><h4>' + esc(c.title) + '</h4><div class="cert-issuer">' + esc(c.issuer) + '</div>' +
-        (c.date ? '<div class="cert-date">' + esc(c.date) + '</div>' : '') + (c.code ? '<div class="cert-code">' + esc(c.code) + '</div>' : '') +
-        '<div class="cert-actions">' +
-        (link ? '<a class="cert-link" href="' + esc(link) + '" target="_blank" rel="noopener">View certificate</a>' : '') +
-        (li ? '<a class="cert-link in" href="' + esc(li) + '" target="_blank" rel="noopener"><i class="fab fa-linkedin-in"></i> View on LinkedIn</a>' : '') +
-        '</div></div></div>';
-    }).join('');
-  }
-  function reelCard(r) {
-    if (isMp4(r.url)) return '<div class="reel-card"><video src="' + esc(r.url) + '" controls preload="metadata" playsinline></video></div>';
-    var id = reelId(r.url); if (!id) return '';
-    return '<div class="reel-card"><blockquote class="instagram-media" data-instgrm-permalink="https://www.instagram.com/reel/' + id + '/" data-instgrm-version="14"></blockquote></div>';
-  }
-  function renderReels() {
-    var out = '';
-    [['viral', 'Went viral', 'pill-viral', '🔥 Viral edits'], ['edit', 'Favorite edits', 'pill-edit', 'Well-edited picks']].forEach(function (g) {
-      var list = SITE.reels.filter(function (r) { return r.group === g[0]; }).map(reelCard).join('');
-      if (list) out += '<div class="reel-subhead"><h3>' + g[1] + '</h3><span class="pill ' + g[2] + '">' + g[3] + '</span></div><div class="reel-grid">' + list + '</div>';
-    });
-    $('#reels-root').innerHTML = out;
-    if (window.instgrm && window.instgrm.Embeds) window.instgrm.Embeds.process();
   }
   function promoEmbed(url) {
     var m;
@@ -558,15 +1225,164 @@ nav{flex-direction:column;position:relative;padding:.8rem 1rem;gap:.5rem}
     $('#promo-root').innerHTML = html + (p.note ? '<p class="promo-note">' + esc(p.note) + '</p>' : '');
     if (window.instgrm && window.instgrm.Embeds) window.instgrm.Embeds.process();
   }
-  var RENDER = { projects: renderProjects, certs: renderCerts, reels: renderReels, promo: renderPromo, links: renderLinks };
-  function renderAll(initial) { vis = initial ? '' : ' visible'; renderLinks(); renderProjects(); renderPromo(); renderCerts(); renderReels(); renderStats(); }
-  renderAll(true);
 
+  /* home: explore cards */
+  function renderExplore() {
+    var items = [
+      ['#projects', 'fa-folder-open', 'Projects', 'Python, web, MS Word, Excel, Power BI and more', SITE.projects.length + ' projects', ''],
+      ['#viral', 'fa-fire', 'Viral videos', 'Edits that took off', count('viral') + ' videos', 'c-viral'],
+      ['#favorites', 'fa-star', 'Favorite edits', 'Edits I am proud of', count('edit') + ' videos', 'c-fav'],
+      ['#certifications', 'fa-award', 'Certifications', 'Courses and job simulations', SITE.certs.length + ' certificates', 'c-cert']];
+    $('#explore-root').innerHTML = items.map(function (i, n) {
+      return '<a class="explore-card ' + i[5] + ' reveal' + vis + ' reveal-delay-' + ((n % 4) + 1) + '" href="' + i[0] + '"><span class="ex-icon"><i class="fas ' + i[1] + '"></i></span><h3>' + i[2] + '</h3><p>' + i[3] + '</p><span class="ex-count">' + i[4] + '<i class="fas fa-arrow-right"></i></span></a>';
+    }).join('');
+  }
+
+  /* pages */
+  var view = { name: 'home' };
+  function pageHead(title, sub) {
+    return '<div class="page-head"><a class="back-btn" href="#home"><i class="fas fa-arrow-left"></i> Home</a><br><h2 class="section-title">' + esc(title) + '</h2>' + (sub ? '<p class="section-sub">' + esc(sub) + '</p>' : '') + '</div>';
+  }
+  function projectCard(p) {
+    var info = catInfo(p.category), id = pid(p);
+    var stats = (p.stats || []).map(function (s) { return '<div><strong>' + esc(s[0]) + '</strong><span>' + esc(s[1]) + '</span></div>'; }).join('');
+    var tags = (p.tags || []).map(function (t) { return '<span>' + esc(t) + '</span>'; }).join('');
+    return '<article class="project-card clickable pop" data-href="#project/' + id + '">' +
+      (p.badge ? '<span class="project-badge">' + esc(p.badge) + '</span>' : '') +
+      '<div class="project-icon tone-' + info.tone + '"><i class="fas ' + iconClass(p.icon, info.icon) + '"></i></div>' +
+      '<h3><a href="#project/' + id + '">' + esc(p.title) + '</a></h3><p class="project-desc">' + esc(short(p.desc, 150)) + '</p>' +
+      (stats ? '<div class="project-stats">' + stats + '</div>' : '') + (tags ? '<div class="project-tags">' + tags + '</div>' : '') +
+      '<div class="project-links"><a class="project-link live" href="#project/' + id + '">View full details <i class="fas fa-arrow-right"></i></a></div></article>';
+  }
+  function pageProjects() {
+    var groups = [], map = {};
+    SITE.projects.forEach(function (p) { var k = String(p.category || 'Other').trim() || 'Other'; if (!map[k]) { map[k] = []; groups.push(k); } map[k].push(p); });
+    var cat = view.cat && map[view.cat] ? view.cat : null;
+    var fh = '<a class="pf-btn' + (cat ? '' : ' active') + '" href="#projects"><i class="fas fa-layer-group"></i> All <b>' + SITE.projects.length + '</b></a>';
+    groups.forEach(function (g) { var inf = catInfo(g); fh += '<a class="pf-btn' + (cat === g ? ' active' : '') + '" href="#projects/' + encodeURIComponent(g) + '"><span class="group-dot dot-' + inf.tone + '"></span>' + esc(g) + ' <b>' + map[g].length + '</b></a>'; });
+    var list = cat ? map[cat] : SITE.projects;
+    return pageHead('Projects', 'Pick a category, then open a project to see everything about it.') +
+      '<div class="proj-filter">' + fh + '</div>' + (list.length ? '<div class="projects-grid">' + list.map(projectCard).join('') + '</div>' : '<p class="proj-hint">Projects coming soon.</p>');
+  }
+  function pageProject(id) {
+    var p = SITE.projects.filter(function (x) { return pid(x) === id; })[0];
+    if (!p) return pageProjects();
+    var info = catInfo(p.category), link = safeUrl(p.link), demo = safeUrl(p.demo), file = safeUrl(p.file);
+    var sib = SITE.projects.filter(function (x) { return String(x.category) === String(p.category); }), i = sib.indexOf(p);
+    var stats = (p.stats || []).map(function (s) { return '<div><strong>' + esc(s[0]) + '</strong><span>' + esc(s[1]) + '</span></div>'; }).join('');
+    var ov = paras(p.overview || p.desc).map(function (t) { return '<p>' + rich(t) + '</p>'; }).join('');
+    var feats = (p.features || []).map(function (t) { return '<li><i class="fas fa-check"></i><span>' + rich(t) + '</span></li>'; }).join('');
+    var learned = (p.learned || []).map(function (t) { return '<li><i class="fas fa-lightbulb"></i><span>' + rich(t) + '</span></li>'; }).join('');
+    var tools = (p.tools && p.tools.length ? p.tools : p.tags || []).map(function (t) { return '<span>' + esc(t) + '</span>'; }).join('');
+    var imgs = (p.images || []).filter(function (u) { return safeUrl(u); }).map(function (u) { return '<img src="' + esc(u) + '" alt="' + esc(p.title) + ' preview" loading="lazy" data-zoom="' + esc(u) + '">'; }).join('');
+    var actions = (link ? '<a class="project-link" href="' + esc(link) + '" target="_blank" rel="noopener"><i class="fab fa-github"></i> View on GitHub</a>' : '') +
+      (demo ? '<a class="project-link live" href="' + esc(demo) + '" target="_blank" rel="noopener"><i class="fas fa-arrow-up-right-from-square"></i> Live demo</a>' : '') +
+      (file ? '<a class="project-link live" href="' + esc(file) + '" target="_blank" rel="noopener"><i class="fas fa-file-pdf"></i> Open document</a>' : '');
+    var nav = '<div class="pd-nav">' + (sib[i - 1] ? '<a class="pd-nav-btn" href="#project/' + pid(sib[i - 1]) + '"><i class="fas fa-arrow-left"></i><span><small>Previous</small>' + esc(sib[i - 1].title) + '</span></a>' : '<span></span>') +
+      (sib[i + 1] ? '<a class="pd-nav-btn next" href="#project/' + pid(sib[i + 1]) + '"><span><small>Next</small>' + esc(sib[i + 1].title) + '</span><i class="fas fa-arrow-right"></i></a>' : '<span></span>') + '</div>';
+    return '<div class="page-head"><a class="back-btn" href="#projects/' + encodeURIComponent(p.category) + '"><i class="fas fa-arrow-left"></i> ' + esc(p.category) + ' projects</a><a class="back-btn" href="#projects">All projects</a></div>' +
+      '<div class="pd-hero"><div class="project-icon tone-' + info.tone + '"><i class="fas ' + iconClass(p.icon, info.icon) + '"></i></div><div>' +
+      '<div class="pd-pills"><span class="pill pill-edit">' + esc(p.category) + '</span>' + (p.badge ? '<span class="pill pill-viral">' + esc(p.badge) + '</span>' : '') + '</div>' +
+      '<h2 class="pd-title">' + esc(p.title) + '</h2><p class="pd-summary">' + rich(short(p.desc, 400)) + '</p>' + (actions ? '<div class="project-links">' + actions + '</div>' : '') + '</div></div>' +
+      (stats ? '<div class="pd-stats">' + stats + '</div>' : '') +
+      '<div class="pd-grid"><div>' +
+      '<div class="pd-section"><h3><i class="fas fa-circle-info"></i> Overview</h3>' + ov + '</div>' +
+      (feats ? '<div class="pd-section"><h3><i class="fas fa-list-check"></i> Key features</h3><ul class="pd-list">' + feats + '</ul></div>' : '') +
+      (learned ? '<div class="pd-section"><h3><i class="fas fa-graduation-cap"></i> What I learned</h3><ul class="pd-list learn">' + learned + '</ul></div>' : '') +
+      (imgs ? '<div class="pd-section"><h3><i class="fas fa-image"></i> Preview</h3><div class="pd-gallery">' + imgs + '</div></div>' : '') +
+      '</div><aside class="pd-side"><h4>Category</h4><div class="project-tags"><span>' + esc(p.category) + '</span></div><h4>Tools &amp; technologies</h4><div class="project-tags">' + tools + '</div>' +
+      (actions ? '<h4>Links</h4><div class="project-links">' + actions + '</div>' : '') + '</aside></div>' + nav;
+  }
+  function reelCard(r) {
+    var cap = r.title ? '<div class="reel-title">' + esc(r.title) + '</div>' : '';
+    if (isMp4(r.url)) return '<div class="reel-card pop"><video src="' + esc(r.url) + '" controls preload="metadata" playsinline></video>' + cap + '</div>';
+    var id = reelId(r.url); if (!id) return '';
+    return '<div class="reel-card pop"><blockquote class="instagram-media" data-instgrm-permalink="https://www.instagram.com/reel/' + id + '/" data-instgrm-version="14"></blockquote>' + cap + '</div>';
+  }
+  function pageVideos() {
+    var g = view.tab === 'favorites' ? 'edit' : 'viral';
+    var tabs = '<div class="proj-filter"><a class="pf-btn' + (g === 'viral' ? ' active' : '') + '" href="#viral"><i class="fas fa-fire"></i> Viral videos <b>' + count('viral') + '</b></a>' +
+      '<a class="pf-btn' + (g === 'edit' ? ' active' : '') + '" href="#favorites"><i class="fas fa-star"></i> Favorite edits <b>' + count('edit') + '</b></a></div>';
+    var list = SITE.reels.filter(function (r) { return r.group === g; }).map(reelCard).join('');
+    return pageHead(g === 'viral' ? 'Viral videos' : 'Favorite edits', g === 'viral' ? 'Short-form edits that took off.' : 'Edits I am proud of.') + tabs +
+      (list ? '<div class="reel-grid">' + list + '</div>' : '<p class="proj-hint">No videos here yet.</p>');
+  }
+  function pageCerts() {
+    var cards = SITE.certs.map(function (c) {
+      var link = safeUrl(c.link), li = safeUrl(c.linkedin), img = safeUrl(c.image);
+      return '<div class="cert-card big pop">' + (img ? '<img class="cert-img" src="' + esc(img) + '" alt="' + esc(c.title) + ' certificate" loading="lazy" data-zoom="' + esc(img) + '">' : '') +
+        '<div class="cert-row"><div class="cert-badge ' + certTone(c.issuer) + '"><i class="fas ' + iconClass(c.icon, 'fa-award') + '"></i></div>' +
+        '<div class="cert-info"><h4>' + esc(c.title) + '</h4><div class="cert-issuer">' + esc(c.issuer) + '</div>' +
+        (c.date ? '<div class="cert-date">' + esc(c.date) + '</div>' : '') + (c.code ? '<div class="cert-code">' + esc(c.code) + '</div>' : '') +
+        '<div class="cert-actions">' + (link ? '<a class="cert-link" href="' + esc(link) + '" target="_blank" rel="noopener">View certificate</a>' : '') +
+        (li ? '<a class="cert-link in" href="' + esc(li) + '" target="_blank" rel="noopener"><i class="fab fa-linkedin-in"></i> View on LinkedIn</a>' : '') + '</div></div></div></div>';
+    }).join('');
+    return pageHead('Certifications', 'Job simulations and courses I have completed to back up what I build.') + '<div class="cert-grid">' + cards + '</div>';
+  }
+  function renderPage() {
+    var root = $('#page-root'), n = view.name;
+    document.body.setAttribute('data-view', n);
+    if (n === 'home') { root.innerHTML = ''; return; }
+    var h = n === 'projects' ? pageProjects() : n === 'project' ? pageProject(view.id) : n === 'videos' ? pageVideos() : pageCerts();
+    root.innerHTML = '<div class="page">' + h + '</div>';
+    if (window.instgrm && window.instgrm.Embeds) window.instgrm.Embeds.process();
+  }
+  function refresh() { renderExplore(); renderPage(); renderStats(); }
+  var RENDER = { projects: refresh, certs: refresh, reels: refresh, promo: renderPromo, links: renderLinks };
+  function renderAll(initial) { vis = initial ? '' : ' visible'; renderLinks(); renderPromo(); renderExplore(); renderPage(); renderStats(); }
+
+  /* routing: #projects, #projects/<category>, #project/<id>, #viral, #favorites, #certifications */
+  function route(first) {
+    var h = (location.hash || '').replace(/^#/, ''), seg = h.split('/'), a = seg[0], b = seg.length > 1 ? decodeURIComponent(seg.slice(1).join('/')) : '', prev = view.name;
+    if (a === 'projects') view = { name: 'projects', cat: b || null };
+    else if (a === 'project') view = { name: 'project', id: b };
+    else if (a === 'viral' || a === 'favorites') view = { name: 'videos', tab: a };
+    else if (a === 'certifications') view = { name: 'certs' };
+    else view = { name: 'home' };
+    renderPage();
+    if (view.name !== 'home') { window.scrollTo(0, 0); return; }
+    if (a === 'skills' || a === 'contact') setTimeout(function () { var t = document.getElementById(a); if (t) t.scrollIntoView({ behavior: reduce ? 'auto' : 'smooth', block: 'start' }); }, 60);
+    else if (!first && prev !== 'home') window.scrollTo(0, 0);
+  }
+  renderAll(true); route(true);
+  window.addEventListener('hashchange', function () { route(false); });
+
+  var lb = $('#lightbox');
+  document.addEventListener('click', function (e) {
+    var z = e.target.closest('[data-zoom]');
+    if (z) { lb.querySelector('img').src = z.getAttribute('data-zoom'); lb.hidden = false; return; }
+    if (e.target.closest('#lightbox')) { lb.hidden = true; return; }
+    var c = e.target.closest('.clickable[data-href]');
+    if (c && !e.target.closest('a, button')) location.hash = c.getAttribute('data-href');
+  });
+  document.addEventListener('keydown', function (e) { if (e.key === 'Escape') lb.hidden = true; });
+
+  /* live content: newest of the page's built-in data and the published content.json in the GitHub repo */
+  var LIVE = { owner: 'Abdullah-Shaikh-22', repo: 'Projects', branch: 'main', path: 'portfolio/content.json' };
+  function applyRemote(j) {
+    if (!j || typeof j !== 'object') return;
+    var n = normalize(j);
+    if ((n.meta.updatedAt || 0) <= (PUBLISHED.meta.updatedAt || 0)) return;
+    PUBLISHED = n; if (!editorOpen) { SITE = clone(PUBLISHED); renderAll(false); }
+  }
+  function getJson(u) { return fetch(u, { cache: 'no-store' }).then(function (r) { return r.ok ? r.json() : null; }).catch(function () { return null; }); }
   if (window.fetch && /^https?:/.test(location.protocol)) {
-    fetch('content.json', { cache: 'no-store' }).then(function (r) { return r.ok ? r.json() : null; }).then(function (j) {
-      if (!j || typeof j !== 'object') return;
-      PUBLISHED = normalize(j); if (!editorOpen) { SITE = clone(PUBLISHED); renderAll(false); }
-    }).catch(function () {});
+    getJson('https://raw.githubusercontent.com/' + LIVE.owner + '/' + LIVE.repo + '/' + LIVE.branch + '/' + LIVE.path + '?t=' + Date.now()).then(applyRemote);
+    $('#resumeBtn') && fetch(safeUrl(SITE.links.resume) || 'resume.pdf', { method: 'HEAD' }).then(function (r) { if (!r.ok) $('#resumeBtn').hidden = true; }).catch(function () {});
+  }
+  var tokenStore = { get: function () { return store.get('gh-token') || ''; } };
+  function b64(str) { var b = new TextEncoder().encode(str), o = ''; for (var i = 0; i < b.length; i += 8192) o += String.fromCharCode.apply(null, b.subarray(i, i + 8192)); return btoa(o); }
+  function gh(method, body) {
+    var url = 'https://api.github.com/repos/' + LIVE.owner + '/' + LIVE.repo + '/contents/' + LIVE.path;
+    return fetch(url + (method === 'GET' ? '?ref=' + LIVE.branch + '&t=' + Date.now() : ''), { method: method, cache: 'no-store',
+      headers: { 'Authorization': 'Bearer ' + tokenStore.get(), 'Accept': 'application/vnd.github+json', 'Content-Type': 'application/json' }, body: body ? JSON.stringify(body) : undefined });
+  }
+  function publish(attempt) {
+    var data = clone(SITE); data.meta = { updatedAt: Date.now() };
+    return gh('GET').then(function (r) { return r.status === 404 ? null : r.ok ? r.json() : Promise.reject(r.status); }).then(function (cur) {
+      var b = { message: 'Update portfolio content', content: b64(JSON.stringify(data, null, 2)), branch: LIVE.branch }; if (cur && cur.sha) b.sha = cur.sha;
+      return gh('PUT', b).then(function (r) { if (r.status === 409 || r.status === 422) { return (attempt || 0) < 2 ? publish((attempt || 0) + 1) : Promise.reject(r.status); } if (!r.ok) return Promise.reject(r.status); return data; });
+    });
   }
 
   /* update panel */
@@ -574,12 +1390,18 @@ nav{flex-direction:column;position:relative;padding:.8rem 1rem;gap:.5rem}
   var currentTab = 'projects', lastFocus = null, timers = {};
   var SCHEMA = {
     projects: { label: 'Projects', noun: 'project',
-      blank: function () { return { category: 'Python', title: '', desc: '', tags: [], stats: [], link: SITE.links.github || '', demo: '', badge: '', icon: '' }; },
+      blank: function () { return { category: 'Python', title: '', desc: '', tags: [], stats: [], link: SITE.links.github || '', demo: '', badge: '', overview: '', features: [], tools: [], learned: [], images: [], file: '', icon: '' }; },
       title: function (o) { return o.title || 'New project'; },
       fields: [
         { k: 'category', l: 'Category (Python, Full Stack, HTML & CSS, Excel, Power BI, Tableau — or a new one)', t: 'text', list: 'cats' },
         { k: 'title', l: 'Title', t: 'text' },
-        { k: 'desc', l: 'Description (wrap code words in `backticks`)', t: 'area' },
+        { k: 'desc', l: 'Short summary (shown on the card — wrap code words in `backticks`)', t: 'area' },
+        { k: 'overview', l: 'Full overview (shown on the project page — leave a blank line between paragraphs)', t: 'area' },
+        { k: 'features', l: 'Key features — one per line', t: 'lines' },
+        { k: 'tools', l: 'Tools & technologies (comma separated)', t: 'tags' },
+        { k: 'learned', l: 'What I learned — one per line', t: 'lines' },
+        { k: 'images', l: 'Preview image file names (comma separated, e.g. shot-1.png)', t: 'tags' },
+        { k: 'file', l: 'Document / PDF file name to open (optional)', t: 'text' },
         { k: 'tags', l: 'Tags (comma separated)', t: 'tags' },
         { k: 'stats', l: 'Stats — one per line as: value | label', t: 'stats' },
         { k: 'link', l: 'GitHub / project link', t: 'text' },
@@ -587,19 +1409,21 @@ nav{flex-direction:column;position:relative;padding:.8rem 1rem;gap:.5rem}
         { k: 'badge', l: 'Badge (optional, e.g. Built at college)', t: 'text' },
         { k: 'icon', l: 'Icon (optional, Font Awesome name like fa-chart-pie)', t: 'text' }] },
     certs: { label: 'Certifications', noun: 'certification',
-      blank: function () { return { title: '', issuer: '', date: '', code: '', link: '', linkedin: '', icon: '' }; },
+      blank: function () { return { title: '', issuer: '', date: '', code: '', link: '', linkedin: '', image: '', icon: '' }; },
       title: function (o) { return o.title || 'New certification'; },
       fields: [
         { k: 'title', l: 'Certificate title', t: 'text' }, { k: 'issuer', l: 'Issued by', t: 'text' },
         { k: 'date', l: 'Date text (e.g. Completed May 3, 2026)', t: 'text' }, { k: 'code', l: 'Verification / certificate code (optional)', t: 'text' },
         { k: 'link', l: 'Certificate link (optional)', t: 'text' },
         { k: 'linkedin', l: 'LinkedIn certificate link (shows "View on LinkedIn")', t: 'text' },
+        { k: 'image', l: 'Certificate image file name (optional, e.g. cert-1.jpg)', t: 'text' },
         { k: 'icon', l: 'Icon (optional, Font Awesome name)', t: 'text' }] },
     reels: { label: 'Reels', noun: 'reel',
-      blank: function () { return { url: '', group: 'edit' }; },
-      title: function (o) { return reelId(o.url) ? 'Reel ' + reelId(o.url) : (o.url || 'New reel'); },
+      blank: function () { return { url: '', group: 'edit', title: '' }; },
+      title: function (o) { return o.title || (reelId(o.url) ? 'Reel ' + reelId(o.url) : (o.url || 'New reel')); },
       fields: [
         { k: 'url', l: 'Instagram reel link or video file name (e.g. viral-4.mp4)', t: 'text' },
+        { k: 'title', l: 'Caption (optional)', t: 'text' },
         { k: 'group', l: 'Show under', t: 'select', opts: [['viral', 'Went viral'], ['edit', 'Favorite edits']] }] }
   };
   var PROMO_FIELDS = [
@@ -614,15 +1438,16 @@ nav{flex-direction:column;position:relative;padding:.8rem 1rem;gap:.5rem}
   function fieldHtml(f, obj, attrs) {
     var v = obj[f.k];
     if (f.t === 'tags') v = (v || []).join(', ');
+    if (f.t === 'lines') v = (v || []).join('\n');
     if (f.t === 'stats') v = (v || []).map(function (s) { return s[0] + ' | ' + s[1]; }).join('\n');
     var a = attrs + ' data-key="' + f.k + '" data-type="' + f.t + '"', inner;
-    if (f.t === 'area' || f.t === 'stats') inner = '<textarea ' + a + '>' + esc(v) + '</textarea>';
+    if (f.t === 'area' || f.t === 'stats' || f.t === 'lines') inner = '<textarea ' + a + '>' + esc(v) + '</textarea>';
     else if (f.t === 'select') inner = '<select ' + a + '>' + f.opts.map(function (o) { return '<option value="' + o[0] + '"' + (v === o[0] ? ' selected' : '') + '>' + o[1] + '</option>'; }).join('') + '</select>';
     else inner = '<input type="text" ' + a + ' value="' + esc(v) + '"' + (f.list ? ' list="' + f.list + '"' : '') + '>';
     return '<label class="ed-field"><span>' + esc(f.l) + '</span>' + inner + '</label>';
   }
   function buildTabs() {
-    tabsEl.innerHTML = [['projects', 'Projects'], ['certs', 'Certifications'], ['reels', 'Reels'], ['promo', 'Promo video'], ['links', 'Links']].map(function (t) {
+    tabsEl.innerHTML = [['projects', 'Projects'], ['certs', 'Certifications'], ['reels', 'Reels'], ['promo', 'Promo video'], ['links', 'Links'], ['publish', 'Publish']].map(function (t) {
       return '<button class="ed-tab" role="tab" data-tab="' + t[0] + '" aria-selected="' + (t[0] === currentTab) + '">' + t[1] + '</button>';
     }).join('');
   }
@@ -631,7 +1456,7 @@ nav{flex-direction:column;position:relative;padding:.8rem 1rem;gap:.5rem}
     if (SCHEMA[currentTab]) {
       var sc = SCHEMA[currentTab], list = SITE[currentTab];
       if (currentTab === 'reels') h += '<p class="ed-hint">Paste an Instagram reel link, or the file name of a video next to portfolio.html (e.g. viral-4.mp4).</p>';
-      if (currentTab === 'projects') h += '<datalist id="cats"><option>Python</option><option>Full Stack</option><option>HTML &amp; CSS</option><option>Excel</option><option>Power BI</option><option>Tableau</option><option>SQL</option></datalist>';
+      if (currentTab === 'projects') h += '<datalist id="cats"><option>Python</option><option>Full Stack</option><option>HTML &amp; CSS</option><option>Excel</option><option>Power BI</option><option>Tableau</option><option>MS Word</option><option>JavaScript</option><option>Java</option><option>SQL</option></datalist>';
       list.forEach(function (o, i) {
         h += '<div class="ed-item"><div class="ed-item-head"><div class="ed-item-title">' + esc(sc.title(o)) + '</div><div class="ed-item-actions">' +
           '<button class="ed-mini" data-act="up" data-i="' + i + '" aria-label="Move up">▲</button><button class="ed-mini" data-act="down" data-i="' + i + '" aria-label="Move down">▼</button>' +
@@ -641,10 +1466,13 @@ nav{flex-direction:column;position:relative;padding:.8rem 1rem;gap:.5rem}
       h += '<button class="ed-add" data-act="add">+ Add ' + sc.noun + '</button>';
     } else if (currentTab === 'promo') {
       h += '<p class="ed-hint">Add your promotional video link here once it is live. The section appears only when a link is filled in.</p>' + PROMO_FIELDS.map(function (f) { return fieldHtml(f, SITE.promo, 'data-obj="promo"'); }).join('');
+    } else if (currentTab === 'publish') {
+      h += '<p class="ed-hint">One-time setup so Update can publish for everyone: create a GitHub <strong>fine-grained token</strong> for the repo <code>' + LIVE.owner + '/' + LIVE.repo + '</code> with <strong>Contents: Read and write</strong>, then paste it here. It is stored only in this browser.</p><label class="ed-field"><span>GitHub token</span><input type="password" id="ghToken" autocomplete="off" value="' + esc(tokenStore.get()) + '"></label><button class="ed-add" id="ghSave" type="button">Save &amp; test connection</button>';
     } else h += LINK_FIELDS.map(function (f) { return fieldHtml(f, SITE.links, 'data-obj="links"'); }).join('');
     body.innerHTML = h;
   }
   function parseValue(type, v) {
+    if (type === 'lines') return v.split('\n').map(function (x) { return x.trim(); }).filter(Boolean);
     if (type === 'tags') return v.split(',').map(function (s) { return s.trim(); }).filter(Boolean);
     if (type === 'stats') return v.split('\n').map(function (l) { var p = l.split('|'); return [(p[0] || '').trim(), (p.slice(1).join('|') || '').trim()]; }).filter(function (s) { return s[0] || s[1]; });
     return v;
@@ -674,7 +1502,7 @@ nav{flex-direction:column;position:relative;padding:.8rem 1rem;gap:.5rem}
   tabsEl.addEventListener('click', function (e) { var b = e.target.closest('[data-tab]'); if (!b) return; currentTab = b.dataset.tab; buildTabs(); buildBody(); body.scrollTop = 0; });
 
   function openEditor() {
-    lastFocus = document.activeElement; editorOpen = true;
+    lastFocus = document.activeElement; editorOpen = true; 
     var draft = store.get('portfolio-draft');
     if (draft) { try { var d = JSON.parse(draft); if (d.base === JSON.stringify(PUBLISHED)) { SITE = normalize(d.data); vis = ' visible'; renderAll(false); } else store.del('portfolio-draft'); } catch (e) {} }
     buildTabs(); buildBody();
@@ -717,15 +1545,21 @@ nav{flex-direction:column;position:relative;padding:.8rem 1rem;gap:.5rem}
     }
   });
   if (location.hash === '#admin') requestOpen();
-  function exportJson() { return JSON.stringify(SITE, null, 2); }
-  $('#edDownload').addEventListener('click', function () {
-    var a = document.createElement('a'); a.href = URL.createObjectURL(new Blob([exportJson()], { type: 'application/json' })); a.download = 'content.json';
-    document.body.appendChild(a); a.click(); a.remove(); setTimeout(function () { URL.revokeObjectURL(a.href); }, 1000);
-    status('content.json downloaded. Upload it to Netlify next to portfolio.html to publish.');
+  body.addEventListener('click', function (e) {
+    if (!e.target.closest('#ghSave')) return;
+    var t = $('#ghToken').value.trim(); store.set('gh-token', t);
+    if (!t) { status('Token removed.'); return; }
+    status('Testing…');
+    gh('GET').then(function (r) { status(r.ok || r.status === 404 ? 'Connected. Update will now publish live.' : 'Token rejected (' + r.status + '). Check repo access and Contents permission.'); }).catch(function () { status('Could not reach GitHub.'); });
   });
-  $('#edCopy').addEventListener('click', function () {
-    if (navigator.clipboard && navigator.clipboard.writeText) navigator.clipboard.writeText(exportJson()).then(function () { status('JSON copied.'); }, function () { status('Copy was blocked — use Download instead.'); });
-    else status('Copy is not supported here — use Download instead.');
+  $('#edUpdate').addEventListener('click', function () {
+    Object.keys(timers).forEach(function (k) { clearTimeout(timers[k]); });
+    vis = ' visible'; renderAll(false); saveDraft();
+    if (!tokenStore.get()) { status('Updated on this browser. To show it to everyone, add your GitHub token in the Publish tab (one time).'); return; }
+    var btn = $('#edUpdate'); btn.disabled = true; status('Publishing…');
+    publish().then(function (data) {
+      PUBLISHED = normalize(data); store.del('portfolio-draft'); status('Updated! Live for everyone now.');
+    }, function (c) { status(c === 401 || c === 403 ? 'GitHub token not accepted — check it in the Publish tab.' : 'Publish failed (' + c + '). Saved on this browser only.'); }).then(function () { btn.disabled = false; });
   });
   $('#edReset').addEventListener('click', function () {
     if (!confirm('Discard your draft and go back to the published content?')) return;
@@ -740,13 +1574,13 @@ nav{flex-direction:column;position:relative;padding:.8rem 1rem;gap:.5rem}
   var reduce = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
   document.querySelectorAll('a[href^="#"]').forEach(function (a) {
     a.addEventListener('click', function (e) {
-      var h = this.getAttribute('href'); if (h === '#' || !h) return;
+      var h = this.getAttribute('href'); if (h === '#' || !h || document.body.getAttribute('data-view') !== 'home') return;
       var t = document.querySelector(h); if (t) { e.preventDefault(); t.scrollIntoView({ behavior: 'smooth', block: 'start' }); }
     });
   });
   var els = document.querySelectorAll('.reveal');
   if (window.IntersectionObserver) {
-    var io = new IntersectionObserver(function (entries) { entries.forEach(function (en) { if (en.isIntersecting) { en.target.classList.add('visible'); io.unobserve(en.target); } }); }, { threshold: .15, rootMargin: '0px 0px -40px 0px' });
+    var io = new IntersectionObserver(function (entries) { entries.forEach(function (en) { if (en.isIntersecting) { en.target.classList.add('visible'); io.unobserve(en.target); } }); }, { threshold: .01, rootMargin: '0px 0px -40px 0px' });
     els.forEach(function (el) { io.observe(el); });
   } else els.forEach(function (el) { el.classList.add('visible'); });
 
